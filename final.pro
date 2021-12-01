@@ -27,7 +27,6 @@ SOURCES += \
     scenegraph/Scene.cpp \
     scenegraph/OpenGLScene.cpp \
     scenegraph/ShapesScene.cpp \
-    scenegraph/SceneviewScene.cpp \
     shapes/ExampleShape.cpp \
     shapes/OpenGLShape.cpp \
     ui/SupportCanvas3D.cpp \
@@ -62,7 +61,6 @@ HEADERS += \
     scenegraph/Scene.h \
     scenegraph/OpenGLScene.h \
     scenegraph/ShapesScene.h \
-    scenegraph/SceneviewScene.h \
     shapes/ExampleShape.h \
     shapes/OpenGLShape.h \
     ui/SupportCanvas3D.h \

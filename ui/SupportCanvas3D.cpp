@@ -7,7 +7,6 @@
 
 #include "RGBA.h"
 #include "OrbitingCamera.h"
-#include "SceneviewScene.h"
 #include "Settings.h"
 #include "ShapesScene.h"
 
@@ -86,7 +85,6 @@ void SupportCanvas3D::initializeOpenGLSettings() {
 }
 
 void SupportCanvas3D::initializeScenes() {
-    m_sceneviewScene = std::make_unique<SceneviewScene>();
     m_shapesScene = std::make_unique<ShapesScene>(width(), height());
 }
 
@@ -124,14 +122,9 @@ void SupportCanvas3D::setSceneFromSettings() {
 }
 
 void SupportCanvas3D::loadSceneviewSceneFromParser(CS123XmlSceneParser &parser) {
-    m_sceneviewScene = std::make_unique<SceneviewScene>();
-    Scene::parse(m_sceneviewScene.get(), &parser);
-    m_settingsDirty = true;
 }
 
 void SupportCanvas3D::setSceneToSceneview() {
-    assert(m_sceneviewScene.get());
-    m_currentScene = m_sceneviewScene.get();
 }
 
 void SupportCanvas3D::setSceneToShapes() {

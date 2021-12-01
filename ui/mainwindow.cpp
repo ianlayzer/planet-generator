@@ -4,7 +4,6 @@
 #include "SupportCanvas3D.h"
 #include "CS123XmlSceneParser.h"
 #include "scenegraph/ShapesScene.h"
-#include "scenegraph/SceneviewScene.h"
 #include "CS123XmlSceneParser.h"
 #include <math.h>
 #include <QFileDialog>
