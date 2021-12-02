@@ -8,7 +8,7 @@
 #include "RGBA.h"
 #include "OrbitingCamera.h"
 #include "Settings.h"
-#include "ShapesScene.h"
+#include "scene/ShapesScene.h"
 
 #include <iostream>
 #include "gl/GLDebug.h"

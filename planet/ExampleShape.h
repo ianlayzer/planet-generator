@@ -1,7 +1,7 @@
 #ifndef EXAMPLESHAPE_H
 #define EXAMPLESHAPE_H
 
-#include "OpenGLShape.h"
+#include "gl/OpenGLShape.h"
 
 // hand-written cube points and normals.. if only there were a way to do this procedurally
 #define CUBE_DATA_POSITIONS {\

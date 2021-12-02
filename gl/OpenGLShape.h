@@ -24,8 +24,7 @@ namespace CS123 { namespace GL {
 class VAO;
 }}
 
-class OpenGLShape
-{
+class OpenGLShape {
 public:
     OpenGLShape();
     virtual ~OpenGLShape();
