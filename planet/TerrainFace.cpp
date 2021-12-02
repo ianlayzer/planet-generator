@@ -1,5 +1,4 @@
 #include "TerrainFace.h"
-#include <iostream>
 
 TerrainFace::TerrainFace(int resolution, glm::vec3 up):
     m_resolution(resolution), m_up(up)
@@ -11,7 +10,6 @@ TerrainFace::TerrainFace(int resolution, glm::vec3 up):
 }
 
 void TerrainFace::generate() {
-    std::cout << "generate()" << std::endl;
     float width = m_resolution - 1;
     for (int y = 0; y < m_resolution; y++) {
         for (int x = 0; x < m_resolution; x++) {
