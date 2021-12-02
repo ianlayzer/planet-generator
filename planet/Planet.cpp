@@ -17,3 +17,9 @@ void Planet::generate() {
         m_faces[i]->generate();
     }
 }
+
+void Planet::draw() {
+    for (int i = 0; i < m_faces.size(); i++) {
+        m_faces[i]->draw();
+    }
+}

@@ -9,6 +9,7 @@ class TerrainFace : OpenGLShape {
 public:
     TerrainFace(int resolution, glm::vec3 up);
     void generate();
+    using OpenGLShape::draw;
 private:
     void makeTriangle(glm::vec3 pointA, glm::vec3 pointB, glm::vec3 pointC);
     glm::vec3 getFaceNormal(glm::vec3 pointA, glm::vec3 pointB, glm::vec3 pointC);

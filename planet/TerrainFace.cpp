@@ -1,4 +1,5 @@
 #include "TerrainFace.h"
+#include <iostream>
 
 TerrainFace::TerrainFace(int resolution, glm::vec3 up):
     m_resolution(resolution), m_up(up)
@@ -6,9 +7,11 @@ TerrainFace::TerrainFace(int resolution, glm::vec3 up):
     m_axisA = glm::vec3(m_up.y, m_up.z, m_up.x);
     m_axisB = glm::cross(m_up, m_axisA);
     m_vertices = std::vector<glm::vec3>(resolution * resolution);
+    generate();
 }
 
 void TerrainFace::generate() {
+    std::cout << "generate()" << std::endl;
     float width = m_resolution - 1;
     for (int y = 0; y < m_resolution; y++) {
         for (int x = 0; x < m_resolution; x++) {
@@ -31,7 +34,6 @@ void TerrainFace::generate() {
         }
     }
     initializeOpenGLShapeProperties();
-    draw();
 }
 
 // pointA, pointB, pointC listed in counter-clockwise order

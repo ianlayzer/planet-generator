@@ -163,7 +163,7 @@ void PlanetScene::renderNormalsPass (SupportCanvas3D *context) {
 void PlanetScene::renderGeometry() {
     // TODO: [SHAPES] Render the shape. Lab 1 seems like it'll come in handy...
     if (m_planet) {
-        m_planet->generate();
+        m_planet->draw();
     }
 }
 
