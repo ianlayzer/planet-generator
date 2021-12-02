@@ -3,7 +3,7 @@
 #include "Databinding.h"
 #include "SupportCanvas3D.h"
 #include "CS123XmlSceneParser.h"
-#include "scene/ShapesScene.h"
+#include "scene/PlanetScene.h"
 #include "CS123XmlSceneParser.h"
 #include <math.h>
 #include <QFileDialog>

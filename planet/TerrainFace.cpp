@@ -25,7 +25,7 @@ void TerrainFace::generate() {
             glm::vec3 right = m_vertices[getIndex(x + 1, y, m_resolution)];
             glm::vec3 below = m_vertices[getIndex(x, y + 1, m_resolution)];
             glm::vec3 rightBelow = m_vertices[getIndex(x + 1, y + 1, m_resolution)];
-            makeTriangle(current, below, rightBelow);
+            makeTriangle(current, rightBelow, below);
             makeTriangle(current, right, rightBelow);
         }
     }

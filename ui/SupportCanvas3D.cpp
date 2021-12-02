@@ -8,7 +8,7 @@
 #include "RGBA.h"
 #include "OrbitingCamera.h"
 #include "Settings.h"
-#include "scene/ShapesScene.h"
+#include "scene/PlanetScene.h"
 
 #include <iostream>
 #include "gl/GLDebug.h"
@@ -85,7 +85,7 @@ void SupportCanvas3D::initializeOpenGLSettings() {
 }
 
 void SupportCanvas3D::initializeScenes() {
-    m_shapesScene = std::make_unique<ShapesScene>(width(), height());
+    m_shapesScene = std::make_unique<PlanetScene>(width(), height());
 }
 
 void SupportCanvas3D::paintGL() {

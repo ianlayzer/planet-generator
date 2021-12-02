@@ -11,7 +11,7 @@
 class RGBA;
 class Camera;
 class OpenGLScene;
-class ShapesScene;
+class PlanetScene;
 class SceneviewScene;
 class OrbitingCamera;
 class CamtransCamera;
@@ -89,7 +89,7 @@ private:
 
     std::unique_ptr<OrbitingCamera> m_defaultOrbitingCamera;
     OpenGLScene *m_currentScene;
-    std::unique_ptr<ShapesScene> m_shapesScene;
+    std::unique_ptr<PlanetScene> m_shapesScene;
 };
 
 #endif // SUPPORTCANVAS3D_H

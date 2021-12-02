@@ -5,9 +5,10 @@
 
 class Planet {
 public:
-    Planet();
+    Planet(int resolution);
     void generate();
 private:
+    int m_resolution;
     std::vector<std::unique_ptr<TerrainFace>> m_faces;
 };
 

@@ -1,5 +1,5 @@
-#ifndef SHAPESSCENE_H
-#define SHAPESSCENE_H
+#ifndef PLANETSCENE_H
+#define PLANETSCENE_H
 
 #include "OpenGLScene.h"
 
@@ -9,6 +9,7 @@
 
 #include "gl/datatype/FBO.h"
 #include "Settings.h"
+#include "planet/Planet.h"
 
 namespace CS123 { namespace GL {
 
@@ -37,10 +38,10 @@ class OpenGLShape;
  * carefully about your design here - you'll be reusing your shapes multiple times
  * during this course!
  */
-class ShapesScene : public OpenGLScene {
+class PlanetScene : public OpenGLScene {
 public:
-    ShapesScene(int width, int height);
-    virtual ~ShapesScene();
+    PlanetScene(int width, int height);
+    virtual ~PlanetScene();
 
     virtual void render(SupportCanvas3D *context) override;
     virtual void settingsChanged() override;
@@ -68,7 +69,7 @@ private:
 
     glm::vec4 m_lightDirection = glm::normalize(glm::vec4(1.f, -1.f, -1.f, 0.f));
 
-    std::unique_ptr<OpenGLShape> m_shape;
+    std::unique_ptr<Planet> m_planet;
 
     int m_width;
     int m_height;
@@ -94,4 +95,4 @@ private:
 
 };
 
-#endif // SHAPESSCENE_H
+#endif // PLANETSCENE_H

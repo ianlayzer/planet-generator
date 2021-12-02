@@ -27,9 +27,9 @@ SOURCES += \
     gl/OpenGLShape.cpp \
     planet/Planet.cpp \
     planet/TerrainFace.cpp \
+    scene/PlanetScene.cpp \
     scene/Scene.cpp \
     scene/OpenGLScene.cpp \
-    scene/ShapesScene.cpp \
     planet/ExampleShape.cpp \
     ui/SupportCanvas3D.cpp \
     ui/Settings.cpp \
@@ -63,9 +63,9 @@ HEADERS += \
     gl/OpenGLShape.h \
     planet/Planet.h \
     planet/TerrainFace.h \
+    scene/PlanetScene.h \
     scene/Scene.h \
     scene/OpenGLScene.h \
-    scene/ShapesScene.h \
     planet/ExampleShape.h \
     ui/SupportCanvas3D.h \
     ui/Settings.h \

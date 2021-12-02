@@ -1,5 +1,5 @@
-#include "ShapesScene.h"
-#include "Camera.h"
+#include "PlanetScene.h"
+#include "camera/Camera.h"
 #include "gl/OpenGLShape.h"
 #include <SupportCanvas3D.h>
 #include <QFileDialog>
@@ -14,8 +14,8 @@ using namespace CS123::GL;
 
 #include "ResourceLoader.h"
 
-ShapesScene::ShapesScene(int width, int height) :
-    m_shape(nullptr),
+PlanetScene::PlanetScene(int width, int height) :
+    m_planet(nullptr),
     m_width(width),
     m_height(height)
 {
@@ -30,12 +30,12 @@ ShapesScene::ShapesScene(int width, int height) :
 
 }
 
-ShapesScene::~ShapesScene()
+PlanetScene::~PlanetScene()
 {
     // Pro-tip: If you use smart pointers properly, this destructor should be empty
 }
 
-void ShapesScene::initializeSceneMaterial() {
+void PlanetScene::initializeSceneMaterial() {
     // Use a shiny orange material
     m_material.clear();
     m_material.cAmbient.r = 0.2f;
@@ -46,7 +46,7 @@ void ShapesScene::initializeSceneMaterial() {
     m_material.shininess = 64;
 }
 
-void ShapesScene::initializeSceneLight() {
+void PlanetScene::initializeSceneLight() {
     // Use a white directional light from the upper left corner
     memset(&m_light, 0, sizeof(m_light));
     m_light.type = LightType::LIGHT_DIRECTIONAL;
@@ -55,33 +55,33 @@ void ShapesScene::initializeSceneLight() {
     m_light.id = 0;
 }
 
-void ShapesScene::loadPhongShader() {
+void PlanetScene::loadPhongShader() {
     std::string vertexSource = ResourceLoader::loadResourceFileToString(":/shaders/default.vert");
     std::string fragmentSource = ResourceLoader::loadResourceFileToString(":/shaders/default.frag");
     m_phongShader = std::make_unique<CS123Shader>(vertexSource, fragmentSource);
 }
 
-void ShapesScene::loadWireframeShader() {
+void PlanetScene::loadWireframeShader() {
     std::string vertexSource = ResourceLoader::loadResourceFileToString(":/shaders/wireframe.vert");
     std::string fragmentSource = ResourceLoader::loadResourceFileToString(":/shaders/wireframe.frag");
     m_wireframeShader = std::make_unique<Shader>(vertexSource, fragmentSource);
 }
 
-void ShapesScene::loadNormalsShader() {
+void PlanetScene::loadNormalsShader() {
     std::string vertexSource = ResourceLoader::loadResourceFileToString(":/shaders/normals.vert");
     std::string geometrySource = ResourceLoader::loadResourceFileToString(":/shaders/normals.gsh");
     std::string fragmentSource = ResourceLoader::loadResourceFileToString(":/shaders/normals.frag");
     m_normalsShader = std::make_unique<Shader>(vertexSource, geometrySource, fragmentSource);
 }
 
-void ShapesScene::loadNormalsArrowShader() {
+void PlanetScene::loadNormalsArrowShader() {
     std::string vertexSource = ResourceLoader::loadResourceFileToString(":/shaders/normalsArrow.vert");
     std::string geometrySource = ResourceLoader::loadResourceFileToString(":/shaders/normalsArrow.gsh");
     std::string fragmentSource = ResourceLoader::loadResourceFileToString(":/shaders/normalsArrow.frag");
     m_normalsArrowShader = std::make_unique<Shader>(vertexSource, geometrySource, fragmentSource);
 }
 
-void ShapesScene::render(SupportCanvas3D *context) {
+void PlanetScene::render(SupportCanvas3D *context) {
     // Clear the screen in preparation for the next frame. (Use a gray background instead of a
     // black one for drawing wireframe or normals so they will show up against the background.)
     setClearColor();
@@ -97,7 +97,7 @@ void ShapesScene::render(SupportCanvas3D *context) {
     }
 }
 
-void ShapesScene::renderPhongPass(SupportCanvas3D *context) {
+void PlanetScene::renderPhongPass(SupportCanvas3D *context) {
     m_phongShader->bind();
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -110,36 +110,36 @@ void ShapesScene::renderPhongPass(SupportCanvas3D *context) {
     m_phongShader->unbind();
 }
 
-void ShapesScene::setPhongSceneUniforms() {
+void PlanetScene::setPhongSceneUniforms() {
     m_phongShader->setUniform("useLighting", settings.useLighting);
     m_phongShader->setUniform("useArrowOffsets", false);
     m_phongShader->applyMaterial(m_material);
 }
 
-void ShapesScene::setMatrixUniforms(Shader *shader, SupportCanvas3D *context) {
+void PlanetScene::setMatrixUniforms(Shader *shader, SupportCanvas3D *context) {
     shader->setUniform("p", context->getCamera()->getProjectionMatrix());
     shader->setUniform("v", context->getCamera()->getViewMatrix());
     shader->setUniform("m", glm::mat4(1.0f));
 }
 
-void ShapesScene::renderGeometryAsFilledPolygons() {
+void PlanetScene::renderGeometryAsFilledPolygons() {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     renderGeometry();
 }
 
-void ShapesScene::renderWireframePass(SupportCanvas3D *context) {
+void PlanetScene::renderWireframePass(SupportCanvas3D *context) {
     m_wireframeShader->bind();
     setMatrixUniforms(m_wireframeShader.get(), context);
     renderGeometryAsWireframe();
     m_wireframeShader->unbind();
 }
 
-void ShapesScene::renderGeometryAsWireframe() {
+void PlanetScene::renderGeometryAsWireframe() {
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     renderGeometry();
 }
 
-void ShapesScene::renderNormalsPass (SupportCanvas3D *context) {
+void PlanetScene::renderNormalsPass (SupportCanvas3D *context) {
     // Render the lines.
     m_normalsShader->bind();
     setMatrixUniforms(m_normalsShader.get(), context);
@@ -153,14 +153,14 @@ void ShapesScene::renderNormalsPass (SupportCanvas3D *context) {
     m_normalsArrowShader->unbind();
 }
 
-void ShapesScene::renderGeometry() {
+void PlanetScene::renderGeometry() {
     // TODO: [SHAPES] Render the shape. Lab 1 seems like it'll come in handy...
-    if (m_shape) {
-        m_shape->draw();
+    if (m_planet) {
+        m_planet->generate();
     }
 }
 
-void ShapesScene::clearLights() {
+void PlanetScene::clearLights() {
     for (int i = 0; i < MAX_NUM_LIGHTS; i++) {
         std::ostringstream os;
         os << i;
@@ -169,7 +169,7 @@ void ShapesScene::clearLights() {
     }
 }
 
-void ShapesScene::setLights(const glm::mat4 viewMatrix) {
+void PlanetScene::setLights(const glm::mat4 viewMatrix) {
     // YOU DON'T NEED TO TOUCH THIS METHOD, unless you want to do fancy lighting...
 
     m_light.dir = glm::inverse(viewMatrix) * m_lightDirection;
@@ -178,8 +178,8 @@ void ShapesScene::setLights(const glm::mat4 viewMatrix) {
     m_phongShader->setLight(m_light);
 }
 
-void ShapesScene::settingsChanged() {
+void PlanetScene::settingsChanged() {
     // TODO: [SHAPES] Fill this in, for now default to an example shape
-    m_shape = std::make_unique<ExampleShape>(settings.shapeParameter1, settings.shapeParameter2);
+    m_planet = std::make_unique<Planet>(std::max(settings.shapeParameter1, 2));
 }
 
