@@ -5,6 +5,8 @@
 #include <QFileDialog>
 
 #include <sstream>
+#include <iostream>
+#include <chrono>
 
 #include "planet/ExampleShape.h"
 
@@ -84,6 +86,7 @@ void PlanetScene::loadNormalsArrowShader() {
 void PlanetScene::render(SupportCanvas3D *context) {
     // Clear the screen in preparation for the next frame. (Use a gray background instead of a
     // black one for drawing wireframe or normals so they will show up against the background.)
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     setClearColor();
 
     renderPhongPass(context);
@@ -95,6 +98,10 @@ void PlanetScene::render(SupportCanvas3D *context) {
     if (settings.drawNormals) {
         renderNormalsPass(context);
     }
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    long duration = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count();
+    long fps = 1000000 / duration;
+    std::cout << fps << " fps" << std::endl;
 }
 
 void PlanetScene::renderPhongPass(SupportCanvas3D *context) {

@@ -15,6 +15,7 @@ void TerrainFace::generate() {
             int index = getIndex(x, y, m_resolution);
             glm::vec2 percent = glm::vec2(x, y) / width;
             glm::vec3 position = m_up + (percent.x - 0.5f) * 2 * m_axisA + (percent.y - 0.5f) * 2 * m_axisB;
+            position = glm::normalize(position);
             m_vertices[index] = position;
         }
     }
