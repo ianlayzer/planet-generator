@@ -1,12 +1,12 @@
 #include "ShapesScene.h"
 #include "Camera.h"
-#include "shapes/OpenGLShape.h"
+#include "planet/OpenGLShape.h"
 #include <SupportCanvas3D.h>
 #include <QFileDialog>
 
 #include <sstream>
 
-#include "shapes/ExampleShape.h"
+#include "planet/ExampleShape.h"
 
 using namespace CS123::GL;
 #include "gl/shaders/CS123Shader.h"

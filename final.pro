@@ -24,11 +24,11 @@ win32 {
 
 SOURCES += \
     camera/OrbitingCamera.cpp \
-    scenegraph/Scene.cpp \
-    scenegraph/OpenGLScene.cpp \
-    scenegraph/ShapesScene.cpp \
-    shapes/ExampleShape.cpp \
-    shapes/OpenGLShape.cpp \
+    scene/Scene.cpp \
+    scene/OpenGLScene.cpp \
+    scene/ShapesScene.cpp \
+    planet/ExampleShape.cpp \
+    planet/OpenGLShape.cpp \
     ui/SupportCanvas3D.cpp \
     ui/Settings.cpp \
     ui/mainwindow.cpp \
@@ -58,11 +58,11 @@ SOURCES += \
 HEADERS += \
     camera/Camera.h \
     camera/OrbitingCamera.h \
-    scenegraph/Scene.h \
-    scenegraph/OpenGLScene.h \
-    scenegraph/ShapesScene.h \
-    shapes/ExampleShape.h \
-    shapes/OpenGLShape.h \
+    scene/Scene.h \
+    scene/OpenGLScene.h \
+    scene/ShapesScene.h \
+    planet/ExampleShape.h \
+    planet/OpenGLShape.h \
     ui/SupportCanvas3D.h \
     ui/Settings.h \
     ui/mainwindow.h \
