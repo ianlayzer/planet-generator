@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>CS 123: Introduction to Computer Graphics</string>
+   <string>Planet Generator</string>
   </property>
   <property name="dockNestingEnabled">
    <bool>true</bool>
@@ -40,7 +40,7 @@
   </widget>
   <widget class="QDockWidget" name="shapesDock">
    <property name="windowTitle">
-    <string>Shapes/Scene&amp;view</string>
+    <string>Planet Properties</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -81,7 +81,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="shapeParameterLabel1">
           <property name="text">
-           <string>1</string>
+           <string>Resolution</string>
           </property>
          </widget>
         </item>
