@@ -90,7 +90,7 @@ void MainWindow::dataBind() {
 
     // Shapes dock
     BIND(IntBinding::bindSliderAndTextbox(
-        ui->shapeParameterSlider1, ui->shapeParameterTextbox1, settings.shapeParameter1, 1.f, 100.f))
+        ui->resolutionSlider, ui->resolutionTextbox, settings.resolution, 1.f, 100.f))
     BIND(BoolBinding::bindCheckbox(ui->useLightingCheckbox, settings.useLighting))
     BIND(BoolBinding::bindCheckbox(ui->drawWireframeCheckbox, settings.drawWireframe))
     BIND(BoolBinding::bindCheckbox(ui->drawNormalsCheckbox, settings.drawNormals))

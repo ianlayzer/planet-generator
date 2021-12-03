@@ -187,6 +187,6 @@ void PlanetScene::setLights(const glm::mat4 viewMatrix) {
 
 void PlanetScene::settingsChanged() {
     // TODO: [SHAPES] Fill this in, for now default to an example shape
-    m_planet = std::make_unique<Planet>(std::max(settings.shapeParameter1, 2));
+    m_planet = std::make_unique<Planet>(std::max(settings.resolution, 2));
 }
 

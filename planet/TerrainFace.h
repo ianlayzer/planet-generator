@@ -14,7 +14,7 @@ private:
     void makeTriangle(glm::vec3 pointA, glm::vec3 pointB, glm::vec3 pointC);
     glm::vec3 getFaceNormal(glm::vec3 pointA, glm::vec3 pointB, glm::vec3 pointC);
     float getHeight(int row, int col);
-    float randValue(int row, int col);
+    float getNoise(glm::vec3 position);
 
     int m_resolution;
     glm::vec3 m_up;

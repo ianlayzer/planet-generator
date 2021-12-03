@@ -99,8 +99,8 @@ struct Settings {
     // Shapes
     bool useSceneviewScene;
     int shapeType;              // Selected shape type
-    int shapeParameter1;
-    int shapeParameter2;
+    int resolution;
+    int noise;
     float shapeParameter3;
     bool useLighting;           // Enable default lighting
     bool drawWireframe;         // Draw wireframe only
