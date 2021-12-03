@@ -11,16 +11,17 @@ public:
     void generate();
     using OpenGLShape::draw;
 private:
-    void makeTriangle(glm::vec3 pointA, glm::vec3 pointB, glm::vec3 pointC);
+    void processTriangles();
+    void makeTriangle(const Vertex &pointA, const Vertex &pointB, const Vertex &pointC);
     glm::vec3 getFaceNormal(glm::vec3 pointA, glm::vec3 pointB, glm::vec3 pointC);
-    float getHeight(int row, int col);
     float getNoise(glm::vec3 position);
 
     int m_resolution;
     glm::vec3 m_up;
     glm::vec3 m_axisA;
     glm::vec3 m_axisB;
-    std::vector<glm::vec3> m_vertices;
+    std::vector<Vertex> m_vertices;
+    std::vector<int> m_triangles;
 };
 
 inline int getIndex(int x, int y, int width) {

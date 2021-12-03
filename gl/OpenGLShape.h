@@ -20,6 +20,15 @@ inline void insertVec3(std::vector<float> &data, glm::vec3 v){
     data.push_back(v.z);
 }
 
+struct Vertex {
+    Vertex() {};
+    Vertex(glm::vec3 position, glm::vec3 normal, int numFaces):
+        position(position), normal(normal), numFaces(numFaces) {}
+    glm::vec3 position;
+    glm::vec3 normal;
+    int numFaces;
+};
+
 namespace CS123 { namespace GL {
 class VAO;
 }}
