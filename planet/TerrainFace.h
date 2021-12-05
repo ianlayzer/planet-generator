@@ -4,10 +4,12 @@
 #include <vector>
 #include "glm/glm.hpp"
 #include "gl/OpenGLShape.h"
+#include "Noise.h"
 
 class TerrainFace : OpenGLShape {
 public:
-    TerrainFace(int resolution, glm::vec3 up);
+    TerrainFace(int resolution, glm::vec3 up, std::unique_ptr<Noise> noise);
+    ~TerrainFace();
     void generate();
     using OpenGLShape::draw;
 private:
@@ -17,6 +19,7 @@ private:
     float getNoise(glm::vec3 position);
 
     int m_resolution;
+    std::unique_ptr<Noise> m_noise;
     glm::vec3 m_up;
     glm::vec3 m_axisA;
     glm::vec3 m_axisB;

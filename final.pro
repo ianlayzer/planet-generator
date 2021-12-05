@@ -25,6 +25,7 @@ win32 {
 SOURCES += \
     camera/OrbitingCamera.cpp \
     gl/OpenGLShape.cpp \
+    planet/Noise.cpp \
     planet/Planet.cpp \
     planet/TerrainFace.cpp \
     scene/PlanetScene.cpp \
@@ -61,6 +62,7 @@ HEADERS += \
     camera/Camera.h \
     camera/OrbitingCamera.h \
     gl/OpenGLShape.h \
+    planet/Noise.h \
     planet/Planet.h \
     planet/TerrainFace.h \
     scene/PlanetScene.h \
