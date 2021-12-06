@@ -91,6 +91,13 @@ void MainWindow::dataBind() {
     // Shapes dock
     BIND(IntBinding::bindSliderAndTextbox(
         ui->resolutionSlider, ui->resolutionTextbox, settings.resolution, 1.f, 100.f))
+    BIND(FloatBinding::bindSliderAndTextbox(
+        ui->strengthSlider, ui->strengthTextbox, settings.noiseStrength, 0.0f, 1.0f))
+    BIND(FloatBinding::bindSliderAndTextbox(
+        ui->roughnessSlider, ui->roughnessTextbox, settings.noiseRoughness, 0.0f, 5.0f))
+    BIND(FloatBinding::bindDial(ui->noiseCenterXDial, settings.noiseCenterX, -2.f, 2.f, true))
+    BIND(FloatBinding::bindDial(ui->noiseCenterYDial, settings.noiseCenterY, -2.f, 2.f, true))
+    BIND(FloatBinding::bindDial(ui->noiseCenterZDial, settings.noiseCenterZ, -2.f, 2.f, true))
     BIND(BoolBinding::bindCheckbox(ui->useLightingCheckbox, settings.useLighting))
     BIND(BoolBinding::bindCheckbox(ui->drawWireframeCheckbox, settings.drawWireframe))
     BIND(BoolBinding::bindCheckbox(ui->drawNormalsCheckbox, settings.drawNormals))

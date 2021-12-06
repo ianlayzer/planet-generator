@@ -46,7 +46,11 @@ void Settings::loadSettingsOrDefaults() {
     // Shapes
     shapeType = s.value("shapeType", SHAPE_SPHERE).toInt();
     resolution = s.value("resolution", 15).toInt();
-    noise = s.value("noise", 15).toInt();
+    noiseRoughness = s.value("roughness", 15).toFloat();
+    noiseStrength = s.value("strength", 15).toFloat();
+    noiseCenterX = s.value("noiseCenterX", 15).toFloat();
+    noiseCenterY = s.value("noiseCenterY", 15).toFloat();
+    noiseCenterZ = s.value("noiseCenterZ", 15).toFloat();
     shapeParameter3 = s.value("shapeParameter3", 15).toDouble();
     useLighting = s.value("useLighting", true).toBool();
     drawWireframe = s.value("drawWireframe", true).toBool();
@@ -106,7 +110,8 @@ void Settings::saveSettings() {
     // Shapes
     s.setValue("shapeType", shapeType);
     s.setValue("resolution", resolution);
-    s.setValue("noise", noise);
+    s.setValue("roughness", noiseRoughness);
+    s.setValue("strength", noiseStrength);
     s.setValue("shapeParameter3", shapeParameter3);
     s.setValue("useLighting", useLighting);
     s.setValue("drawWireframe", drawWireframe);

@@ -1,4 +1,5 @@
 #include "Noise.h"
+#include <iostream>
 
 static inline int32_t fastfloor(float fp) {
     int32_t i = static_cast<int32_t>(fp);
@@ -21,10 +22,6 @@ static const uint8_t perm[256] = {
     138, 236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180
 };
 
-static inline uint8_t hash(int32_t i) {
-    return perm[static_cast<uint8_t>(i)];
-}
-
 static float grad(int32_t hash, float x, float y, float z) {
     int h = hash & 15;
     float u = h < 8 ? x : y;
@@ -32,8 +29,12 @@ static float grad(int32_t hash, float x, float y, float z) {
     return ((h & 1) ? -u : u) + ((h & 2) ? -v : v);
 }
 
-Noise::Noise() {
-
+Noise::Noise(float strength, float roughness, glm::vec3 center) :
+    m_strength(strength),
+    m_roughness(roughness),
+    m_center(center)
+{
+    std::cout << m_strength << "," << m_roughness << std::endl;
 }
 
 float Noise::getNoise(glm::vec3 point) {
@@ -129,10 +130,10 @@ float Noise::getNoise(glm::vec3 point) {
     float z3 = z0 - 0.5;
 
     // Work out the hashed gradient indices of the four simplex corners
-    int gi0 = hash(i + hash(j + hash(k)));
-    int gi1 = hash(i + i1 + hash(j + j1 + hash(k + k1)));
-    int gi2 = hash(i + i2 + hash(j + j2 + hash(k + k2)));
-    int gi3 = hash(i + 1 + hash(j + 1 + hash(k + 1)));
+    int gi0 = perm[i + perm[j + perm[k]]];
+    int gi1 = perm[i + i1 + perm[j + j1 + perm[k + k1]]];
+    int gi2 = perm[i + i2 + perm[j + j2 + perm[k + k2]]];
+    int gi3 = perm[i + 1 + perm[j + 1 + perm[k + 1]]];
 
     // Calculate the contribution from the four corners
     float t0 = 0.6f - x0*x0 - y0*y0 - z0*z0;
@@ -169,6 +170,7 @@ float Noise::getNoise(glm::vec3 point) {
 }
 
 float Noise::Evaluate(glm::vec3 point) {
-    float noiseValue = (getNoise(point) + 1) * 0.5f;
-    return noiseValue;
+//    std::cout << m_strength << "," << m_roughness << std::endl;
+    float noiseValue = (getNoise(point * m_roughness + m_center) + 1) * 0.5f;
+    return noiseValue * m_strength;
 }

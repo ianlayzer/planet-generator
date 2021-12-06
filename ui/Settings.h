@@ -10,6 +10,7 @@
 
 #include <QObject>
 #include "RGBA.h"
+#include <glm/glm.hpp>
 
 // Enumeration values for the Brush types from which the user can choose in the GUI.
 enum BrushType {
@@ -100,7 +101,11 @@ struct Settings {
     bool useSceneviewScene;
     int shapeType;              // Selected shape type
     int resolution;
-    int noise;
+    float noiseRoughness;
+    float noiseStrength;
+    float noiseCenterX;
+    float noiseCenterY;
+    float noiseCenterZ;
     float shapeParameter3;
     bool useLighting;           // Enable default lighting
     bool drawWireframe;         // Draw wireframe only

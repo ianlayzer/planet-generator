@@ -1,7 +1,7 @@
 #include "TerrainFace.h"
 
-TerrainFace::TerrainFace(int resolution, glm::vec3 up, std::unique_ptr<Noise> noise):
-    m_resolution(resolution), m_noise(std::move(noise)), m_up(up)
+TerrainFace::TerrainFace(int resolution, glm::vec3 up, Noise noise):
+    m_resolution(resolution), m_noise(noise), m_up(up)
 {
     m_axisA = glm::vec3(m_up.y, m_up.z, m_up.x);
     m_axisB = glm::cross(m_up, m_axisA);
@@ -21,7 +21,7 @@ void TerrainFace::generate() {
             glm::vec2 percent = glm::vec2(x, y) / width;
             glm::vec3 position = m_up + (percent.x - 0.5f) * 2 * m_axisA + (percent.y - 0.5f) * 2 * m_axisB;
             position = glm::normalize(position);
-            float elevation = m_noise-> Evaluate(position);
+            float elevation = m_noise.Evaluate(position);
             position *= (elevation + 1);
             m_vertices[index] = Vertex(position, glm::vec3(), 0);
         }
