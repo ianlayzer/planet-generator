@@ -94,10 +94,18 @@ void MainWindow::dataBind() {
     BIND(FloatBinding::bindSliderAndTextbox(
         ui->strengthSlider, ui->strengthTextbox, settings.noiseStrength, 0.0f, 1.0f))
     BIND(FloatBinding::bindSliderAndTextbox(
+        ui->baseRoughnessSlider, ui->baseRoughnessTextbox, settings.noiseBaseRoughness, 0.0f, 5.0f))
+    BIND(FloatBinding::bindSliderAndTextbox(
         ui->roughnessSlider, ui->roughnessTextbox, settings.noiseRoughness, 0.0f, 5.0f))
-    BIND(FloatBinding::bindDial(ui->noiseCenterXDial, settings.noiseCenterX, -2.f, 2.f, true))
-    BIND(FloatBinding::bindDial(ui->noiseCenterYDial, settings.noiseCenterY, -2.f, 2.f, true))
-    BIND(FloatBinding::bindDial(ui->noiseCenterZDial, settings.noiseCenterZ, -2.f, 2.f, true))
+    BIND(IntBinding::bindSliderAndTextbox(
+         ui->numLayersSlider, ui->numLayersTextbox, settings.noiseNumLayers, 1, 8))
+    BIND(FloatBinding::bindSliderAndTextbox(
+         ui->persistenceSlider, ui->persistenceTextbox, settings.noisePersistence, 0.f, 1.f))
+    BIND(FloatBinding::bindSliderAndTextbox(
+        ui->minValueSlider, ui->minValueTextbox, settings.noiseMinValue, 0.f, 10.f))
+    BIND(FloatBinding::bindDial(ui->noiseCenterXDial, settings.noiseCenterX, -5.f, 5.f, true))
+    BIND(FloatBinding::bindDial(ui->noiseCenterYDial, settings.noiseCenterY, -5.f, 5.f, true))
+    BIND(FloatBinding::bindDial(ui->noiseCenterZDial, settings.noiseCenterZ, -5.f, 5.f, true))
     BIND(BoolBinding::bindCheckbox(ui->useLightingCheckbox, settings.useLighting))
     BIND(BoolBinding::bindCheckbox(ui->drawWireframeCheckbox, settings.drawWireframe))
     BIND(BoolBinding::bindCheckbox(ui->drawNormalsCheckbox, settings.drawNormals))

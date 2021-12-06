@@ -99,7 +99,35 @@
           </item>
          </layout>
         </item>
-        <item row="8" column="0">
+        <item row="9" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <item>
+           <widget class="QLabel" name="persistenceLabel">
+            <property name="text">
+             <string>Persistence</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="persistenceSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="persistenceTextbox">
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="12" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
            <widget class="QLabel" name="xLabel">
@@ -175,6 +203,41 @@
           </property>
          </widget>
         </item>
+        <item row="11" column="0">
+         <widget class="QLabel" name="centerLabel">
+          <property name="text">
+           <string>Center</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QLabel" name="numLayersLabel">
+            <property name="text">
+             <string>Num Layers</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="numLayersSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="numLayersTextbox">
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
         <item row="1" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
@@ -215,15 +278,61 @@
           </item>
          </layout>
         </item>
-        <item row="9" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_5"/>
-        </item>
         <item row="7" column="0">
-         <widget class="QLabel" name="centerLabel">
-          <property name="text">
-           <string>Center</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QLabel" name="baseRoughnessLabel">
+            <property name="text">
+             <string>Base Roughness</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="baseRoughnessSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="baseRoughnessTextbox">
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="10" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <item>
+           <widget class="QLabel" name="minValueLabel">
+            <property name="text">
+             <string>Min Value</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="minValueSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="minValueTextbox">
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>

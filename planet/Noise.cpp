@@ -29,12 +29,15 @@ static float grad(int32_t hash, float x, float y, float z) {
     return ((h & 1) ? -u : u) + ((h & 2) ? -v : v);
 }
 
-Noise::Noise(float strength, float roughness, glm::vec3 center) :
+Noise::Noise(float strength, float roughness, glm::vec3 center, float baseRoughness, int numLayers, float persistence, float minValue) :
     m_strength(strength),
     m_roughness(roughness),
-    m_center(center)
+    m_center(center),
+    m_baseRoughness(baseRoughness),
+    m_persistence(persistence),
+    m_numLayers(numLayers),
+    m_minValue(minValue)
 {
-    std::cout << m_strength << "," << m_roughness << std::endl;
 }
 
 float Noise::getNoise(glm::vec3 point) {
@@ -170,7 +173,15 @@ float Noise::getNoise(glm::vec3 point) {
 }
 
 float Noise::Evaluate(glm::vec3 point) {
-//    std::cout << m_strength << "," << m_roughness << std::endl;
-    float noiseValue = (getNoise(point * m_roughness + m_center) + 1) * 0.5f;
+    float noiseValue = 0.f;
+    float frequency = m_baseRoughness;
+    float amplitude = 1.f;
+    for (int i = 0; i < m_numLayers; i++) {
+        float v = getNoise(point * frequency + m_center);
+        noiseValue += (v + 1) * 0.5f * amplitude;
+        frequency *= m_roughness;
+        amplitude *= m_persistence;
+    }
+    noiseValue = std::max(0.f, noiseValue - m_minValue);
     return noiseValue * m_strength;
 }

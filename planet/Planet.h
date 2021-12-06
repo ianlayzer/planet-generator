@@ -6,7 +6,8 @@
 
 class Planet {
 public:
-    Planet(int resolution, float noiseStrength, float noiseRoughness, glm::vec3 noiseCenter);
+    Planet(int resolution, float noiseStrength, float noiseRoughness, glm::vec3 noiseCenter,
+           float noiseBaseRoughness, int noiseNumLayers, float noisePersistence, float noiseMinValue);
     ~Planet();
     void generate();
     void draw();

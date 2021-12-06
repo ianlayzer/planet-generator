@@ -1,8 +1,10 @@
 #include "Planet.h"
 
-Planet::Planet(int resolution, float noiseStrength, float noiseRoughness, glm::vec3 noiseCenter):
+Planet::Planet(int resolution, float noiseStrength, float noiseRoughness, glm::vec3 noiseCenter,
+               float noiseBaseRoughness, int noiseNumLayers, float noisePersistence, float noiseMinValue):
     m_resolution(resolution),
-    m_noise(std::make_unique<Noise>(noiseStrength, noiseRoughness, noiseCenter))
+    m_noise(std::make_unique<Noise>(noiseStrength, noiseRoughness, noiseCenter, noiseBaseRoughness,
+                                    noiseNumLayers, noisePersistence, noiseMinValue))
 {
     m_faces = std::vector<std::unique_ptr<TerrainFace>>(6);
     m_faces[0] = std::make_unique<TerrainFace>(m_resolution, glm::vec3(1.f, 0.f, 0.f), *m_noise.get());

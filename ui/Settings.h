@@ -102,7 +102,11 @@ struct Settings {
     int shapeType;              // Selected shape type
     int resolution;
     float noiseRoughness;
+    float noiseBaseRoughness;
+    float noisePersistence;
+    int noiseNumLayers;
     float noiseStrength;
+    float noiseMinValue;
     float noiseCenterX;
     float noiseCenterY;
     float noiseCenterZ;
