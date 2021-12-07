@@ -42,14 +42,12 @@ void CS123Shader::setLight(const CS123SceneLightData &light) {
             lightType = 0;
             name = "lightPositions";
             setUniformArrayByIndex(name, light.pos.xyz(), light.id);
-            if (!settings.usePointLights) ignoreLight = true;
             break;
         case LightType::LIGHT_DIRECTIONAL:
             lightType = 1;
             ndir = glm::normalize(light.dir.xyz());
             name = "lightDirections";
             setUniformArrayByIndex(name, ndir, light.id);
-            if (!settings.useDirectionalLights) ignoreLight = true;
             break;
         default:
             lightType = 0;
