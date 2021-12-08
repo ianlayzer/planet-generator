@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 5.15.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -24,6 +24,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -49,14 +50,32 @@ public:
     QVBoxLayout *verticalLayout_7;
     QGroupBox *shapeParameters;
     QGridLayout *gridLayout_4;
+    QHBoxLayout *horizontalLayout_5;
+    QLabel *baseRoughnessLabel;
+    QSlider *baseRoughnessSlider;
+    QLineEdit *baseRoughnessTextbox;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *roughnessLabel;
+    QSlider *roughnessSlider;
+    QLineEdit *roughnessTextbox;
+    QHBoxLayout *horizontalLayout_8;
+    QLabel *minValueLabel;
+    QSlider *minValueSlider;
+    QLineEdit *minValueTextbox;
+    QLabel *noiseLabel;
     QHBoxLayout *horizontalLayout;
     QLabel *strengthLabel;
     QSlider *strengthSlider;
     QLineEdit *strengthTextbox;
-    QHBoxLayout *horizontalLayout_7;
-    QLabel *persistenceLabel;
-    QSlider *persistenceSlider;
-    QLineEdit *persistenceTextbox;
+    QLabel *centerLabel;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *resolutionLabel;
+    QSlider *resolutionSlider;
+    QLineEdit *resolutionTextbox;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *numLayersLabel;
+    QSlider *numLayersSlider;
+    QLineEdit *numLayersTextbox;
     QHBoxLayout *horizontalLayout_4;
     QLabel *xLabel;
     QDial *noiseCenterXDial;
@@ -64,29 +83,17 @@ public:
     QDial *noiseCenterYDial;
     QLabel *zLabel;
     QDial *noiseCenterZDial;
-    QLabel *noiseLabel;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *roughnessLabel;
-    QSlider *roughnessSlider;
-    QLineEdit *roughnessTextbox;
+    QHBoxLayout *horizontalLayout_7;
+    QLabel *persistenceLabel;
+    QSlider *persistenceSlider;
+    QLineEdit *persistenceTextbox;
     QFrame *line;
-    QLabel *centerLabel;
-    QHBoxLayout *horizontalLayout_6;
-    QLabel *numLayersLabel;
-    QSlider *numLayersSlider;
-    QLineEdit *numLayersTextbox;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *resolutionLabel;
-    QSlider *resolutionSlider;
-    QLineEdit *resolutionTextbox;
-    QHBoxLayout *horizontalLayout_5;
-    QLabel *baseRoughnessLabel;
-    QSlider *baseRoughnessSlider;
-    QLineEdit *baseRoughnessTextbox;
-    QHBoxLayout *horizontalLayout_8;
-    QLabel *minValueLabel;
-    QSlider *minValueSlider;
-    QLineEdit *minValueTextbox;
+    QHBoxLayout *horizontalLayout_9;
+    QLabel *colorLabel;
+    QPushButton *colorButton;
+    QLineEdit *colorRedEdit;
+    QLineEdit *colorGreenEdit;
+    QLineEdit *colorBlueEdit;
     QCheckBox *useLightingCheckbox;
     QCheckBox *drawWireframeCheckbox;
     QCheckBox *drawNormalsCheckbox;
@@ -99,7 +106,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(600, 448);
+        MainWindow->resize(600, 524);
         MainWindow->setDockNestingEnabled(true);
         MainWindow->setDockOptions(QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks|QMainWindow::ForceTabbedDocks|QMainWindow::VerticalTabs);
         actionNew = new QAction(MainWindow);
@@ -149,6 +156,80 @@ public:
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         gridLayout_4->setVerticalSpacing(5);
         gridLayout_4->setContentsMargins(-1, 5, -1, 5);
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        baseRoughnessLabel = new QLabel(shapeParameters);
+        baseRoughnessLabel->setObjectName(QString::fromUtf8("baseRoughnessLabel"));
+
+        horizontalLayout_5->addWidget(baseRoughnessLabel);
+
+        baseRoughnessSlider = new QSlider(shapeParameters);
+        baseRoughnessSlider->setObjectName(QString::fromUtf8("baseRoughnessSlider"));
+        baseRoughnessSlider->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_5->addWidget(baseRoughnessSlider);
+
+        baseRoughnessTextbox = new QLineEdit(shapeParameters);
+        baseRoughnessTextbox->setObjectName(QString::fromUtf8("baseRoughnessTextbox"));
+        baseRoughnessTextbox->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout_5->addWidget(baseRoughnessTextbox);
+
+
+        gridLayout_4->addLayout(horizontalLayout_5, 7, 0, 1, 1);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        roughnessLabel = new QLabel(shapeParameters);
+        roughnessLabel->setObjectName(QString::fromUtf8("roughnessLabel"));
+
+        horizontalLayout_3->addWidget(roughnessLabel);
+
+        roughnessSlider = new QSlider(shapeParameters);
+        roughnessSlider->setObjectName(QString::fromUtf8("roughnessSlider"));
+        roughnessSlider->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_3->addWidget(roughnessSlider);
+
+        roughnessTextbox = new QLineEdit(shapeParameters);
+        roughnessTextbox->setObjectName(QString::fromUtf8("roughnessTextbox"));
+        roughnessTextbox->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout_3->addWidget(roughnessTextbox);
+
+
+        gridLayout_4->addLayout(horizontalLayout_3, 6, 0, 1, 1);
+
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setSpacing(6);
+        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
+        minValueLabel = new QLabel(shapeParameters);
+        minValueLabel->setObjectName(QString::fromUtf8("minValueLabel"));
+
+        horizontalLayout_8->addWidget(minValueLabel);
+
+        minValueSlider = new QSlider(shapeParameters);
+        minValueSlider->setObjectName(QString::fromUtf8("minValueSlider"));
+        minValueSlider->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_8->addWidget(minValueSlider);
+
+        minValueTextbox = new QLineEdit(shapeParameters);
+        minValueTextbox->setObjectName(QString::fromUtf8("minValueTextbox"));
+        minValueTextbox->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout_8->addWidget(minValueTextbox);
+
+
+        gridLayout_4->addLayout(horizontalLayout_8, 10, 0, 1, 1);
+
+        noiseLabel = new QLabel(shapeParameters);
+        noiseLabel->setObjectName(QString::fromUtf8("noiseLabel"));
+
+        gridLayout_4->addWidget(noiseLabel, 3, 0, 1, 1);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -173,28 +254,58 @@ public:
 
         gridLayout_4->addLayout(horizontalLayout, 4, 0, 1, 1);
 
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setSpacing(6);
-        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        persistenceLabel = new QLabel(shapeParameters);
-        persistenceLabel->setObjectName(QString::fromUtf8("persistenceLabel"));
+        centerLabel = new QLabel(shapeParameters);
+        centerLabel->setObjectName(QString::fromUtf8("centerLabel"));
 
-        horizontalLayout_7->addWidget(persistenceLabel);
+        gridLayout_4->addWidget(centerLabel, 11, 0, 1, 1);
 
-        persistenceSlider = new QSlider(shapeParameters);
-        persistenceSlider->setObjectName(QString::fromUtf8("persistenceSlider"));
-        persistenceSlider->setOrientation(Qt::Horizontal);
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        resolutionLabel = new QLabel(shapeParameters);
+        resolutionLabel->setObjectName(QString::fromUtf8("resolutionLabel"));
 
-        horizontalLayout_7->addWidget(persistenceSlider);
+        horizontalLayout_2->addWidget(resolutionLabel);
 
-        persistenceTextbox = new QLineEdit(shapeParameters);
-        persistenceTextbox->setObjectName(QString::fromUtf8("persistenceTextbox"));
-        persistenceTextbox->setMaximumSize(QSize(40, 16777215));
+        resolutionSlider = new QSlider(shapeParameters);
+        resolutionSlider->setObjectName(QString::fromUtf8("resolutionSlider"));
+        resolutionSlider->setMinimumSize(QSize(100, 0));
+        resolutionSlider->setOrientation(Qt::Horizontal);
 
-        horizontalLayout_7->addWidget(persistenceTextbox);
+        horizontalLayout_2->addWidget(resolutionSlider);
+
+        resolutionTextbox = new QLineEdit(shapeParameters);
+        resolutionTextbox->setObjectName(QString::fromUtf8("resolutionTextbox"));
+        resolutionTextbox->setMinimumSize(QSize(40, 0));
+        resolutionTextbox->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout_2->addWidget(resolutionTextbox);
 
 
-        gridLayout_4->addLayout(horizontalLayout_7, 9, 0, 1, 1);
+        gridLayout_4->addLayout(horizontalLayout_2, 1, 0, 1, 1);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(6);
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        numLayersLabel = new QLabel(shapeParameters);
+        numLayersLabel->setObjectName(QString::fromUtf8("numLayersLabel"));
+
+        horizontalLayout_6->addWidget(numLayersLabel);
+
+        numLayersSlider = new QSlider(shapeParameters);
+        numLayersSlider->setObjectName(QString::fromUtf8("numLayersSlider"));
+        numLayersSlider->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_6->addWidget(numLayersSlider);
+
+        numLayersTextbox = new QLineEdit(shapeParameters);
+        numLayersTextbox->setObjectName(QString::fromUtf8("numLayersTextbox"));
+        numLayersTextbox->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout_6->addWidget(numLayersTextbox);
+
+
+        gridLayout_4->addLayout(horizontalLayout_6, 8, 0, 1, 1);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
@@ -232,33 +343,28 @@ public:
 
         gridLayout_4->addLayout(horizontalLayout_4, 12, 0, 1, 1);
 
-        noiseLabel = new QLabel(shapeParameters);
-        noiseLabel->setObjectName(QString::fromUtf8("noiseLabel"));
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setSpacing(6);
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
+        persistenceLabel = new QLabel(shapeParameters);
+        persistenceLabel->setObjectName(QString::fromUtf8("persistenceLabel"));
 
-        gridLayout_4->addWidget(noiseLabel, 3, 0, 1, 1);
+        horizontalLayout_7->addWidget(persistenceLabel);
 
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        roughnessLabel = new QLabel(shapeParameters);
-        roughnessLabel->setObjectName(QString::fromUtf8("roughnessLabel"));
+        persistenceSlider = new QSlider(shapeParameters);
+        persistenceSlider->setObjectName(QString::fromUtf8("persistenceSlider"));
+        persistenceSlider->setOrientation(Qt::Horizontal);
 
-        horizontalLayout_3->addWidget(roughnessLabel);
+        horizontalLayout_7->addWidget(persistenceSlider);
 
-        roughnessSlider = new QSlider(shapeParameters);
-        roughnessSlider->setObjectName(QString::fromUtf8("roughnessSlider"));
-        roughnessSlider->setOrientation(Qt::Horizontal);
+        persistenceTextbox = new QLineEdit(shapeParameters);
+        persistenceTextbox->setObjectName(QString::fromUtf8("persistenceTextbox"));
+        persistenceTextbox->setMaximumSize(QSize(40, 16777215));
 
-        horizontalLayout_3->addWidget(roughnessSlider);
-
-        roughnessTextbox = new QLineEdit(shapeParameters);
-        roughnessTextbox->setObjectName(QString::fromUtf8("roughnessTextbox"));
-        roughnessTextbox->setMaximumSize(QSize(40, 16777215));
-
-        horizontalLayout_3->addWidget(roughnessTextbox);
+        horizontalLayout_7->addWidget(persistenceTextbox);
 
 
-        gridLayout_4->addLayout(horizontalLayout_3, 6, 0, 1, 1);
+        gridLayout_4->addLayout(horizontalLayout_7, 9, 0, 1, 1);
 
         line = new QFrame(shapeParameters);
         line->setObjectName(QString::fromUtf8("line"));
@@ -267,104 +373,36 @@ public:
 
         gridLayout_4->addWidget(line, 2, 0, 1, 3);
 
-        centerLabel = new QLabel(shapeParameters);
-        centerLabel->setObjectName(QString::fromUtf8("centerLabel"));
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setSpacing(6);
+        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
+        colorLabel = new QLabel(shapeParameters);
+        colorLabel->setObjectName(QString::fromUtf8("colorLabel"));
 
-        gridLayout_4->addWidget(centerLabel, 11, 0, 1, 1);
+        horizontalLayout_9->addWidget(colorLabel);
 
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setSpacing(6);
-        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        numLayersLabel = new QLabel(shapeParameters);
-        numLayersLabel->setObjectName(QString::fromUtf8("numLayersLabel"));
+        colorButton = new QPushButton(shapeParameters);
+        colorButton->setObjectName(QString::fromUtf8("colorButton"));
 
-        horizontalLayout_6->addWidget(numLayersLabel);
+        horizontalLayout_9->addWidget(colorButton);
 
-        numLayersSlider = new QSlider(shapeParameters);
-        numLayersSlider->setObjectName(QString::fromUtf8("numLayersSlider"));
-        numLayersSlider->setOrientation(Qt::Horizontal);
+        colorRedEdit = new QLineEdit(shapeParameters);
+        colorRedEdit->setObjectName(QString::fromUtf8("colorRedEdit"));
 
-        horizontalLayout_6->addWidget(numLayersSlider);
+        horizontalLayout_9->addWidget(colorRedEdit);
 
-        numLayersTextbox = new QLineEdit(shapeParameters);
-        numLayersTextbox->setObjectName(QString::fromUtf8("numLayersTextbox"));
-        numLayersTextbox->setMaximumSize(QSize(40, 16777215));
+        colorGreenEdit = new QLineEdit(shapeParameters);
+        colorGreenEdit->setObjectName(QString::fromUtf8("colorGreenEdit"));
 
-        horizontalLayout_6->addWidget(numLayersTextbox);
+        horizontalLayout_9->addWidget(colorGreenEdit);
 
+        colorBlueEdit = new QLineEdit(shapeParameters);
+        colorBlueEdit->setObjectName(QString::fromUtf8("colorBlueEdit"));
 
-        gridLayout_4->addLayout(horizontalLayout_6, 8, 0, 1, 1);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        resolutionLabel = new QLabel(shapeParameters);
-        resolutionLabel->setObjectName(QString::fromUtf8("resolutionLabel"));
-
-        horizontalLayout_2->addWidget(resolutionLabel);
-
-        resolutionSlider = new QSlider(shapeParameters);
-        resolutionSlider->setObjectName(QString::fromUtf8("resolutionSlider"));
-        resolutionSlider->setMinimumSize(QSize(100, 0));
-        resolutionSlider->setOrientation(Qt::Horizontal);
-
-        horizontalLayout_2->addWidget(resolutionSlider);
-
-        resolutionTextbox = new QLineEdit(shapeParameters);
-        resolutionTextbox->setObjectName(QString::fromUtf8("resolutionTextbox"));
-        resolutionTextbox->setMinimumSize(QSize(40, 0));
-        resolutionTextbox->setMaximumSize(QSize(40, 16777215));
-
-        horizontalLayout_2->addWidget(resolutionTextbox);
+        horizontalLayout_9->addWidget(colorBlueEdit);
 
 
-        gridLayout_4->addLayout(horizontalLayout_2, 1, 0, 1, 1);
-
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setSpacing(6);
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        baseRoughnessLabel = new QLabel(shapeParameters);
-        baseRoughnessLabel->setObjectName(QString::fromUtf8("baseRoughnessLabel"));
-
-        horizontalLayout_5->addWidget(baseRoughnessLabel);
-
-        baseRoughnessSlider = new QSlider(shapeParameters);
-        baseRoughnessSlider->setObjectName(QString::fromUtf8("baseRoughnessSlider"));
-        baseRoughnessSlider->setOrientation(Qt::Horizontal);
-
-        horizontalLayout_5->addWidget(baseRoughnessSlider);
-
-        baseRoughnessTextbox = new QLineEdit(shapeParameters);
-        baseRoughnessTextbox->setObjectName(QString::fromUtf8("baseRoughnessTextbox"));
-        baseRoughnessTextbox->setMaximumSize(QSize(40, 16777215));
-
-        horizontalLayout_5->addWidget(baseRoughnessTextbox);
-
-
-        gridLayout_4->addLayout(horizontalLayout_5, 7, 0, 1, 1);
-
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setSpacing(6);
-        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        minValueLabel = new QLabel(shapeParameters);
-        minValueLabel->setObjectName(QString::fromUtf8("minValueLabel"));
-
-        horizontalLayout_8->addWidget(minValueLabel);
-
-        minValueSlider = new QSlider(shapeParameters);
-        minValueSlider->setObjectName(QString::fromUtf8("minValueSlider"));
-        minValueSlider->setOrientation(Qt::Horizontal);
-
-        horizontalLayout_8->addWidget(minValueSlider);
-
-        minValueTextbox = new QLineEdit(shapeParameters);
-        minValueTextbox->setObjectName(QString::fromUtf8("minValueTextbox"));
-        minValueTextbox->setMaximumSize(QSize(40, 16777215));
-
-        horizontalLayout_8->addWidget(minValueTextbox);
-
-
-        gridLayout_4->addLayout(horizontalLayout_8, 10, 0, 1, 1);
+        gridLayout_4->addLayout(horizontalLayout_9, 13, 0, 1, 1);
 
 
         verticalLayout_7->addWidget(shapeParameters);
@@ -398,7 +436,7 @@ public:
         MainWindow->addDockWidget(Qt::LeftDockWidgetArea, shapesDock);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 600, 22));
+        menuBar->setGeometry(QRect(0, 0, 600, 24));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuToolbars = new QMenu(menuBar);
@@ -459,19 +497,21 @@ public:
 #endif // QT_CONFIG(shortcut)
         shapesDock->setWindowTitle(QCoreApplication::translate("MainWindow", "Planet Properties", nullptr));
         shapeParameters->setTitle(QCoreApplication::translate("MainWindow", "Planet Parameters", nullptr));
+        baseRoughnessLabel->setText(QCoreApplication::translate("MainWindow", "Base Roughness", nullptr));
+        roughnessLabel->setText(QCoreApplication::translate("MainWindow", "Roughness", nullptr));
+        minValueLabel->setText(QCoreApplication::translate("MainWindow", "Min Value", nullptr));
+        noiseLabel->setText(QCoreApplication::translate("MainWindow", "Noise", nullptr));
         strengthLabel->setText(QCoreApplication::translate("MainWindow", "Strength", nullptr));
         strengthTextbox->setText(QString());
-        persistenceLabel->setText(QCoreApplication::translate("MainWindow", "Persistence", nullptr));
+        centerLabel->setText(QCoreApplication::translate("MainWindow", "Center", nullptr));
+        resolutionLabel->setText(QCoreApplication::translate("MainWindow", "Resolution", nullptr));
+        numLayersLabel->setText(QCoreApplication::translate("MainWindow", "Num Layers", nullptr));
         xLabel->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
         yLabel->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
         zLabel->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
-        noiseLabel->setText(QCoreApplication::translate("MainWindow", "Noise", nullptr));
-        roughnessLabel->setText(QCoreApplication::translate("MainWindow", "Roughness", nullptr));
-        centerLabel->setText(QCoreApplication::translate("MainWindow", "Center", nullptr));
-        numLayersLabel->setText(QCoreApplication::translate("MainWindow", "Num Layers", nullptr));
-        resolutionLabel->setText(QCoreApplication::translate("MainWindow", "Resolution", nullptr));
-        baseRoughnessLabel->setText(QCoreApplication::translate("MainWindow", "Base Roughness", nullptr));
-        minValueLabel->setText(QCoreApplication::translate("MainWindow", "Min Value", nullptr));
+        persistenceLabel->setText(QCoreApplication::translate("MainWindow", "Persistence", nullptr));
+        colorLabel->setText(QCoreApplication::translate("MainWindow", "Color", nullptr));
+        colorButton->setText(QString());
         useLightingCheckbox->setText(QCoreApplication::translate("MainWindow", "Use lighting", nullptr));
         drawWireframeCheckbox->setText(QCoreApplication::translate("MainWindow", "Draw wireframe", nullptr));
         drawNormalsCheckbox->setText(QCoreApplication::translate("MainWindow", "Draw normals", nullptr));

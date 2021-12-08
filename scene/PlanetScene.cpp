@@ -27,7 +27,7 @@ PlanetScene::PlanetScene(int width, int height) :
     loadWireframeShader();
     loadNormalsShader();
     loadNormalsArrowShader();
-
+    m_phongShader->setColor(settings.planetColor);
     //TODO: [SHAPES] Allocate any additional memory you need...
 
 }
@@ -40,12 +40,12 @@ PlanetScene::~PlanetScene()
 void PlanetScene::initializeSceneMaterial() {
     // Use a shiny orange material
     m_material.clear();
-    m_material.cAmbient.r = 0.2f;
-    m_material.cAmbient.g = 0.1f;
-    m_material.cDiffuse.r = 1.0f;
-    m_material.cDiffuse.g = 0.5f;
-    m_material.cSpecular.r = m_material.cSpecular.g = m_material.cSpecular.b = 1;
-    m_material.shininess = 64;
+//    m_material.cAmbient.r = 0.2f;
+//    m_material.cAmbient.g = 0.1f;
+//    m_material.cDiffuse.r = 1.0f;
+//    m_material.cDiffuse.g = 0.5f;
+//    m_material.cSpecular.r = m_material.cSpecular.g = m_material.cSpecular.b = 1;
+//    m_material.shininess = 64;
 }
 
 void PlanetScene::initializeSceneLight() {
@@ -120,7 +120,8 @@ void PlanetScene::renderPhongPass(SupportCanvas3D *context) {
 void PlanetScene::setPhongSceneUniforms() {
     m_phongShader->setUniform("useLighting", settings.useLighting);
     m_phongShader->setUniform("useArrowOffsets", false);
-    m_phongShader->applyMaterial(m_material);
+    m_phongShader->setColor(settings.planetColor);
+//    m_phongShader->applyMaterial(m_material);
 }
 
 void PlanetScene::setMatrixUniforms(Shader *shader, SupportCanvas3D *context) {
@@ -191,5 +192,6 @@ void PlanetScene::settingsChanged() {
                                         glm::vec3({settings.noiseCenterX, settings.noiseCenterY, settings.noiseCenterZ}),
                                         settings.noiseBaseRoughness, settings.noiseNumLayers, settings.noisePersistence,
                                         settings.noiseMinValue);
+    m_phongShader->setColor(settings.planetColor);
 }
 

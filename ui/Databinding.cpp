@@ -1,6 +1,7 @@
 #include "Databinding.h"
 #include <math.h>
 #include <QVariant>
+#include <QColorDialog>
 
 ////////////////////////////////////////////////////////////////////////////////
 // class IntBinding
@@ -260,4 +261,71 @@ ChoiceBinding* ChoiceBinding::bindTabs(QTabWidget *tabs, int &value) {
 void ChoiceBinding::intChanged(int newValue) {
     m_value = newValue;
     emit dataChanged();
+}
+
+ColorBinding* ColorBinding::bindButtonAndTextboxes(
+        QPushButton *button, QLineEdit *rTextbox, QLineEdit *gTextbox, QLineEdit *bTextbox,
+        QColor &value) {
+    // Bind the slider, the textbox, and the value together
+    ColorBinding *binding = new ColorBinding(value, button);
+    connect(button, SIGNAL(pressed()), binding, SLOT(buttonPushed()));
+    connect(rTextbox, SIGNAL(textChanged(QString)), binding, SLOT(rStringChanged(QString)));
+    connect(gTextbox, SIGNAL(textChanged(QString)), binding, SLOT(gStringChanged(QString)));
+    connect(bTextbox, SIGNAL(textChanged(QString)), binding, SLOT(bStringChanged(QString)));
+    connect(binding, SIGNAL(updateRString(QString)), rTextbox, SLOT(setText(QString)));
+    connect(binding, SIGNAL(updateGString(QString)), gTextbox, SLOT(setText(QString)));
+    connect(binding, SIGNAL(updateBString(QString)), bTextbox, SLOT(setText(QString)));
+    rTextbox->setText(QString::number(value.redF(), 'f', 2));
+    gTextbox->setText(QString::number(value.greenF(), 'f', 2));
+    bTextbox->setText(QString::number(value.blueF(), 'f', 2));
+
+    return binding;
+}
+
+void ColorBinding::rStringChanged(QString newValue) {
+    float floatValue = std::max(0.f, std::min(1.f, newValue.toFloat()));
+    if (m_value.redF() != floatValue) {
+        m_value.setRedF(floatValue);
+        updateButtonColor();
+        emit dataChanged();
+    }
+}
+
+void ColorBinding::gStringChanged(QString newValue) {
+    float floatValue = std::max(0.f, std::min(1.f, newValue.toFloat()));
+    if (m_value.greenF() != floatValue) {
+        m_value.setGreenF(floatValue);
+        updateButtonColor();
+        emit dataChanged();
+    }
+}
+
+void ColorBinding::bStringChanged(QString newValue) {
+    float floatValue = std::max(0.f, std::min(1.f, newValue.toFloat()));
+    if (m_value.blueF() != floatValue) {
+        m_value.setBlueF(floatValue);
+        updateButtonColor();
+        emit dataChanged();
+    }
+}
+
+void ColorBinding::buttonPushed() {
+    QColor color = QColorDialog::getColor(m_value);
+    if (color.isValid()) {
+        updateButtonColor();
+        emit updateRString(QString::number(color.redF(), 'f', 2));
+        emit updateGString(QString::number(color.greenF(), 'f', 2));
+        emit updateBString(QString::number(color.blueF(), 'f', 2));
+        emit dataChanged();
+    }
+}
+
+void ColorBinding::updateButtonColor() {
+    QString styleSheet("background: #"
+          + QString(m_value.red() < 16? "0" : "") + QString::number(m_value.red(),16)
+          + QString(m_value.green() < 16? "0" : "") + QString::number(m_value.green(),16)
+          + QString(m_value.blue() < 16? "0" : "") + QString::number(m_value.blue(),16) + ";");
+    QRect r = m_button->geometry();
+    m_button->setStyleSheet(styleSheet);
+    m_button->setGeometry(r);
 }

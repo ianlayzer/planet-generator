@@ -11,6 +11,7 @@
 #include <QDockWidget>
 #include <QTabWidget>
 #include <QDial>
+#include <QPushButton>
 
 /**
  * @class DataBinding
@@ -185,6 +186,39 @@ private:
     ChoiceBinding(int &value) : DataBinding(), m_value(value) {}
 
     int &m_value;
+};
+
+/**
+ * @class ColorBinding
+ * @brief Binds a button and three textboxes to a QColor.
+**/
+class ColorBinding : public DataBinding {
+    Q_OBJECT
+public:
+    virtual ~ColorBinding() {}
+
+    static ColorBinding* bindButtonAndTextboxes(
+            QPushButton *button, QLineEdit *rTextbox, QLineEdit *gTextbox, QLineEdit *bTextbox,
+            QColor &value);
+
+private slots:
+    void buttonPushed();
+    void rStringChanged(QString newValue);
+    void gStringChanged(QString newValue);
+    void bStringChanged(QString newValue);
+
+signals:
+    void updateRString(QString newValue);
+    void updateGString(QString newValue);
+    void updateBString(QString newValue);
+
+private:
+    void updateButtonColor();
+
+    ColorBinding(QColor &value, QPushButton *button) :
+        DataBinding(), m_value(value), m_button(button) {}
+    QColor &m_value;
+    QPushButton *m_button;
 };
 
 #endif // DATABINDING_H

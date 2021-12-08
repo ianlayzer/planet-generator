@@ -56,6 +56,7 @@ void Settings::loadSettingsOrDefaults() {
     noiseCenterY = s.value("noiseCenterY", 0).toFloat();
     noiseCenterZ = s.value("noiseCenterZ", 0).toFloat();
     shapeParameter3 = s.value("shapeParameter3", 15).toDouble();
+    planetColor = s.value("planetColor", QColor(255, 100, 230)).value<QColor>();
     useLighting = s.value("useLighting", true).toBool();
     drawWireframe = s.value("drawWireframe", true).toBool();
     drawNormals = s.value("drawNormals", false).toBool();

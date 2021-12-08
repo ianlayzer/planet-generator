@@ -9,6 +9,7 @@
 #define SETTINGS_H
 
 #include <QObject>
+#include <QColor>
 #include "RGBA.h"
 #include <glm/glm.hpp>
 
@@ -111,6 +112,7 @@ struct Settings {
     float noiseCenterY;
     float noiseCenterZ;
     float shapeParameter3;
+    QColor planetColor;
     bool useLighting;           // Enable default lighting
     bool drawWireframe;         // Draw wireframe only
     bool drawNormals;           // Turn normals on and off

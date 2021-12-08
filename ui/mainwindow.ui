@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>448</height>
+    <height>524</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -62,6 +62,97 @@
         <property name="verticalSpacing">
          <number>5</number>
         </property>
+        <item row="7" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QLabel" name="baseRoughnessLabel">
+            <property name="text">
+             <string>Base Roughness</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="baseRoughnessSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="baseRoughnessTextbox">
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="6" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="roughnessLabel">
+            <property name="text">
+             <string>Roughness</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="roughnessSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="roughnessTextbox">
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="10" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <item>
+           <widget class="QLabel" name="minValueLabel">
+            <property name="text">
+             <string>Min Value</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="minValueSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="minValueTextbox">
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="noiseLabel">
+          <property name="text">
+           <string>Noise</string>
+          </property>
+         </widget>
+        </item>
         <item row="4" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
@@ -99,24 +190,71 @@
           </item>
          </layout>
         </item>
-        <item row="9" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item row="11" column="0">
+         <widget class="QLabel" name="centerLabel">
+          <property name="text">
+           <string>Center</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QLabel" name="persistenceLabel">
+           <widget class="QLabel" name="resolutionLabel">
             <property name="text">
-             <string>Persistence</string>
+             <string>Resolution</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSlider" name="persistenceSlider">
+           <widget class="QSlider" name="resolutionSlider">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="persistenceTextbox">
+           <widget class="QLineEdit" name="resolutionTextbox">
+            <property name="minimumSize">
+             <size>
+              <width>40</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="8" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QLabel" name="numLayersLabel">
+            <property name="text">
+             <string>Num Layers</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="numLayersSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="numLayersTextbox">
             <property name="maximumSize">
              <size>
               <width>40</width>
@@ -161,31 +299,24 @@
           </item>
          </layout>
         </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="noiseLabel">
-          <property name="text">
-           <string>Noise</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item row="9" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
           <item>
-           <widget class="QLabel" name="roughnessLabel">
+           <widget class="QLabel" name="persistenceLabel">
             <property name="text">
-             <string>Roughness</string>
+             <string>Persistence</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSlider" name="roughnessSlider">
+           <widget class="QSlider" name="persistenceSlider">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="roughnessTextbox">
+           <widget class="QLineEdit" name="persistenceTextbox">
             <property name="maximumSize">
              <size>
               <width>40</width>
@@ -203,134 +334,30 @@
           </property>
          </widget>
         </item>
-        <item row="11" column="0">
-         <widget class="QLabel" name="centerLabel">
-          <property name="text">
-           <string>Center</string>
-          </property>
-         </widget>
-        </item>
-        <item row="8" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item row="13" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_9">
           <item>
-           <widget class="QLabel" name="numLayersLabel">
+           <widget class="QLabel" name="colorLabel">
             <property name="text">
-             <string>Num Layers</string>
+             <string>Color</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSlider" name="numLayersSlider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="numLayersTextbox">
-            <property name="maximumSize">
-             <size>
-              <width>40</width>
-              <height>16777215</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="1" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QLabel" name="resolutionLabel">
+           <widget class="QPushButton" name="colorButton">
             <property name="text">
-             <string>Resolution</string>
+             <string/>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSlider" name="resolutionSlider">
-            <property name="minimumSize">
-             <size>
-              <width>100</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="colorRedEdit"/>
           </item>
           <item>
-           <widget class="QLineEdit" name="resolutionTextbox">
-            <property name="minimumSize">
-             <size>
-              <width>40</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>40</width>
-              <height>16777215</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="7" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <item>
-           <widget class="QLabel" name="baseRoughnessLabel">
-            <property name="text">
-             <string>Base Roughness</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="colorGreenEdit"/>
           </item>
           <item>
-           <widget class="QSlider" name="baseRoughnessSlider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="baseRoughnessTextbox">
-            <property name="maximumSize">
-             <size>
-              <width>40</width>
-              <height>16777215</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="10" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_8">
-          <item>
-           <widget class="QLabel" name="minValueLabel">
-            <property name="text">
-             <string>Min Value</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSlider" name="minValueSlider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="minValueTextbox">
-            <property name="maximumSize">
-             <size>
-              <width>40</width>
-              <height>16777215</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="colorBlueEdit"/>
           </item>
          </layout>
         </item>
@@ -377,7 +404,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

@@ -110,6 +110,10 @@ void MainWindow::dataBind() {
     BIND(BoolBinding::bindCheckbox(ui->drawWireframeCheckbox, settings.drawWireframe))
     BIND(BoolBinding::bindCheckbox(ui->drawNormalsCheckbox, settings.drawNormals))
 
+    BIND(ColorBinding::bindButtonAndTextboxes(ui->colorButton,
+                                              ui->colorRedEdit,ui->colorGreenEdit,
+                                              ui->colorBlueEdit, settings.planetColor));
+
 #undef BIND
 
     // make sure the aspect ratio updates when m_canvas3D changes size
