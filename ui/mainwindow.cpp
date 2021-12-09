@@ -90,7 +90,7 @@ void MainWindow::dataBind() {
 
     // Shapes dock
     BIND(IntBinding::bindSliderAndTextbox(
-        ui->resolutionSlider, ui->resolutionTextbox, settings.resolution, 1.f, 100.f))
+        ui->resolutionSlider, ui->resolutionTextbox, settings.resolution, 1.f, 200.f))
     BIND(FloatBinding::bindSliderAndTextbox(
         ui->strengthSlider1, ui->strengthTextbox1, settings.noiseStrengthCont, 0.0f, 1.0f))
     BIND(FloatBinding::bindSliderAndTextbox(
@@ -107,7 +107,7 @@ void MainWindow::dataBind() {
     BIND(FloatBinding::bindDial(ui->noiseCenterYDial1, settings.noiseCenterYCont, -5.f, 5.f, true))
     BIND(FloatBinding::bindDial(ui->noiseCenterZDial1, settings.noiseCenterZCont, -5.f, 5.f, true))
     BIND(FloatBinding::bindSliderAndTextbox(
-         ui->strengthSlider1_2, ui->strengthTextbox1_2, settings.noiseStrengthMount, 0.0f, 10.0f))
+         ui->strengthSlider1_2, ui->strengthTextbox1_2, settings.noiseStrengthMount, 0.0f, 15.0f))
     BIND(FloatBinding::bindSliderAndTextbox(
          ui->baseRoughnessSlider1_2, ui->baseRoughnessTextbox1_2, settings.noiseBaseRoughnessMount, 0.0f, 5.0f))
     BIND(FloatBinding::bindSliderAndTextbox(
