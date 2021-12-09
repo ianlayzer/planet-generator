@@ -22,7 +22,7 @@ void TerrainFace::generate() {
             glm::vec3 position = m_up + (percent.x - 0.5f) * 2 * m_axisA + (percent.y - 0.5f) * 2 * m_axisB;
             position = glm::normalize(position);
             float elevation = m_noise.Evaluate(position);
-            position *= (elevation + 1);
+            position *= (elevation);
             m_vertices[index] = Vertex(position, glm::vec3(), 0);
         }
     }

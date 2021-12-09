@@ -102,15 +102,27 @@ struct Settings {
     bool useSceneviewScene;
     int shapeType;              // Selected shape type
     int resolution;
-    float noiseRoughness;
-    float noiseBaseRoughness;
-    float noisePersistence;
-    int noiseNumLayers;
-    float noiseStrength;
-    float noiseMinValue;
-    float noiseCenterX;
-    float noiseCenterY;
-    float noiseCenterZ;
+    float noiseRoughnessCont;
+    float noiseBaseRoughnessCont;
+    float noisePersistenceCont;
+    int noiseNumLayersCont;
+    float noiseStrengthCont;
+    float noiseMinValueCont;
+    float noiseCenterXCont;
+    float noiseCenterYCont;
+    float noiseCenterZCont;
+    bool continentsEnabled;
+    float noiseRoughnessMount;
+    float noiseBaseRoughnessMount;
+    float noisePersistenceMount;
+    int noiseNumLayersMount;
+    float noiseStrengthMount;
+    float noiseMinValueMount;
+    float noiseCenterXMount;
+    float noiseCenterYMount;
+    float noiseCenterZMount;
+    bool mountainsEnabled;
+    bool useContinentsAsMask;
     float shapeParameter3;
     QColor planetColor;
     bool useLighting;           // Enable default lighting

@@ -1,10 +1,15 @@
 #include "Planet.h"
 
 Planet::Planet(int resolution, float noiseStrength, float noiseRoughness, glm::vec3 noiseCenter,
-               float noiseBaseRoughness, int noiseNumLayers, float noisePersistence, float noiseMinValue):
+               float noiseBaseRoughness, int noiseNumLayers, float noisePersistence, float noiseMinValue,
+               float noiseStrengthMount, float noiseRoughnessMount, glm::vec3 noiseCenterMount,
+               float noiseBaseRoughnessMount, int noiseNumLayersMount, float noisePersistenceMount, float noiseMinValueMount,
+               bool continentsEnabled, bool mountainsEnabled, bool useContinentsAsMask):
     m_resolution(resolution),
     m_noise(std::make_unique<Noise>(noiseStrength, noiseRoughness, noiseCenter, noiseBaseRoughness,
-                                    noiseNumLayers, noisePersistence, noiseMinValue))
+                                    noiseNumLayers, noisePersistence, noiseMinValue, noiseStrengthMount,
+                                    noiseRoughnessMount, noiseCenterMount, noiseBaseRoughnessMount, noiseNumLayersMount,
+                                    noisePersistenceMount, noiseMinValueMount, continentsEnabled, mountainsEnabled, useContinentsAsMask))
 {
     m_faces = std::vector<std::unique_ptr<TerrainFace>>(6);
     m_faces[0] = std::make_unique<TerrainFace>(m_resolution, glm::vec3(1.f, 0.f, 0.f), *m_noise.get());

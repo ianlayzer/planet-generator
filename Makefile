@@ -60,7 +60,6 @@ SOURCES       = camera/OrbitingCamera.cpp \
 		scene/PlanetScene.cpp \
 		scene/Scene.cpp \
 		scene/OpenGLScene.cpp \
-		planet/ExampleShape.cpp \
 		ui/SupportCanvas3D.cpp \
 		ui/Settings.cpp \
 		ui/mainwindow.cpp \
@@ -96,7 +95,6 @@ OBJECTS       = OrbitingCamera.o \
 		PlanetScene.o \
 		Scene.o \
 		OpenGLScene.o \
-		ExampleShape.o \
 		SupportCanvas3D.o \
 		Settings.o \
 		mainwindow.o \
@@ -317,7 +315,6 @@ DIST          = shaders/normals/normals.vert \
 		scene/PlanetScene.h \
 		scene/Scene.h \
 		scene/OpenGLScene.h \
-		planet/ExampleShape.h \
 		ui/SupportCanvas3D.h \
 		ui/Settings.h \
 		ui/mainwindow.h \
@@ -352,7 +349,6 @@ DIST          = shaders/normals/normals.vert \
 		scene/PlanetScene.cpp \
 		scene/Scene.cpp \
 		scene/OpenGLScene.cpp \
-		planet/ExampleShape.cpp \
 		ui/SupportCanvas3D.cpp \
 		ui/Settings.cpp \
 		ui/mainwindow.cpp \
@@ -799,8 +795,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.15.2/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents camera/Camera.h camera/OrbitingCamera.h gl/OpenGLShape.h planet/Noise.h planet/Planet.h planet/TerrainFace.h scene/PlanetScene.h scene/Scene.h scene/OpenGLScene.h planet/ExampleShape.h ui/SupportCanvas3D.h ui/Settings.h ui/mainwindow.h ui/Databinding.h ui_mainwindow.h gl/shaders/Shader.h gl/GLDebug.h gl/shaders/ShaderAttribLocations.h gl/datatype/VBOAttribMarker.h gl/datatype/VBO.h gl/datatype/IBO.h gl/datatype/VAO.h gl/datatype/FBO.h gl/textures/Texture.h gl/textures/Texture2D.h gl/textures/TextureParameters.h gl/textures/TextureParametersBuilder.h gl/textures/RenderBuffer.h gl/textures/DepthBuffer.h gl/shaders/CS123Shader.h gl/util/FullScreenQuad.h lib/CS123XmlSceneParser.h lib/CS123SceneData.h lib/CS123ISceneParser.h lib/ResourceLoader.h glew-1.10.0/include/GL/glew.h lib/RGBA.h $(DISTDIR)/
-	$(COPY_FILE) --parents camera/OrbitingCamera.cpp gl/OpenGLShape.cpp planet/Noise.cpp planet/Planet.cpp planet/TerrainFace.cpp scene/PlanetScene.cpp scene/Scene.cpp scene/OpenGLScene.cpp planet/ExampleShape.cpp ui/SupportCanvas3D.cpp ui/Settings.cpp ui/mainwindow.cpp ui/Databinding.cpp lib/CS123XmlSceneParser.cpp lib/ResourceLoader.cpp gl/shaders/Shader.cpp gl/GLDebug.cpp gl/datatype/VBOAttribMarker.cpp gl/datatype/VBO.cpp gl/datatype/IBO.cpp gl/datatype/VAO.cpp gl/datatype/FBO.cpp gl/textures/Texture.cpp gl/textures/Texture2D.cpp gl/textures/TextureParameters.cpp gl/textures/TextureParametersBuilder.cpp gl/textures/RenderBuffer.cpp gl/textures/DepthBuffer.cpp gl/shaders/CS123Shader.cpp gl/util/FullScreenQuad.cpp main.cpp glew-1.10.0/src/glew.c lib/RGBA.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents camera/Camera.h camera/OrbitingCamera.h gl/OpenGLShape.h planet/Noise.h planet/Planet.h planet/TerrainFace.h scene/PlanetScene.h scene/Scene.h scene/OpenGLScene.h ui/SupportCanvas3D.h ui/Settings.h ui/mainwindow.h ui/Databinding.h ui_mainwindow.h gl/shaders/Shader.h gl/GLDebug.h gl/shaders/ShaderAttribLocations.h gl/datatype/VBOAttribMarker.h gl/datatype/VBO.h gl/datatype/IBO.h gl/datatype/VAO.h gl/datatype/FBO.h gl/textures/Texture.h gl/textures/Texture2D.h gl/textures/TextureParameters.h gl/textures/TextureParametersBuilder.h gl/textures/RenderBuffer.h gl/textures/DepthBuffer.h gl/shaders/CS123Shader.h gl/util/FullScreenQuad.h lib/CS123XmlSceneParser.h lib/CS123SceneData.h lib/CS123ISceneParser.h lib/ResourceLoader.h glew-1.10.0/include/GL/glew.h lib/RGBA.h $(DISTDIR)/
+	$(COPY_FILE) --parents camera/OrbitingCamera.cpp gl/OpenGLShape.cpp planet/Noise.cpp planet/Planet.cpp planet/TerrainFace.cpp scene/PlanetScene.cpp scene/Scene.cpp scene/OpenGLScene.cpp ui/SupportCanvas3D.cpp ui/Settings.cpp ui/mainwindow.cpp ui/Databinding.cpp lib/CS123XmlSceneParser.cpp lib/ResourceLoader.cpp gl/shaders/Shader.cpp gl/GLDebug.cpp gl/datatype/VBOAttribMarker.cpp gl/datatype/VBO.cpp gl/datatype/IBO.cpp gl/datatype/VAO.cpp gl/datatype/FBO.cpp gl/textures/Texture.cpp gl/textures/Texture2D.cpp gl/textures/TextureParameters.cpp gl/textures/TextureParametersBuilder.cpp gl/textures/RenderBuffer.cpp gl/textures/DepthBuffer.cpp gl/shaders/CS123Shader.cpp gl/util/FullScreenQuad.cpp main.cpp glew-1.10.0/src/glew.c lib/RGBA.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ui/mainwindow.ui $(DISTDIR)/
 
 
@@ -970,6 +966,8 @@ moc_Databinding.cpp: ui/Databinding.h \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qtabwidget.h \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QDial \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qdial.h \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		moc_predefs.h \
 		../../../Qt/5.15.2/clang_64/bin/moc
 	/Users/mikeyabela/Qt/5.15.2/clang_64/bin/moc $(DEFINES) --include /Users/mikeyabela/course/cs1230/planet-generator/moc_predefs.h -I/Users/mikeyabela/Qt/5.15.2/clang_64/mkspecs/macx-clang -I/Users/mikeyabela/course/cs1230/planet-generator -I/Users/mikeyabela/course/cs1230/planet-generator/glm -I/Users/mikeyabela/course/cs1230/planet-generator/brush -I/Users/mikeyabela/course/cs1230/planet-generator/camera -I/Users/mikeyabela/course/cs1230/planet-generator/lib -I/Users/mikeyabela/course/cs1230/planet-generator/scenegraph -I/Users/mikeyabela/course/cs1230/planet-generator/ui -I/Users/mikeyabela/course/cs1230/planet-generator/glew-1.10.0/include -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtOpenGL.framework/Headers -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtXml.framework/Headers -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/mikeyabela/Qt/5.15.2/clang_64/lib ui/Databinding.h -o moc_Databinding.cpp
@@ -1082,6 +1080,8 @@ OrbitingCamera.o: camera/OrbitingCamera.cpp glm/gtc/matrix_transform.hpp \
 		ui/Settings.h \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
 		lib/RGBA.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o OrbitingCamera.o camera/OrbitingCamera.cpp
 
@@ -1499,6 +1499,8 @@ PlanetScene.o: scene/PlanetScene.cpp scene/PlanetScene.h \
 		ui/Settings.h \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
 		lib/RGBA.h \
 		planet/Planet.h \
 		planet/TerrainFace.h \
@@ -1685,89 +1687,10 @@ OpenGLScene.o: scene/OpenGLScene.cpp scene/OpenGLScene.h \
 		ui/Settings.h \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
 		lib/RGBA.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o OpenGLScene.o scene/OpenGLScene.cpp
-
-ExampleShape.o: planet/ExampleShape.cpp planet/ExampleShape.h \
-		gl/OpenGLShape.h \
-		glm/glm.hpp \
-		glm/detail/_fixes.hpp \
-		glm/fwd.hpp \
-		glm/detail/type_int.hpp \
-		glm/detail/setup.hpp \
-		glm/detail/type_float.hpp \
-		glm/detail/type_vec.hpp \
-		glm/detail/precision.hpp \
-		glm/detail/type_mat.hpp \
-		glm/vec2.hpp \
-		glm/detail/type_vec2.hpp \
-		glm/detail/_swizzle.hpp \
-		glm/detail/_swizzle_func.hpp \
-		glm/detail/type_vec2.inl \
-		glm/vec3.hpp \
-		glm/detail/type_vec3.hpp \
-		glm/detail/type_vec3.inl \
-		glm/vec4.hpp \
-		glm/detail/type_vec4.hpp \
-		glm/detail/type_vec4.inl \
-		glm/mat2x2.hpp \
-		glm/detail/type_mat2x2.hpp \
-		glm/detail/type_mat2x2.inl \
-		glm/mat2x3.hpp \
-		glm/detail/type_mat2x3.hpp \
-		glm/detail/type_mat2x3.inl \
-		glm/mat2x4.hpp \
-		glm/detail/type_mat2x4.hpp \
-		glm/detail/type_mat2x4.inl \
-		glm/mat3x2.hpp \
-		glm/detail/type_mat3x2.hpp \
-		glm/detail/type_mat3x2.inl \
-		glm/mat3x3.hpp \
-		glm/detail/type_mat3x3.hpp \
-		glm/detail/type_mat3x3.inl \
-		glm/mat3x4.hpp \
-		glm/detail/type_mat3x4.hpp \
-		glm/detail/type_mat3x4.inl \
-		glm/mat4x2.hpp \
-		glm/detail/type_mat4x2.hpp \
-		glm/detail/type_mat4x2.inl \
-		glm/mat4x3.hpp \
-		glm/detail/type_mat4x3.hpp \
-		glm/detail/type_mat4x3.inl \
-		glm/mat4x4.hpp \
-		glm/detail/type_mat4x4.hpp \
-		glm/detail/type_mat4x4.inl \
-		glm/trigonometric.hpp \
-		glm/detail/func_trigonometric.hpp \
-		glm/detail/func_trigonometric.inl \
-		glm/detail/_vectorize.hpp \
-		glm/detail/type_vec1.hpp \
-		glm/detail/type_vec1.inl \
-		glm/exponential.hpp \
-		glm/detail/func_exponential.hpp \
-		glm/detail/func_exponential.inl \
-		glm/detail/func_vector_relational.hpp \
-		glm/detail/func_vector_relational.inl \
-		glm/common.hpp \
-		glm/detail/func_common.hpp \
-		glm/detail/func_common.inl \
-		glm/packing.hpp \
-		glm/detail/func_packing.hpp \
-		glm/detail/func_packing.inl \
-		glm/detail/type_half.hpp \
-		glm/detail/type_half.inl \
-		glm/geometric.hpp \
-		glm/detail/func_geometric.hpp \
-		glm/detail/func_geometric.inl \
-		glm/matrix.hpp \
-		glm/detail/func_matrix.hpp \
-		glm/detail/func_matrix.inl \
-		glm/vector_relational.hpp \
-		glm/integer.hpp \
-		glm/detail/func_integer.hpp \
-		glm/detail/func_integer.inl \
-		glew-1.10.0/include/GL/glew.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ExampleShape.o planet/ExampleShape.cpp
 
 SupportCanvas3D.o: ui/SupportCanvas3D.cpp ui/SupportCanvas3D.h \
 		glew-1.10.0/include/GL/glew.h \
@@ -1863,6 +1786,8 @@ SupportCanvas3D.o: ui/SupportCanvas3D.cpp ui/SupportCanvas3D.h \
 		ui/Settings.h \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
 		scene/PlanetScene.h \
 		scene/OpenGLScene.h \
 		scene/Scene.h \
@@ -1886,6 +1811,8 @@ SupportCanvas3D.o: ui/SupportCanvas3D.cpp ui/SupportCanvas3D.h \
 Settings.o: ui/Settings.cpp ui/Settings.h \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
 		lib/RGBA.h \
 		glm/glm.hpp \
 		glm/detail/_fixes.hpp \
@@ -1994,6 +1921,8 @@ mainwindow.o: ui/mainwindow.cpp ui/mainwindow.h \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qtabwidget.h \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QDial \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qdial.h \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		ui/SupportCanvas3D.h \
 		glew-1.10.0/include/GL/glew.h \
 		../../../Qt/5.15.2/clang_64/lib/QtOpenGL.framework/Headers/QGLWidget \
@@ -2088,6 +2017,8 @@ mainwindow.o: ui/mainwindow.cpp ui/mainwindow.h \
 		gl/datatype/FBO.h \
 		gl/textures/TextureParameters.h \
 		ui/Settings.h \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
 		lib/RGBA.h \
 		planet/Planet.h \
 		planet/TerrainFace.h \
@@ -2119,7 +2050,11 @@ Databinding.o: ui/Databinding.cpp ui/Databinding.h \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QTabWidget \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qtabwidget.h \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QDial \
-		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qdial.h
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qdial.h \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QColorDialog \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qcolordialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Databinding.o ui/Databinding.cpp
 
 CS123XmlSceneParser.o: lib/CS123XmlSceneParser.cpp lib/CS123XmlSceneParser.h \
@@ -2457,6 +2392,8 @@ CS123Shader.o: gl/shaders/CS123Shader.cpp gl/shaders/CS123Shader.h \
 		glm/integer.hpp \
 		glm/detail/func_integer.hpp \
 		glm/detail/func_integer.inl \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
 		lib/CS123SceneData.h \
 		ui/Settings.h \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \

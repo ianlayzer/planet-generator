@@ -39,13 +39,15 @@ PlanetScene::~PlanetScene()
 
 void PlanetScene::initializeSceneMaterial() {
     // Use a shiny orange material
-    m_material.clear();
-//    m_material.cAmbient.r = 0.2f;
-//    m_material.cAmbient.g = 0.1f;
-//    m_material.cDiffuse.r = 1.0f;
-//    m_material.cDiffuse.g = 0.5f;
-//    m_material.cSpecular.r = m_material.cSpecular.g = m_material.cSpecular.b = 1;
-//    m_material.shininess = 64;
+//    m_material.clear();
+    m_material.cAmbient.r = settings.planetColor.redF() / 5.f;
+    m_material.cAmbient.g = settings.planetColor.greenF() / 5.f;
+    m_material.cAmbient.b = settings.planetColor.blueF() / 5.f;
+    m_material.cDiffuse.r = settings.planetColor.redF();
+    m_material.cDiffuse.g = settings.planetColor.greenF();
+    m_material.cDiffuse.b = settings.planetColor.blueF();
+    m_material.cSpecular.r = m_material.cSpecular.g = m_material.cSpecular.b = 0.2f;
+    m_material.shininess = 15;
 }
 
 void PlanetScene::initializeSceneLight() {
@@ -86,7 +88,6 @@ void PlanetScene::loadNormalsArrowShader() {
 void PlanetScene::render(SupportCanvas3D *context) {
     // Clear the screen in preparation for the next frame. (Use a gray background instead of a
     // black one for drawing wireframe or normals so they will show up against the background.)
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     setClearColor();
 
     renderPhongPass(context);
@@ -98,10 +99,6 @@ void PlanetScene::render(SupportCanvas3D *context) {
     if (settings.drawNormals) {
         renderNormalsPass(context);
     }
-    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-    long duration = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count();
-    long fps = 1000000 / duration;
-    std::cout << fps << " fps" << std::endl;
 }
 
 void PlanetScene::renderPhongPass(SupportCanvas3D *context) {
@@ -120,8 +117,8 @@ void PlanetScene::renderPhongPass(SupportCanvas3D *context) {
 void PlanetScene::setPhongSceneUniforms() {
     m_phongShader->setUniform("useLighting", settings.useLighting);
     m_phongShader->setUniform("useArrowOffsets", false);
-    m_phongShader->setColor(settings.planetColor);
-//    m_phongShader->applyMaterial(m_material);
+    m_phongShader->applyMaterial(m_material);
+//    m_phongShader->setColor(settings.planetColor);
 }
 
 void PlanetScene::setMatrixUniforms(Shader *shader, SupportCanvas3D *context) {
@@ -188,10 +185,13 @@ void PlanetScene::setLights(const glm::mat4 viewMatrix) {
 
 void PlanetScene::settingsChanged() {
     // TODO: [SHAPES] Fill this in, for now default to an example shape
-    m_planet = std::make_unique<Planet>(std::max(settings.resolution, 2), settings.noiseStrength, settings.noiseRoughness,
-                                        glm::vec3({settings.noiseCenterX, settings.noiseCenterY, settings.noiseCenterZ}),
-                                        settings.noiseBaseRoughness, settings.noiseNumLayers, settings.noisePersistence,
-                                        settings.noiseMinValue);
-    m_phongShader->setColor(settings.planetColor);
+    m_planet = std::make_unique<Planet>(std::max(settings.resolution, 2), settings.noiseStrengthCont, settings.noiseRoughnessCont,
+                                        glm::vec3({settings.noiseCenterXCont, settings.noiseCenterYCont, settings.noiseCenterZCont}),
+                                        settings.noiseBaseRoughnessCont, settings.noiseNumLayersCont, settings.noisePersistenceCont,
+                                        settings.noiseMinValueCont, settings.noiseStrengthMount, settings.noiseRoughnessMount,
+                                        glm::vec3({settings.noiseCenterXMount, settings.noiseCenterYMount, settings.noiseCenterZMount}),
+                                        settings.noiseBaseRoughnessMount, settings.noiseNumLayersMount, settings.noisePersistenceMount,
+                                        settings.noiseMinValueMount, settings.continentsEnabled, settings.mountainsEnabled, settings.useContinentsAsMask);
+    initializeSceneMaterial();
 }
 

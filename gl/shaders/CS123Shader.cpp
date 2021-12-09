@@ -33,10 +33,10 @@ void CS123Shader::applyMaterial(const CS123SceneMaterial &material) {
 
 void CS123Shader::setColor(const QColor &color) {
     glm::vec3 colorVec = glm::vec3(color.redF(), color.greenF(), color.blueF());
-    setUniform("ambient_color", colorVec);
+//    setUniform("ambient_color", glm::vec3(0.2f, 0.1f, 0.f));
     setUniform("diffuse_color", colorVec);
-    setUniform("specular_color", glm::vec3(0.1f, 0.1f, 0.1f));
-    setUniform("shininess", 40);
+//    setUniform("specular_color", glm::vec3(0.1f, 0.1f, 0.1f));
+//    setUniform("shininess", 40);
 }
 
 

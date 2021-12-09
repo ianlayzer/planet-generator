@@ -29,14 +29,28 @@ static float grad(int32_t hash, float x, float y, float z) {
     return ((h & 1) ? -u : u) + ((h & 2) ? -v : v);
 }
 
-Noise::Noise(float strength, float roughness, glm::vec3 center, float baseRoughness, int numLayers, float persistence, float minValue) :
-    m_strength(strength),
-    m_roughness(roughness),
-    m_center(center),
-    m_baseRoughness(baseRoughness),
-    m_persistence(persistence),
-    m_numLayers(numLayers),
-    m_minValue(minValue)
+Noise::Noise(float strengthCont, float roughnessCont, glm::vec3 centerCont,
+             float baseRoughnessCont, int numLayersCont, float persistenceCont, float minValueCont,
+             float strengthMount, float roughnessMount, glm::vec3 centerMount,
+             float baseRoughnessMount, int numLayersMount, float persistenceMount, float minValueMount,
+             bool continentsEnabled, bool mountainsEnabled, bool useContinentsAsMask) :
+    m_strengthCont(strengthCont),
+    m_roughnessCont(roughnessCont),
+    m_centerCont(centerCont),
+    m_baseRoughnessCont(baseRoughnessCont),
+    m_persistenceCont(persistenceCont),
+    m_numLayersCont(numLayersCont),
+    m_minValueCont(minValueCont),
+    m_strengthMount(strengthMount),
+    m_roughnessMount(roughnessMount),
+    m_centerMount(centerMount),
+    m_baseRoughnessMount(baseRoughnessMount),
+    m_persistenceMount(persistenceMount),
+    m_numLayersMount(numLayersMount),
+    m_minValueMount(minValueMount),
+    m_continentsEnabled(continentsEnabled),
+    m_mountainsEnabled(mountainsEnabled),
+    m_useContinentsAsMask(useContinentsAsMask)
 {
 }
 
@@ -172,16 +186,39 @@ float Noise::getNoise(glm::vec3 point) {
     return 32.0f*(n0 + n1 + n2 + n3);
 }
 
-float Noise::Evaluate(glm::vec3 point) {
+float Noise::evaluateContinents(glm::vec3 point) {
     float noiseValue = 0.f;
-    float frequency = m_baseRoughness;
+    float frequency = m_baseRoughnessCont;
     float amplitude = 1.f;
-    for (int i = 0; i < m_numLayers; i++) {
-        float v = getNoise(point * frequency + m_center);
+    for (int i = 0; i < m_numLayersCont; i++) {
+        float v = getNoise(point * frequency + m_centerCont);
         noiseValue += (v + 1) * 0.5f * amplitude;
-        frequency *= m_roughness;
-        amplitude *= m_persistence;
+        frequency *= m_roughnessCont;
+        amplitude *= m_persistenceCont;
     }
-    noiseValue = std::max(0.f, noiseValue - m_minValue);
-    return noiseValue * m_strength;
+    noiseValue = std::max(0.f, noiseValue - m_minValueCont);
+    return noiseValue * m_strengthCont;
+}
+
+float Noise::evaluateMountains(glm::vec3 point) {
+    float noiseValue = 0.f;
+    float frequency = m_baseRoughnessMount;
+    float amplitude = 1.f;
+    for (int i = 0; i < m_numLayersMount; i++) {
+        float v = getNoise(point * frequency + m_centerMount);
+        noiseValue += (v + 1) * 0.5f * amplitude;
+        frequency *= m_roughnessMount;
+        amplitude *= m_persistenceMount;
+    }
+    noiseValue = std::max(0.f, noiseValue - m_minValueMount);
+    return noiseValue * m_strengthMount;
+}
+
+float Noise::Evaluate(glm::vec3 point) {
+    float firstLayerVal = evaluateContinents(point);
+    float continents = m_continentsEnabled ? firstLayerVal : 0.f;
+    float mask = m_useContinentsAsMask ? firstLayerVal : 1.f;
+    float mountains = m_mountainsEnabled ? evaluateMountains(point) : 0.f;
+    float elevation = continents + mountains * mask;
+    return (elevation + 1);
 }
