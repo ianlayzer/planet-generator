@@ -121,6 +121,7 @@ void MainWindow::dataBind() {
     BIND(FloatBinding::bindDial(ui->noiseCenterXDial1_2, settings.noiseCenterXMount, -5.f, 5.f, true))
     BIND(FloatBinding::bindDial(ui->noiseCenterYDial1_2, settings.noiseCenterYMount, -5.f, 5.f, true))
     BIND(FloatBinding::bindDial(ui->noiseCenterZDial1_2, settings.noiseCenterZMount, -5.f, 5.f, true))
+    BIND(BoolBinding::bindCheckbox(ui->planetRotationCheckbox, settings.enableRotation));
     BIND(BoolBinding::bindCheckbox(ui->useLightingCheckbox, settings.useLighting))
     BIND(BoolBinding::bindCheckbox(ui->drawWireframeCheckbox, settings.drawWireframe))
     BIND(BoolBinding::bindCheckbox(ui->drawNormalsCheckbox, settings.drawNormals))

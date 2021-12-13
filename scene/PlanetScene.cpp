@@ -13,13 +13,15 @@
 using namespace CS123::GL;
 #include "gl/shaders/CS123Shader.h"
 #include "gl/shaders/Shader.h"
+#include "glm/ext.hpp"
 
 #include "ResourceLoader.h"
 
 PlanetScene::PlanetScene(int width, int height) :
     m_planet(nullptr),
     m_width(width),
-    m_height(height)
+    m_height(height),
+    m_model(glm::mat4(1.0f))
 {
     initializeSceneMaterial();
     initializeSceneLight();
@@ -124,7 +126,7 @@ void PlanetScene::setPhongSceneUniforms() {
 void PlanetScene::setMatrixUniforms(Shader *shader, SupportCanvas3D *context) {
     shader->setUniform("p", context->getCamera()->getProjectionMatrix());
     shader->setUniform("v", context->getCamera()->getViewMatrix());
-    shader->setUniform("m", glm::mat4(1.0f));
+    shader->setUniform("m", m_model);
 }
 
 void PlanetScene::renderGeometryAsFilledPolygons() {
@@ -193,5 +195,10 @@ void PlanetScene::settingsChanged() {
                                         settings.noiseBaseRoughnessMount, settings.noiseNumLayersMount, settings.noisePersistenceMount,
                                         settings.noiseMinValueMount, settings.continentsEnabled, settings.mountainsEnabled, settings.useContinentsAsMask);
     initializeSceneMaterial();
+}
+
+void PlanetScene::rotateModel(float angleInDegrees) {
+    m_model = glm::rotate(m_model, glm::radians(angleInDegrees), glm::normalize(glm::vec3(0.5f, 1.f, 0.f)));
+    m_phongShader->setUniform("m", m_model);
 }
 

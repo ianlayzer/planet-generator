@@ -20,6 +20,8 @@ SupportCanvas3D::SupportCanvas3D(QGLFormat format, QWidget *parent) : QGLWidget(
     m_defaultOrbitingCamera(new OrbitingCamera()),
     m_currentScene(nullptr)
 {
+    m_timer = std::make_unique<QTimer>(this);
+    connect(m_timer.get(), SIGNAL(timeout()), this, SLOT(handleRotation()));
 }
 
 SupportCanvas3D::~SupportCanvas3D()
@@ -85,14 +87,13 @@ void SupportCanvas3D::initializeOpenGLSettings() {
 }
 
 void SupportCanvas3D::initializeScenes() {
-    m_shapesScene = std::make_unique<PlanetScene>(width(), height());
+    m_planetScene = std::make_unique<PlanetScene>(width(), height());
 }
 
 void SupportCanvas3D::paintGL() {
     if (m_settingsDirty) {
         setSceneFromSettings();
     }
-
     float ratio = static_cast<QGuiApplication *>(QCoreApplication::instance())->devicePixelRatio();
     glViewport(0, 0, width() * ratio, height() * ratio);
     getCamera()->setAspectRatio(static_cast<float>(width()) / static_cast<float>(height()));
@@ -105,6 +106,12 @@ void SupportCanvas3D::settingsChanged() {
         // Just calling this function so that the scene is always updated.
         setSceneFromSettings();
         m_currentScene->settingsChanged();
+    }
+    if (m_timer->isActive() && !settings.enableRotation) {
+        m_timer->stop();
+    }
+    if (!m_timer->isActive() && settings.enableRotation) {
+        m_timer->start(1000.0f/30.0f);
     }
     update(); /* repaint the scene */
 }
@@ -128,8 +135,8 @@ void SupportCanvas3D::setSceneToSceneview() {
 }
 
 void SupportCanvas3D::setSceneToShapes() {
-    assert(m_shapesScene.get());
-    m_currentScene = m_shapesScene.get();
+    assert(m_planetScene.get());
+    m_currentScene = m_planetScene.get();
 }
 
 void SupportCanvas3D::copyPixels(int width, int height, RGBA *data) {
@@ -173,4 +180,9 @@ void SupportCanvas3D::wheelEvent(QWheelEvent *event) {
 
 void SupportCanvas3D::resizeEvent(QResizeEvent *event) {
     emit aspectRatioChanged();
+}
+
+void SupportCanvas3D::handleRotation() {
+    m_planetScene->rotateModel(0.1);
+    update();
 }

@@ -45,7 +45,7 @@ public:
 
     virtual void render(SupportCanvas3D *context) override;
     virtual void settingsChanged() override;
-
+    void rotateModel(float angleInDegrees);
 
 protected:
     // Set the light uniforms for the lights in the scene. (The view matrix is used so that the
@@ -74,6 +74,8 @@ private:
     int m_width;
     int m_height;
 
+    glm::mat4 m_model;
+
     void clearLights();
     void loadPhongShader();
     void loadWireframeShader();
@@ -92,7 +94,6 @@ private:
     void renderNormals();
     void renderWireframe();
     void setSceneUniforms(SupportCanvas3D *context);
-
 };
 
 #endif // PLANETSCENE_H

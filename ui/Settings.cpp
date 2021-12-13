@@ -69,6 +69,7 @@ void Settings::loadSettingsOrDefaults() {
     useContinentsAsMask = s.value("useContinentsAsMask", true).toBool();
     shapeParameter3 = s.value("shapeParameter3", 15).toDouble();
     planetColor = s.value("planetColor", QColor(255, 100, 230)).value<QColor>();
+    enableRotation = s.value("enableRotation", false).toBool();
     useLighting = s.value("useLighting", true).toBool();
     drawWireframe = s.value("drawWireframe", true).toBool();
     drawNormals = s.value("drawNormals", false).toBool();
@@ -149,6 +150,7 @@ void Settings::saveSettings() {
     s.setValue("noiseMountEnabled", mountainsEnabled);
     s.setValue("useContinentsAsMask", useContinentsAsMask);
     s.setValue("shapeParameter3", shapeParameter3);
+    s.setValue("enableRotation", enableRotation);
     s.setValue("useLighting", useLighting);
     s.setValue("drawWireframe", drawWireframe);
     s.setValue("drawNormals", drawNormals);

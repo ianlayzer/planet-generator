@@ -125,6 +125,7 @@ struct Settings {
     bool useContinentsAsMask;
     float shapeParameter3;
     QColor planetColor;
+    bool enableRotation;
     bool useLighting;           // Enable default lighting
     bool drawWireframe;         // Draw wireframe only
     bool drawNormals;           // Turn normals on and off

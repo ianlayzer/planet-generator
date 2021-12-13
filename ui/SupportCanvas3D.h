@@ -5,6 +5,7 @@
 
 #include "GL/glew.h"
 #include <QGLWidget>
+#include <QMainWindow>
 
 #include "glm/glm.hpp"
 
@@ -57,6 +58,9 @@ public:
 signals:
     void aspectRatioChanged();
 
+private slots:
+    void handleRotation();
+
 protected:
     // Overridden from QGLWidget
     virtual void initializeGL() override;
@@ -81,7 +85,6 @@ private:
     void setSceneToSceneview();
     void setSceneToShapes();
 
-
     glm::vec4      m_cameraEye;
     bool           m_isDragging;
 
@@ -89,7 +92,8 @@ private:
 
     std::unique_ptr<OrbitingCamera> m_defaultOrbitingCamera;
     OpenGLScene *m_currentScene;
-    std::unique_ptr<PlanetScene> m_shapesScene;
+    std::unique_ptr<PlanetScene> m_planetScene;
+    std::unique_ptr<QTimer> m_timer;
 };
 
 #endif // SUPPORTCANVAS3D_H

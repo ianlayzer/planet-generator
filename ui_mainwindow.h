@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 5.15.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -158,6 +158,7 @@ public:
     QLabel *zLabel1_2;
     QDial *noiseCenterZDial1_2;
     QSpacerItem *horizontalSpacer_14;
+    QCheckBox *planetRotationCheckbox;
     QCheckBox *useLightingCheckbox;
     QCheckBox *drawWireframeCheckbox;
     QCheckBox *drawNormalsCheckbox;
@@ -170,7 +171,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(600, 720);
+        MainWindow->resize(600, 822);
         MainWindow->setDockNestingEnabled(true);
         MainWindow->setDockOptions(QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks|QMainWindow::ForceTabbedDocks|QMainWindow::VerticalTabs);
         actionNew = new QAction(MainWindow);
@@ -830,6 +831,11 @@ public:
 
         verticalLayout_7->addWidget(shapeParameters);
 
+        planetRotationCheckbox = new QCheckBox(shapesDockContents);
+        planetRotationCheckbox->setObjectName(QString::fromUtf8("planetRotationCheckbox"));
+
+        verticalLayout_7->addWidget(planetRotationCheckbox);
+
         useLightingCheckbox = new QCheckBox(shapesDockContents);
         useLightingCheckbox->setObjectName(QString::fromUtf8("useLightingCheckbox"));
 
@@ -859,7 +865,7 @@ public:
         MainWindow->addDockWidget(Qt::LeftDockWidgetArea, shapesDock);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 600, 22));
+        menuBar->setGeometry(QRect(0, 0, 600, 24));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuToolbars = new QMenu(menuBar);
@@ -956,6 +962,7 @@ public:
         yLabel1_2->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
         zLabel1_2->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Mountains", nullptr));
+        planetRotationCheckbox->setText(QCoreApplication::translate("MainWindow", "Planet rotation", nullptr));
         useLightingCheckbox->setText(QCoreApplication::translate("MainWindow", "Use lighting", nullptr));
         drawWireframeCheckbox->setText(QCoreApplication::translate("MainWindow", "Draw wireframe", nullptr));
         drawNormalsCheckbox->setText(QCoreApplication::translate("MainWindow", "Draw normals", nullptr));

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>720</height>
+    <height>822</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -636,6 +636,12 @@
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
                 </spacer>
                </item>
               </layout>
@@ -1133,6 +1139,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QCheckBox" name="planetRotationCheckbox">
+       <property name="text">
+        <string>Planet rotation</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QCheckBox" name="useLightingCheckbox">
        <property name="text">
         <string>Use lighting</string>
@@ -1172,7 +1185,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
