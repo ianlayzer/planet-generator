@@ -5,8 +5,11 @@ TerrainFace::TerrainFace(int resolution, glm::vec3 up, Noise noise):
 {
     m_axisA = glm::vec3(m_up.y, m_up.z, m_up.x);
     m_axisB = glm::cross(m_up, m_axisA);
-    m_vertices = std::vector<Vertex>(m_resolution * m_resolution);
-    m_triangles = std::vector<int>((m_resolution - 1) * (m_resolution - 1) * 2 * 3);
+    int numVertices = m_resolution * m_resolution;
+    int numTriangles = (m_resolution - 1) * (m_resolution - 1) * 2 * 3;
+    m_vertices = std::vector<PlanetVertex>(numVertices);
+    m_triangles = std::vector<int>(numTriangles);
+    m_vertexData.reserve(numTriangles * 6);
     generate();
 }
 
@@ -22,8 +25,8 @@ void TerrainFace::generate() {
             glm::vec3 position = m_up + (percent.x - 0.5f) * 2 * m_axisA + (percent.y - 0.5f) * 2 * m_axisB;
             position = glm::normalize(position);
             float elevation = m_noise.Evaluate(position);
-            position *= (elevation);
-            m_vertices[index] = Vertex(position, glm::vec3(), 0);
+            position *= elevation;
+            m_vertices[index] = PlanetVertex(position, elevation, glm::vec3(), 0);
         }
     }
     // record triangles
@@ -68,14 +71,14 @@ void TerrainFace::processTriangles() {
         m_vertices[i].normal = glm::normalize(m_vertices[i].normal / static_cast<float>(m_vertices[i].numFaces));
     }
     for (int i = 0; i < m_triangles.size(); i += 3) {
-        Vertex pointA = m_vertices[m_triangles[i]];
-        Vertex pointB = m_vertices[m_triangles[i + 1]];
-        Vertex pointC = m_vertices[m_triangles[i + 2]];
+        PlanetVertex pointA = m_vertices[m_triangles[i]];
+        PlanetVertex pointB = m_vertices[m_triangles[i + 1]];
+        PlanetVertex pointC = m_vertices[m_triangles[i + 2]];
         makeTriangle(pointA, pointB, pointC);
     }
 }
 // pointA, pointB, pointC listed in counter-clockwise order
-void TerrainFace::makeTriangle(const Vertex &pointA, const Vertex &pointB, const Vertex &pointC) {
+void TerrainFace::makeTriangle(const PlanetVertex &pointA, const PlanetVertex &pointB, const PlanetVertex &pointC) {
     insertVec3(m_vertexData, pointA.position);
     insertVec3(m_vertexData, pointA.normal);
     insertVec3(m_vertexData, pointB.position);

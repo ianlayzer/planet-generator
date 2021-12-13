@@ -24,7 +24,7 @@ Scene::Scene(Scene &scene)
 
 Scene::~Scene()
 {
-    // Do not delete m_camera, it is owned by SupportCanvas3D
+    // Do not delete m_camera, it is owned by Canvas3D
 }
 
 void Scene::parse(Scene *sceneToFill, CS123ISceneParser *parser) {

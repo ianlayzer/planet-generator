@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "Databinding.h"
-#include "SupportCanvas3D.h"
+#include "Canvas3D.h"
 #include "CS123XmlSceneParser.h"
 #include "scene/PlanetScene.h"
 #include "CS123XmlSceneParser.h"
@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     qglFormat.setSampleBuffers(true);
     ui->setupUi(this);
     QGridLayout *gridLayout = new QGridLayout(ui->canvas3D);
-    m_canvas3D = new SupportCanvas3D(qglFormat, this);
+    m_canvas3D = new Canvas3D(qglFormat, this);
     gridLayout->addWidget(m_canvas3D, 0, 1);
 
 

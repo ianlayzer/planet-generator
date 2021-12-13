@@ -31,7 +31,7 @@ SOURCES += \
     scene/PlanetScene.cpp \
     scene/Scene.cpp \
     scene/OpenGLScene.cpp \
-    ui/SupportCanvas3D.cpp \
+    ui/Canvas3D.cpp \
     ui/Settings.cpp \
     ui/mainwindow.cpp \
     ui/Databinding.cpp \
@@ -67,7 +67,7 @@ HEADERS += \
     scene/PlanetScene.h \
     scene/Scene.h \
     scene/OpenGLScene.h \
-    ui/SupportCanvas3D.h \
+    ui/Canvas3D.h \
     ui/Settings.h \
     ui/mainwindow.h \
     ui/Databinding.h \

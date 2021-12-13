@@ -1,4 +1,4 @@
-#include "SupportCanvas3D.h"
+#include "Canvas3D.h"
 
 #include <QFileDialog>
 #include <QMouseEvent>
@@ -14,7 +14,7 @@
 #include "gl/GLDebug.h"
 #include "CS123XmlSceneParser.h"
 
-SupportCanvas3D::SupportCanvas3D(QGLFormat format, QWidget *parent) : QGLWidget(format, parent),
+Canvas3D::Canvas3D(QGLFormat format, QWidget *parent) : QGLWidget(format, parent),
     m_isDragging(false),
     m_settingsDirty(true),
     m_defaultOrbitingCamera(new OrbitingCamera()),
@@ -24,19 +24,19 @@ SupportCanvas3D::SupportCanvas3D(QGLFormat format, QWidget *parent) : QGLWidget(
     connect(m_timer.get(), SIGNAL(timeout()), this, SLOT(handleRotation()));
 }
 
-SupportCanvas3D::~SupportCanvas3D()
+Canvas3D::~Canvas3D()
 {
 }
 
-Camera *SupportCanvas3D::getCamera() {
+Camera *Canvas3D::getCamera() {
     return m_defaultOrbitingCamera.get();
 }
 
-OrbitingCamera *SupportCanvas3D::getOrbitingCamera() {
+OrbitingCamera *Canvas3D::getOrbitingCamera() {
     return m_defaultOrbitingCamera.get();
 }
 
-void SupportCanvas3D::initializeGL() {
+void Canvas3D::initializeGL() {
     // Track the camera settings so we can generate deltas
     m_oldPosX = settings.cameraPosX;
     m_oldPosY = settings.cameraPosY;
@@ -55,7 +55,7 @@ void SupportCanvas3D::initializeGL() {
 
 }
 
-void SupportCanvas3D::initializeGlew() {
+void Canvas3D::initializeGlew() {
     glewExperimental = GL_TRUE;
     GLenum err = glewInit();
     glGetError(); // Clear errors after call to glewInit
@@ -65,7 +65,7 @@ void SupportCanvas3D::initializeGlew() {
     }
 }
 
-void SupportCanvas3D::initializeOpenGLSettings() {
+void Canvas3D::initializeOpenGLSettings() {
     // Enable depth testing, so that objects are occluded based on depth instead of drawing order.
     glEnable(GL_DEPTH_TEST);
 
@@ -86,11 +86,11 @@ void SupportCanvas3D::initializeOpenGLSettings() {
     getOrbitingCamera()->updateMatrices();
 }
 
-void SupportCanvas3D::initializeScenes() {
+void Canvas3D::initializeScenes() {
     m_planetScene = std::make_unique<PlanetScene>(width(), height());
 }
 
-void SupportCanvas3D::paintGL() {
+void Canvas3D::paintGL() {
     if (m_settingsDirty) {
         setSceneFromSettings();
     }
@@ -100,7 +100,7 @@ void SupportCanvas3D::paintGL() {
     m_currentScene->render(this);
 }
 
-void SupportCanvas3D::settingsChanged() {
+void Canvas3D::settingsChanged() {
     m_settingsDirty = true;
     if (m_currentScene != nullptr) {
         // Just calling this function so that the scene is always updated.
@@ -116,7 +116,7 @@ void SupportCanvas3D::settingsChanged() {
     update(); /* repaint the scene */
 }
 
-void SupportCanvas3D::setSceneFromSettings() {
+void Canvas3D::setSceneFromSettings() {
     switch(settings.getSceneMode()) {
         case SCENEMODE_SHAPES:
             setSceneToShapes();
@@ -128,18 +128,18 @@ void SupportCanvas3D::setSceneFromSettings() {
     m_settingsDirty = false;
 }
 
-void SupportCanvas3D::loadSceneviewSceneFromParser(CS123XmlSceneParser &parser) {
+void Canvas3D::loadSceneviewSceneFromParser(CS123XmlSceneParser &parser) {
 }
 
-void SupportCanvas3D::setSceneToSceneview() {
+void Canvas3D::setSceneToSceneview() {
 }
 
-void SupportCanvas3D::setSceneToShapes() {
+void Canvas3D::setSceneToShapes() {
     assert(m_planetScene.get());
     m_currentScene = m_planetScene.get();
 }
 
-void SupportCanvas3D::copyPixels(int width, int height, RGBA *data) {
+void Canvas3D::copyPixels(int width, int height, RGBA *data) {
     glReadPixels(0, 0, width, height, GL_BGRA, GL_UNSIGNED_BYTE, data);
     std::cout << "copied " << width << "x" << height << std::endl;
 
@@ -150,7 +150,7 @@ void SupportCanvas3D::copyPixels(int width, int height, RGBA *data) {
             std::swap(data[x + y * width], data[x + (height - y - 1) * width]);
 }
 
-void SupportCanvas3D::mousePressEvent(QMouseEvent *event) {
+void Canvas3D::mousePressEvent(QMouseEvent *event) {
     if (event->button() == Qt::RightButton) {
         getCamera()->mouseDown(event->x(), event->y());
         m_isDragging = true;
@@ -158,14 +158,14 @@ void SupportCanvas3D::mousePressEvent(QMouseEvent *event) {
     }
 }
 
-void SupportCanvas3D::mouseMoveEvent(QMouseEvent *event) {
+void Canvas3D::mouseMoveEvent(QMouseEvent *event) {
     if (m_isDragging) {
         getCamera()->mouseDragged(event->x(), event->y());
         update();
     }
 }
 
-void SupportCanvas3D::mouseReleaseEvent(QMouseEvent *event) {
+void Canvas3D::mouseReleaseEvent(QMouseEvent *event) {
     if (m_isDragging && event->button() == Qt::RightButton) {
         getCamera()->mouseUp(event->x(), event->y());
         m_isDragging = false;
@@ -173,16 +173,16 @@ void SupportCanvas3D::mouseReleaseEvent(QMouseEvent *event) {
     }
 }
 
-void SupportCanvas3D::wheelEvent(QWheelEvent *event) {
+void Canvas3D::wheelEvent(QWheelEvent *event) {
     getCamera()->mouseScrolled(event->delta());
     update();
 }
 
-void SupportCanvas3D::resizeEvent(QResizeEvent *event) {
+void Canvas3D::resizeEvent(QResizeEvent *event) {
     emit aspectRatioChanged();
 }
 
-void SupportCanvas3D::handleRotation() {
+void Canvas3D::handleRotation() {
     m_planetScene->rotateModel(0.1);
     update();
 }

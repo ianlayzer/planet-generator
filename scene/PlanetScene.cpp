@@ -1,7 +1,7 @@
 #include "PlanetScene.h"
 #include "camera/Camera.h"
 #include "gl/OpenGLShape.h"
-#include <SupportCanvas3D.h>
+#include <Canvas3D.h>
 #include <QFileDialog>
 
 #include <sstream>
@@ -87,11 +87,11 @@ void PlanetScene::loadNormalsArrowShader() {
     m_normalsArrowShader = std::make_unique<Shader>(vertexSource, geometrySource, fragmentSource);
 }
 
-void PlanetScene::render(SupportCanvas3D *context) {
+void PlanetScene::render(Canvas3D *context) {
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     // Clear the screen in preparation for the next frame. (Use a gray background instead of a
     // black one for drawing wireframe or normals so they will show up against the background.)
     setClearColor();
-
     renderPhongPass(context);
 
     if (settings.drawWireframe) {
@@ -101,9 +101,13 @@ void PlanetScene::render(SupportCanvas3D *context) {
     if (settings.drawNormals) {
         renderNormalsPass(context);
     }
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    long duration = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count();
+    long fps = 1000000 / duration;
+    std::cout << fps << " fps" << std::endl;
 }
 
-void PlanetScene::renderPhongPass(SupportCanvas3D *context) {
+void PlanetScene::renderPhongPass(Canvas3D *context) {
     m_phongShader->bind();
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -123,7 +127,7 @@ void PlanetScene::setPhongSceneUniforms() {
 //    m_phongShader->setColor(settings.planetColor);
 }
 
-void PlanetScene::setMatrixUniforms(Shader *shader, SupportCanvas3D *context) {
+void PlanetScene::setMatrixUniforms(Shader *shader, Canvas3D *context) {
     shader->setUniform("p", context->getCamera()->getProjectionMatrix());
     shader->setUniform("v", context->getCamera()->getViewMatrix());
     shader->setUniform("m", m_model);
@@ -134,7 +138,7 @@ void PlanetScene::renderGeometryAsFilledPolygons() {
     renderGeometry();
 }
 
-void PlanetScene::renderWireframePass(SupportCanvas3D *context) {
+void PlanetScene::renderWireframePass(Canvas3D *context) {
     m_wireframeShader->bind();
     setMatrixUniforms(m_wireframeShader.get(), context);
     renderGeometryAsWireframe();
@@ -146,7 +150,7 @@ void PlanetScene::renderGeometryAsWireframe() {
     renderGeometry();
 }
 
-void PlanetScene::renderNormalsPass (SupportCanvas3D *context) {
+void PlanetScene::renderNormalsPass (Canvas3D *context) {
     // Render the lines.
     m_normalsShader->bind();
     setMatrixUniforms(m_normalsShader.get(), context);

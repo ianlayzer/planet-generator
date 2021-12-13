@@ -1,5 +1,5 @@
-#ifndef SUPPORTCANVAS3D_H
-#define SUPPORTCANVAS3D_H
+#ifndef CANVAS3D_H
+#define CANVAS3D_H
 
 #include <memory>
 
@@ -19,9 +19,9 @@ class CamtransCamera;
 class CS123XmlSceneParser;
 
 /**
- * @class  SupportCanvas3D
+ * @class  Canvas3D
  *
- * The SupportCanvas3D class holds a single active OpenGLScene, and either
+ * The Canvas3D class holds a single active OpenGLScene, and either
  * calls upon that scene to draw itself using OpenGL or draws the scene
  * by directly calling upon OpenGL (getting the scene-specific information
  * from the OpenGLScene object). The details of the implementation are left
@@ -31,12 +31,12 @@ class CS123XmlSceneParser;
  * case the loaded scene does not specify a camera.
  */
 
-class SupportCanvas3D : public QGLWidget {
+class Canvas3D : public QGLWidget {
     Q_OBJECT
 public:
-    SupportCanvas3D(QGLFormat format, QWidget *parent);
+    Canvas3D(QGLFormat format, QWidget *parent);
 
-    virtual ~SupportCanvas3D();
+    virtual ~Canvas3D();
 
     Camera *getCamera();
     OrbitingCamera *getOrbitingCamera();
@@ -96,4 +96,4 @@ private:
     std::unique_ptr<QTimer> m_timer;
 };
 
-#endif // SUPPORTCANVAS3D_H
+#endif // CANVAS3D_H

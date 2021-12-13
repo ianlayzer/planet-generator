@@ -43,7 +43,7 @@ public:
     PlanetScene(int width, int height);
     virtual ~PlanetScene();
 
-    virtual void render(SupportCanvas3D *context) override;
+    virtual void render(Canvas3D *context) override;
     virtual void settingsChanged() override;
     void rotateModel(float angleInDegrees);
 
@@ -81,19 +81,19 @@ private:
     void loadWireframeShader();
     void loadNormalsShader();
     void loadNormalsArrowShader();
-    void renderPhongPass(SupportCanvas3D *context);
+    void renderPhongPass(Canvas3D *context);
     void renderGeometryAsFilledPolygons();
-    void renderWireframePass(SupportCanvas3D *context);
+    void renderWireframePass(Canvas3D *context);
     void renderGeometryAsWireframe();
-    void renderNormalsPass(SupportCanvas3D *context);
+    void renderNormalsPass(Canvas3D *context);
     void initializeSceneMaterial();
     void initializeSceneLight();
     void setPhongSceneUniforms();
-    void setMatrixUniforms(CS123::GL::Shader *shader, SupportCanvas3D *context);
+    void setMatrixUniforms(CS123::GL::Shader *shader, Canvas3D *context);
     void renderFilledPolygons();
     void renderNormals();
     void renderWireframe();
-    void setSceneUniforms(SupportCanvas3D *context);
+    void setSceneUniforms(Canvas3D *context);
 };
 
 #endif // PLANETSCENE_H
