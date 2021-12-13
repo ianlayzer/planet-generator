@@ -47,6 +47,13 @@ void main() {
         position_cameraSpace += arrowOffset * vec4(offsetAxis, 0);
     }
 
+    vec3 dcol = diffuse_color;
+    if (abs(elevation - 1.f) < 0.001) {
+//        ambient_color = vec3(0.f, 0.f, 1.f);
+        dcol = vec3(0.f, 0.f, 1.f);
+//        specular_color = vec3(0.f, 0.f, 1.f);
+    }
+
     gl_Position = p * position_cameraSpace;
 
     if (useLighting) {
@@ -64,7 +71,7 @@ void main() {
 
             // Add diffuse component
             float diffuseIntensity = max(0.0, dot(vertexToLight, normal_cameraSpace));
-            color += max(vec3(0), lightColors[i] * diffuse_color * diffuseIntensity);
+            color += max(vec3(0), lightColors[i] * dcol * diffuseIntensity);
 
             // Add specular component
             vec4 lightReflection = normalize(-reflect(vertexToLight, normal_cameraSpace));

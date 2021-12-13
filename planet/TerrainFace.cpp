@@ -1,4 +1,5 @@
 #include "TerrainFace.h"
+#include <iostream>
 
 TerrainFace::TerrainFace(int resolution, glm::vec3 up, Noise noise):
     m_resolution(resolution), m_noise(noise), m_up(up)
@@ -81,10 +82,15 @@ void TerrainFace::processTriangles() {
 void TerrainFace::makeTriangle(const PlanetVertex &pointA, const PlanetVertex &pointB, const PlanetVertex &pointC) {
     insertVec3(m_vertexData, pointA.position);
     insertVec3(m_vertexData, pointA.normal);
+    m_vertexData.push_back(pointA.elevation);
+
     insertVec3(m_vertexData, pointB.position);
     insertVec3(m_vertexData, pointB.normal);
+    m_vertexData.push_back(pointB.elevation);
+
     insertVec3(m_vertexData, pointC.position);
     insertVec3(m_vertexData, pointC.normal);
+    m_vertexData.push_back(pointC.elevation);
 }
 
 // pointA, pointB, pointC listed in counter-clockwise order

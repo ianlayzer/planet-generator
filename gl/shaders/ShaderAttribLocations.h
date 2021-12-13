@@ -23,13 +23,7 @@ namespace CS123 { namespace GL { namespace ShaderAttrib {
     const GLuint TEXCOORD1 = 6;
     const GLuint TEXCOORD2 = 7;
     const GLuint TEXCOORD3 = 8;
-
-
-    // Starting at this index,
     const GLuint ELEVATION = 9;
-
-
-
 }}}
 
 #endif // SHADERATTRIBLOCATIONS_H
