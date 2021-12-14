@@ -90,7 +90,7 @@ void MainWindow::dataBind() {
 
     // Shapes dock
     BIND(IntBinding::bindSliderAndTextbox(
-        ui->resolutionSlider, ui->resolutionTextbox, settings.resolution, 1.f, 200.f))
+        ui->resolutionSlider, ui->resolutionTextbox, settings.resolution, 1.f, 300.f))
     BIND(FloatBinding::bindSliderAndTextbox(
         ui->strengthSlider1, ui->strengthTextbox1, settings.noiseStrengthCont, 0.0f, 1.0f))
     BIND(FloatBinding::bindSliderAndTextbox(
@@ -121,12 +121,28 @@ void MainWindow::dataBind() {
     BIND(FloatBinding::bindDial(ui->noiseCenterXDial1_2, settings.noiseCenterXMount, -5.f, 5.f, true))
     BIND(FloatBinding::bindDial(ui->noiseCenterYDial1_2, settings.noiseCenterYMount, -5.f, 5.f, true))
     BIND(FloatBinding::bindDial(ui->noiseCenterZDial1_2, settings.noiseCenterZMount, -5.f, 5.f, true))
+    BIND(FloatBinding::bindSliderAndTextbox(
+         ui->strengthSlider1_3, ui->strengthTextbox1_3, settings.noiseStrengthOcean, 0.0f, 1.0f))
+    BIND(FloatBinding::bindSliderAndTextbox(
+         ui->baseRoughnessSlider1_3, ui->baseRoughnessTextbox1_3, settings.noiseBaseRoughnessOcean, 0.0f, 5.0f))
+    BIND(FloatBinding::bindSliderAndTextbox(
+         ui->roughnessSlider1_3, ui->roughnessTextbox1_3, settings.noiseRoughnessOcean, 0.0f, 5.0f))
+    BIND(IntBinding::bindSliderAndTextbox(
+         ui->numLayersSlider1_3, ui->numLayersTextbox1_3, settings.noiseNumLayersOcean, 1, 8))
+    BIND(FloatBinding::bindSliderAndTextbox(
+         ui->persistenceSlider1_3, ui->persistenceTextbox1_3, settings.noisePersistenceOcean, 0.f, 1.f))
+    BIND(FloatBinding::bindSliderAndTextbox(
+         ui->minValueSlider1_3, ui->minValueTextbox1_3, settings.noiseMinValueOcean, 0.f, 2.f))
+    BIND(FloatBinding::bindDial(ui->noiseCenterXDial1_3, settings.noiseCenterXOcean, -5.f, 5.f, true))
+    BIND(FloatBinding::bindDial(ui->noiseCenterYDial1_3, settings.noiseCenterYOcean, -5.f, 5.f, true))
+    BIND(FloatBinding::bindDial(ui->noiseCenterZDial1_3, settings.noiseCenterZOcean, -5.f, 5.f, true))
     BIND(BoolBinding::bindCheckbox(ui->planetRotationCheckbox, settings.enableRotation));
     BIND(BoolBinding::bindCheckbox(ui->useLightingCheckbox, settings.useLighting))
     BIND(BoolBinding::bindCheckbox(ui->drawWireframeCheckbox, settings.drawWireframe))
     BIND(BoolBinding::bindCheckbox(ui->drawNormalsCheckbox, settings.drawNormals))
     BIND(BoolBinding::bindCheckbox(ui->continentsEnabled, settings.continentsEnabled))
     BIND(BoolBinding::bindCheckbox(ui->mountainsEnabled, settings.mountainsEnabled))
+    BIND(BoolBinding::bindCheckbox(ui->oceansEnabled, settings.oceansEnabled))
     BIND(BoolBinding::bindCheckbox(ui->continentMask, settings.useContinentsAsMask))
     BIND(BoolBinding::bindCheckbox(ui->oneFaceCheckbox, settings.onlyShowOneFace))
 

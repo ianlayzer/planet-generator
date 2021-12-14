@@ -87,7 +87,6 @@ void PlanetScene::loadNormalsArrowShader() {
 }
 
 void PlanetScene::render(Canvas3D *context) {
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     // Clear the screen in preparation for the next frame. (Use a gray background instead of a
     // black one for drawing wireframe or normals so they will show up against the background.)
     setClearColor();

@@ -1,11 +1,13 @@
-#pragma once
 /********************************************************************************
-** Form generated from reading UI file ''
+** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.0
+** Created by: Qt User Interface Compiler version 5.15.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
+
+#ifndef UI_MAINWINDOW_H
+#define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -114,7 +116,7 @@ public:
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout_18;
-    QLabel *continentNoiseLabel_2;
+    QLabel *mountainNoiseLabel;
     QCheckBox *mountainsEnabled;
     QCheckBox *continentMask;
     QVBoxLayout *verticalLayout_4;
@@ -157,12 +159,58 @@ public:
     QLabel *zLabel1_2;
     QDial *noiseCenterZDial1_2;
     QSpacerItem *horizontalSpacer_14;
+    QWidget *tab_3;
+    QWidget *verticalLayoutWidget_3;
+    QVBoxLayout *verticalLayout_5;
+    QHBoxLayout *horizontalLayout_ocean;
+    QLabel *oceanNoiseLabel;
+    QCheckBox *oceansEnabled;
+    QVBoxLayout *verticalLayout_6;
+    QHBoxLayout *horizontalLayout_20;
+    QLabel *strengthLabel1_3;
+    QSlider *strengthSlider1_3;
+    QLineEdit *strengthTextbox1_3;
+    QSpacerItem *horizontalSpacer_15;
+    QHBoxLayout *horizontalLayout_21;
+    QLabel *numLayersLabel1_3;
+    QSlider *numLayersSlider1_3;
+    QLineEdit *numLayersTextbox1_3;
+    QSpacerItem *horizontalSpacer_16;
+    QHBoxLayout *horizontalLayout_22;
+    QLabel *baseRoughnessLabel1_3;
+    QSlider *baseRoughnessSlider1_3;
+    QLineEdit *baseRoughnessTextbox1_3;
+    QSpacerItem *horizontalSpacer_17;
+    QHBoxLayout *horizontalLayout_23;
+    QLabel *roughnessLabel1_3;
+    QSlider *roughnessSlider1_3;
+    QLineEdit *roughnessTextbox1_3;
+    QSpacerItem *horizontalSpacer_18;
+    QHBoxLayout *horizontalLayout_24;
+    QLabel *persistenceLabel1_3;
+    QSlider *persistenceSlider1_3;
+    QLineEdit *persistenceTextbox1_3;
+    QSpacerItem *horizontalSpacer_19;
+    QHBoxLayout *horizontalLayout_25;
+    QLabel *minValueLabel1_3;
+    QSlider *minValueSlider1_3;
+    QLineEdit *minValueTextbox1_3;
+    QSpacerItem *horizontalSpacer_20;
+    QLabel *centerLabel1_3;
+    QHBoxLayout *horizontalLayout_26;
+    QLabel *xLabel1_3;
+    QDial *noiseCenterXDial1_3;
+    QLabel *yLabel1_3;
+    QDial *noiseCenterYDial1_3;
+    QLabel *zLabel1_3;
+    QDial *noiseCenterZDial1_3;
+    QSpacerItem *horizontalSpacer_21;
     QLabel *noiseLabel;
     QHBoxLayout *horizontalLayout_2;
     QLabel *resolutionLabel;
     QSlider *resolutionSlider;
     QLineEdit *resolutionTextbox;
-    QHBoxLayout *horizontalLayout_20;
+    QHBoxLayout *horizontalLayout_ocean_2;
     QLabel *mountainColorLabel;
     QPushButton *mountainColorButton;
     QLineEdit *mountainColorRedEdit;
@@ -182,7 +230,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(600, 869);
+        MainWindow->resize(600, 867);
         MainWindow->setDockNestingEnabled(true);
         MainWindow->setDockOptions(QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks|QMainWindow::ForceTabbedDocks|QMainWindow::VerticalTabs);
         actionNew = new QAction(MainWindow);
@@ -583,11 +631,11 @@ public:
         horizontalLayout_18 = new QHBoxLayout();
         horizontalLayout_18->setSpacing(6);
         horizontalLayout_18->setObjectName(QString::fromUtf8("horizontalLayout_18"));
-        continentNoiseLabel_2 = new QLabel(verticalLayoutWidget_2);
-        continentNoiseLabel_2->setObjectName(QString::fromUtf8("continentNoiseLabel_2"));
-        continentNoiseLabel_2->setMaximumSize(QSize(16777215, 15));
+        mountainNoiseLabel = new QLabel(verticalLayoutWidget_2);
+        mountainNoiseLabel->setObjectName(QString::fromUtf8("mountainNoiseLabel"));
+        mountainNoiseLabel->setMaximumSize(QSize(16777215, 15));
 
-        horizontalLayout_18->addWidget(continentNoiseLabel_2);
+        horizontalLayout_18->addWidget(mountainNoiseLabel);
 
         mountainsEnabled = new QCheckBox(verticalLayoutWidget_2);
         mountainsEnabled->setObjectName(QString::fromUtf8("mountainsEnabled"));
@@ -837,6 +885,267 @@ public:
         verticalLayout_3->addLayout(horizontalLayout_16);
 
         tabWidget->addTab(tab_2, QString());
+        tab_3 = new QWidget();
+        tab_3->setObjectName(QString::fromUtf8("tab_3"));
+        verticalLayoutWidget_3 = new QWidget(tab_3);
+        verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
+        verticalLayoutWidget_3->setGeometry(QRect(0, 0, 503, 430));
+        verticalLayout_5 = new QVBoxLayout(verticalLayoutWidget_3);
+        verticalLayout_5->setSpacing(6);
+        verticalLayout_5->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        verticalLayout_5->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_ocean = new QHBoxLayout();
+        horizontalLayout_ocean->setSpacing(6);
+        horizontalLayout_ocean->setObjectName(QString::fromUtf8("horizontalLayout_ocean"));
+        oceanNoiseLabel = new QLabel(verticalLayoutWidget_3);
+        oceanNoiseLabel->setObjectName(QString::fromUtf8("oceanNoiseLabel"));
+        oceanNoiseLabel->setMaximumSize(QSize(16777215, 15));
+
+        horizontalLayout_ocean->addWidget(oceanNoiseLabel);
+
+        oceansEnabled = new QCheckBox(verticalLayoutWidget_3);
+        oceansEnabled->setObjectName(QString::fromUtf8("oceansEnabled"));
+
+        horizontalLayout_ocean->addWidget(oceansEnabled);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_ocean);
+
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setSpacing(6);
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
+        horizontalLayout_20 = new QHBoxLayout();
+        horizontalLayout_20->setSpacing(0);
+        horizontalLayout_20->setObjectName(QString::fromUtf8("horizontalLayout_20"));
+        strengthLabel1_3 = new QLabel(verticalLayoutWidget_3);
+        strengthLabel1_3->setObjectName(QString::fromUtf8("strengthLabel1_3"));
+        strengthLabel1_3->setMinimumSize(QSize(40, 0));
+
+        horizontalLayout_20->addWidget(strengthLabel1_3);
+
+        strengthSlider1_3 = new QSlider(verticalLayoutWidget_3);
+        strengthSlider1_3->setObjectName(QString::fromUtf8("strengthSlider1_3"));
+        strengthSlider1_3->setMinimumSize(QSize(100, 0));
+        strengthSlider1_3->setMaximumSize(QSize(100, 16777215));
+        strengthSlider1_3->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_20->addWidget(strengthSlider1_3);
+
+        strengthTextbox1_3 = new QLineEdit(verticalLayoutWidget_3);
+        strengthTextbox1_3->setObjectName(QString::fromUtf8("strengthTextbox1_3"));
+        strengthTextbox1_3->setMinimumSize(QSize(40, 0));
+        strengthTextbox1_3->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout_20->addWidget(strengthTextbox1_3);
+
+        horizontalSpacer_15 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_20->addItem(horizontalSpacer_15);
+
+
+        verticalLayout_6->addLayout(horizontalLayout_20);
+
+
+        verticalLayout_5->addLayout(verticalLayout_6);
+
+        horizontalLayout_21 = new QHBoxLayout();
+        horizontalLayout_21->setSpacing(6);
+        horizontalLayout_21->setObjectName(QString::fromUtf8("horizontalLayout_21"));
+        numLayersLabel1_3 = new QLabel(verticalLayoutWidget_3);
+        numLayersLabel1_3->setObjectName(QString::fromUtf8("numLayersLabel1_3"));
+        numLayersLabel1_3->setMaximumSize(QSize(80, 16777215));
+
+        horizontalLayout_21->addWidget(numLayersLabel1_3);
+
+        numLayersSlider1_3 = new QSlider(verticalLayoutWidget_3);
+        numLayersSlider1_3->setObjectName(QString::fromUtf8("numLayersSlider1_3"));
+        numLayersSlider1_3->setMaximumSize(QSize(100, 16777215));
+        numLayersSlider1_3->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_21->addWidget(numLayersSlider1_3);
+
+        numLayersTextbox1_3 = new QLineEdit(verticalLayoutWidget_3);
+        numLayersTextbox1_3->setObjectName(QString::fromUtf8("numLayersTextbox1_3"));
+        numLayersTextbox1_3->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout_21->addWidget(numLayersTextbox1_3);
+
+        horizontalSpacer_16 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_21->addItem(horizontalSpacer_16);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_21);
+
+        horizontalLayout_22 = new QHBoxLayout();
+        horizontalLayout_22->setSpacing(6);
+        horizontalLayout_22->setObjectName(QString::fromUtf8("horizontalLayout_22"));
+        baseRoughnessLabel1_3 = new QLabel(verticalLayoutWidget_3);
+        baseRoughnessLabel1_3->setObjectName(QString::fromUtf8("baseRoughnessLabel1_3"));
+        baseRoughnessLabel1_3->setMaximumSize(QSize(100, 16777215));
+
+        horizontalLayout_22->addWidget(baseRoughnessLabel1_3);
+
+        baseRoughnessSlider1_3 = new QSlider(verticalLayoutWidget_3);
+        baseRoughnessSlider1_3->setObjectName(QString::fromUtf8("baseRoughnessSlider1_3"));
+        baseRoughnessSlider1_3->setMaximumSize(QSize(100, 16777215));
+        baseRoughnessSlider1_3->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_22->addWidget(baseRoughnessSlider1_3);
+
+        baseRoughnessTextbox1_3 = new QLineEdit(verticalLayoutWidget_3);
+        baseRoughnessTextbox1_3->setObjectName(QString::fromUtf8("baseRoughnessTextbox1_3"));
+        baseRoughnessTextbox1_3->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout_22->addWidget(baseRoughnessTextbox1_3);
+
+        horizontalSpacer_17 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_22->addItem(horizontalSpacer_17);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_22);
+
+        horizontalLayout_23 = new QHBoxLayout();
+        horizontalLayout_23->setSpacing(6);
+        horizontalLayout_23->setObjectName(QString::fromUtf8("horizontalLayout_23"));
+        roughnessLabel1_3 = new QLabel(verticalLayoutWidget_3);
+        roughnessLabel1_3->setObjectName(QString::fromUtf8("roughnessLabel1_3"));
+
+        horizontalLayout_23->addWidget(roughnessLabel1_3);
+
+        roughnessSlider1_3 = new QSlider(verticalLayoutWidget_3);
+        roughnessSlider1_3->setObjectName(QString::fromUtf8("roughnessSlider1_3"));
+        roughnessSlider1_3->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_23->addWidget(roughnessSlider1_3);
+
+        roughnessTextbox1_3 = new QLineEdit(verticalLayoutWidget_3);
+        roughnessTextbox1_3->setObjectName(QString::fromUtf8("roughnessTextbox1_3"));
+        roughnessTextbox1_3->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout_23->addWidget(roughnessTextbox1_3);
+
+        horizontalSpacer_18 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_23->addItem(horizontalSpacer_18);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_23);
+
+        horizontalLayout_24 = new QHBoxLayout();
+        horizontalLayout_24->setSpacing(6);
+        horizontalLayout_24->setObjectName(QString::fromUtf8("horizontalLayout_24"));
+        persistenceLabel1_3 = new QLabel(verticalLayoutWidget_3);
+        persistenceLabel1_3->setObjectName(QString::fromUtf8("persistenceLabel1_3"));
+        persistenceLabel1_3->setMaximumSize(QSize(80, 16777215));
+
+        horizontalLayout_24->addWidget(persistenceLabel1_3);
+
+        persistenceSlider1_3 = new QSlider(verticalLayoutWidget_3);
+        persistenceSlider1_3->setObjectName(QString::fromUtf8("persistenceSlider1_3"));
+        persistenceSlider1_3->setMaximumSize(QSize(100, 16777215));
+        persistenceSlider1_3->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_24->addWidget(persistenceSlider1_3);
+
+        persistenceTextbox1_3 = new QLineEdit(verticalLayoutWidget_3);
+        persistenceTextbox1_3->setObjectName(QString::fromUtf8("persistenceTextbox1_3"));
+        persistenceTextbox1_3->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout_24->addWidget(persistenceTextbox1_3);
+
+        horizontalSpacer_19 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_24->addItem(horizontalSpacer_19);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_24);
+
+        horizontalLayout_25 = new QHBoxLayout();
+        horizontalLayout_25->setSpacing(6);
+        horizontalLayout_25->setObjectName(QString::fromUtf8("horizontalLayout_25"));
+        minValueLabel1_3 = new QLabel(verticalLayoutWidget_3);
+        minValueLabel1_3->setObjectName(QString::fromUtf8("minValueLabel1_3"));
+        minValueLabel1_3->setMaximumSize(QSize(80, 16777215));
+
+        horizontalLayout_25->addWidget(minValueLabel1_3);
+
+        minValueSlider1_3 = new QSlider(verticalLayoutWidget_3);
+        minValueSlider1_3->setObjectName(QString::fromUtf8("minValueSlider1_3"));
+        minValueSlider1_3->setMaximumSize(QSize(100, 16777215));
+        minValueSlider1_3->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_25->addWidget(minValueSlider1_3);
+
+        minValueTextbox1_3 = new QLineEdit(verticalLayoutWidget_3);
+        minValueTextbox1_3->setObjectName(QString::fromUtf8("minValueTextbox1_3"));
+        minValueTextbox1_3->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout_25->addWidget(minValueTextbox1_3);
+
+        horizontalSpacer_20 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_25->addItem(horizontalSpacer_20);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_25);
+
+        centerLabel1_3 = new QLabel(verticalLayoutWidget_3);
+        centerLabel1_3->setObjectName(QString::fromUtf8("centerLabel1_3"));
+        centerLabel1_3->setMaximumSize(QSize(16777215, 10));
+
+        verticalLayout_5->addWidget(centerLabel1_3);
+
+        horizontalLayout_26 = new QHBoxLayout();
+        horizontalLayout_26->setSpacing(6);
+        horizontalLayout_26->setObjectName(QString::fromUtf8("horizontalLayout_26"));
+        horizontalLayout_26->setContentsMargins(-1, 0, -1, -1);
+        xLabel1_3 = new QLabel(verticalLayoutWidget_3);
+        xLabel1_3->setObjectName(QString::fromUtf8("xLabel1_3"));
+        xLabel1_3->setMaximumSize(QSize(20, 16777215));
+
+        horizontalLayout_26->addWidget(xLabel1_3);
+
+        noiseCenterXDial1_3 = new QDial(verticalLayoutWidget_3);
+        noiseCenterXDial1_3->setObjectName(QString::fromUtf8("noiseCenterXDial1_3"));
+        noiseCenterXDial1_3->setMaximumSize(QSize(50, 50));
+
+        horizontalLayout_26->addWidget(noiseCenterXDial1_3);
+
+        yLabel1_3 = new QLabel(verticalLayoutWidget_3);
+        yLabel1_3->setObjectName(QString::fromUtf8("yLabel1_3"));
+        yLabel1_3->setMaximumSize(QSize(20, 16777215));
+
+        horizontalLayout_26->addWidget(yLabel1_3);
+
+        noiseCenterYDial1_3 = new QDial(verticalLayoutWidget_3);
+        noiseCenterYDial1_3->setObjectName(QString::fromUtf8("noiseCenterYDial1_3"));
+        noiseCenterYDial1_3->setMaximumSize(QSize(50, 50));
+
+        horizontalLayout_26->addWidget(noiseCenterYDial1_3);
+
+        zLabel1_3 = new QLabel(verticalLayoutWidget_3);
+        zLabel1_3->setObjectName(QString::fromUtf8("zLabel1_3"));
+        zLabel1_3->setMaximumSize(QSize(20, 16777215));
+
+        horizontalLayout_26->addWidget(zLabel1_3);
+
+        noiseCenterZDial1_3 = new QDial(verticalLayoutWidget_3);
+        noiseCenterZDial1_3->setObjectName(QString::fromUtf8("noiseCenterZDial1_3"));
+        noiseCenterZDial1_3->setMaximumSize(QSize(50, 50));
+
+        horizontalLayout_26->addWidget(noiseCenterZDial1_3);
+
+        horizontalSpacer_21 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_26->addItem(horizontalSpacer_21);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_26);
+
+        tabWidget->addTab(tab_3, QString());
 
         gridLayout_4->addWidget(tabWidget, 9, 0, 1, 1);
 
@@ -870,36 +1179,36 @@ public:
 
         gridLayout_4->addLayout(horizontalLayout_2, 1, 0, 1, 1);
 
-        horizontalLayout_20 = new QHBoxLayout();
-        horizontalLayout_20->setSpacing(6);
-        horizontalLayout_20->setObjectName(QString::fromUtf8("horizontalLayout_20"));
+        horizontalLayout_ocean_2 = new QHBoxLayout();
+        horizontalLayout_ocean_2->setSpacing(6);
+        horizontalLayout_ocean_2->setObjectName(QString::fromUtf8("horizontalLayout_ocean_2"));
         mountainColorLabel = new QLabel(shapeParameters);
         mountainColorLabel->setObjectName(QString::fromUtf8("mountainColorLabel"));
 
-        horizontalLayout_20->addWidget(mountainColorLabel);
+        horizontalLayout_ocean_2->addWidget(mountainColorLabel);
 
         mountainColorButton = new QPushButton(shapeParameters);
         mountainColorButton->setObjectName(QString::fromUtf8("mountainColorButton"));
 
-        horizontalLayout_20->addWidget(mountainColorButton);
+        horizontalLayout_ocean_2->addWidget(mountainColorButton);
 
         mountainColorRedEdit = new QLineEdit(shapeParameters);
         mountainColorRedEdit->setObjectName(QString::fromUtf8("mountainColorRedEdit"));
 
-        horizontalLayout_20->addWidget(mountainColorRedEdit);
+        horizontalLayout_ocean_2->addWidget(mountainColorRedEdit);
 
         mountainColorGreenEdit = new QLineEdit(shapeParameters);
         mountainColorGreenEdit->setObjectName(QString::fromUtf8("mountainColorGreenEdit"));
 
-        horizontalLayout_20->addWidget(mountainColorGreenEdit);
+        horizontalLayout_ocean_2->addWidget(mountainColorGreenEdit);
 
         mountainColorBlueEdit = new QLineEdit(shapeParameters);
         mountainColorBlueEdit->setObjectName(QString::fromUtf8("mountainColorBlueEdit"));
 
-        horizontalLayout_20->addWidget(mountainColorBlueEdit);
+        horizontalLayout_ocean_2->addWidget(mountainColorBlueEdit);
 
 
-        gridLayout_4->addLayout(horizontalLayout_20, 4, 0, 1, 1);
+        gridLayout_4->addLayout(horizontalLayout_ocean_2, 4, 0, 1, 1);
 
 
         verticalLayout_7->addWidget(shapeParameters);
@@ -943,7 +1252,7 @@ public:
         MainWindow->addDockWidget(Qt::LeftDockWidgetArea, shapesDock);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 600, 24));
+        menuBar->setGeometry(QRect(0, 0, 600, 22));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuToolbars = new QMenu(menuBar);
@@ -964,7 +1273,7 @@ public:
         QObject::connect(actionClear, SIGNAL(triggered()), MainWindow, SLOT(clearImage()));
         QObject::connect(actionRevert, SIGNAL(triggered()), MainWindow, SLOT(revertImage()));
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1025,7 +1334,7 @@ public:
         yLabel1->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
         zLabel1->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Continents", nullptr));
-        continentNoiseLabel_2->setText(QCoreApplication::translate("MainWindow", "Noise Layer 2 (Mountains)", nullptr));
+        mountainNoiseLabel->setText(QCoreApplication::translate("MainWindow", "Noise Layer 2 (Mountains)", nullptr));
         mountainsEnabled->setText(QCoreApplication::translate("MainWindow", "Enabled", nullptr));
         continentMask->setText(QCoreApplication::translate("MainWindow", "Use Continents as Mask", nullptr));
         strengthLabel1_2->setText(QCoreApplication::translate("MainWindow", "Strength", nullptr));
@@ -1040,6 +1349,20 @@ public:
         yLabel1_2->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
         zLabel1_2->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Mountains", nullptr));
+        oceanNoiseLabel->setText(QCoreApplication::translate("MainWindow", "Noise Layer 3 (Oceans)", nullptr));
+        oceansEnabled->setText(QCoreApplication::translate("MainWindow", "Enabled", nullptr));
+        strengthLabel1_3->setText(QCoreApplication::translate("MainWindow", "Strength", nullptr));
+        strengthTextbox1_3->setText(QString());
+        numLayersLabel1_3->setText(QCoreApplication::translate("MainWindow", "Num Layers", nullptr));
+        baseRoughnessLabel1_3->setText(QCoreApplication::translate("MainWindow", "Base Roughness", nullptr));
+        roughnessLabel1_3->setText(QCoreApplication::translate("MainWindow", "Roughness", nullptr));
+        persistenceLabel1_3->setText(QCoreApplication::translate("MainWindow", "Persistence", nullptr));
+        minValueLabel1_3->setText(QCoreApplication::translate("MainWindow", "Min Value", nullptr));
+        centerLabel1_3->setText(QCoreApplication::translate("MainWindow", "Center", nullptr));
+        xLabel1_3->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
+        yLabel1_3->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
+        zLabel1_3->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Oceans", nullptr));
         noiseLabel->setText(QCoreApplication::translate("MainWindow", "Noise", nullptr));
         resolutionLabel->setText(QCoreApplication::translate("MainWindow", "Resolution", nullptr));
         mountainColorLabel->setText(QCoreApplication::translate("MainWindow", "Mountain Color", nullptr));
@@ -1061,3 +1384,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
+#endif // UI_MAINWINDOW_H
