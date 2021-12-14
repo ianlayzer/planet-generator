@@ -21,10 +21,11 @@ struct NoiseLayerSettings {
 };
 
 struct NoiseSettings {
-    NoiseSettings(NoiseLayerSettings continentSettings, NoiseLayerSettings mountainSettings, bool useContinentsAsMask):
-        continentSettings(continentSettings), mountainSettings(mountainSettings), useContinentsAsMask(useContinentsAsMask) {}
+    NoiseSettings(NoiseLayerSettings continentSettings, NoiseLayerSettings mountainSettings, NoiseLayerSettings oceanSettings, bool useContinentsAsMask):
+        continentSettings(continentSettings), mountainSettings(mountainSettings), oceanSettings(oceanSettings), useContinentsAsMask(useContinentsAsMask) {}
     NoiseLayerSettings continentSettings;
     NoiseLayerSettings mountainSettings;
+    NoiseLayerSettings oceanSettings;
     bool useContinentsAsMask;
 };
 

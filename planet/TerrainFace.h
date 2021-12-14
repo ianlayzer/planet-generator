@@ -16,7 +16,7 @@ struct PlanetVertex : Vertex {
 
 class TerrainFace : OpenGLShape {
 public:
-    TerrainFace(int resolution, glm::vec3 up, Noise *continentNoise, Noise *mountainNoise, bool useContinentsAsMask);
+    TerrainFace(int resolution, glm::vec3 up, Noise *continentNoise, Noise *mountainNoise, Noise *oceanNoise, bool useContinentsAsMask);
     ~TerrainFace();
     void generate();
     using OpenGLShape::draw;
@@ -29,6 +29,7 @@ private:
     int m_resolution;
     Noise *m_continentNoise;
     Noise *m_mountainNoise;
+    Noise *m_oceanNoise;
     bool m_useContinentsAsMask;
     glm::vec3 m_up;
     glm::vec3 m_axisA;

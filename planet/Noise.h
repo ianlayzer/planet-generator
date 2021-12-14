@@ -13,6 +13,7 @@ public:
     Noise(NoiseLayerSettings noiseSettings);
     float getNoise(glm::vec3 point);
     float evaluate(glm::vec3 point);
+    bool isEnabled();
 private:
     float m_strength;
     float m_roughness;

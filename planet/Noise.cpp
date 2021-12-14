@@ -172,10 +172,11 @@ float Noise::getNoise(glm::vec3 point) {
     return 32.0f*(n0 + n1 + n2 + n3);
 }
 
+bool Noise::isEnabled() {
+    return m_isEnabled;
+}
+
 float Noise::evaluate(glm::vec3 point) {
-    if (!m_isEnabled) {
-        return 0.f;
-    }
     float noiseValue = 0.f;
     float frequency = m_baseRoughness;
     float amplitude = 1.f;

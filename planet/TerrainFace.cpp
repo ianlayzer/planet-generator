@@ -1,8 +1,8 @@
 #include "TerrainFace.h"
 #include <iostream>
 
-TerrainFace::TerrainFace(int resolution, glm::vec3 up, Noise *continentNoise, Noise *mountainNoise, bool useContinentsAsMask):
-    m_resolution(resolution), m_continentNoise(continentNoise), m_mountainNoise(mountainNoise), m_up(up),
+TerrainFace::TerrainFace(int resolution, glm::vec3 up, Noise *continentNoise, Noise *mountainNoise, Noise *oceanNoise, bool useContinentsAsMask):
+    m_resolution(resolution), m_continentNoise(continentNoise), m_mountainNoise(mountainNoise), m_oceanNoise(oceanNoise), m_up(up),
     m_useContinentsAsMask(useContinentsAsMask)
 {
     m_axisA = glm::vec3(m_up.y, m_up.z, m_up.x);
@@ -27,7 +27,9 @@ void TerrainFace::generate() {
             glm::vec3 position = m_up + (percent.x - 0.5f) * 2 * m_axisA + (percent.y - 0.5f) * 2 * m_axisB;
             position = glm::normalize(position);
             float elevation = evaluateNoise(position);
-            position *= elevation;
+            if (elevation > 1.f) {
+                position *= elevation;
+            }
             m_vertices[index] = PlanetVertex(position, elevation, glm::vec3(), 0);
         }
     }
@@ -100,9 +102,14 @@ glm::vec3 TerrainFace::getFaceNormal(glm::vec3 pointA, glm::vec3 pointB, glm::ve
 }
 
 float TerrainFace::evaluateNoise(glm::vec3 point) {
-    float continentNoise = m_continentNoise->evaluate(point);
-    float mountainNoise = m_mountainNoise->evaluate(point);
-    float mask = m_useContinentsAsMask ? continentNoise : 1.f;
+    float firstLayerNoise = m_continentNoise->evaluate(point);
+    float continentNoise = m_continentNoise->isEnabled() ? firstLayerNoise : 0.f;
+    float mountainNoise = m_mountainNoise->isEnabled() ? m_mountainNoise->evaluate(point) : 0.f;
+    float mask = m_useContinentsAsMask ? firstLayerNoise : 1.f;
+    float ocean = 0.f;
     float elevation = continentNoise + mountainNoise * mask;
-    return (elevation + 1);
+    if (elevation < 0.001f) {
+        ocean = m_oceanNoise->isEnabled() ? - m_oceanNoise->evaluate(point) : 0.f;
+    }
+    return (elevation + ocean + 1);
 }

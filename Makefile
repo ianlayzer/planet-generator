@@ -311,6 +311,7 @@ DIST          = shaders/normals/normals.vert \
 		gl/OpenGLShape.h \
 		planet/Noise.h \
 		planet/Planet.h \
+		planet/PlanetSettings.h \
 		planet/TerrainFace.h \
 		scene/PlanetScene.h \
 		scene/Scene.h \
@@ -795,7 +796,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.15.2/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents camera/Camera.h camera/OrbitingCamera.h gl/OpenGLShape.h planet/Noise.h planet/Planet.h planet/TerrainFace.h scene/PlanetScene.h scene/Scene.h scene/OpenGLScene.h ui/Canvas3D.h ui/Settings.h ui/mainwindow.h ui/Databinding.h ui_mainwindow.h gl/shaders/Shader.h gl/GLDebug.h gl/shaders/ShaderAttribLocations.h gl/datatype/VBOAttribMarker.h gl/datatype/VBO.h gl/datatype/IBO.h gl/datatype/VAO.h gl/datatype/FBO.h gl/textures/Texture.h gl/textures/Texture2D.h gl/textures/TextureParameters.h gl/textures/TextureParametersBuilder.h gl/textures/RenderBuffer.h gl/textures/DepthBuffer.h gl/shaders/CS123Shader.h gl/util/FullScreenQuad.h lib/CS123XmlSceneParser.h lib/CS123SceneData.h lib/CS123ISceneParser.h lib/ResourceLoader.h glew-1.10.0/include/GL/glew.h lib/RGBA.h $(DISTDIR)/
+	$(COPY_FILE) --parents camera/Camera.h camera/OrbitingCamera.h gl/OpenGLShape.h planet/Noise.h planet/Planet.h planet/PlanetSettings.h planet/TerrainFace.h scene/PlanetScene.h scene/Scene.h scene/OpenGLScene.h ui/Canvas3D.h ui/Settings.h ui/mainwindow.h ui/Databinding.h ui_mainwindow.h gl/shaders/Shader.h gl/GLDebug.h gl/shaders/ShaderAttribLocations.h gl/datatype/VBOAttribMarker.h gl/datatype/VBO.h gl/datatype/IBO.h gl/datatype/VAO.h gl/datatype/FBO.h gl/textures/Texture.h gl/textures/Texture2D.h gl/textures/TextureParameters.h gl/textures/TextureParametersBuilder.h gl/textures/RenderBuffer.h gl/textures/DepthBuffer.h gl/shaders/CS123Shader.h gl/util/FullScreenQuad.h lib/CS123XmlSceneParser.h lib/CS123SceneData.h lib/CS123ISceneParser.h lib/ResourceLoader.h glew-1.10.0/include/GL/glew.h lib/RGBA.h $(DISTDIR)/
 	$(COPY_FILE) --parents camera/OrbitingCamera.cpp gl/OpenGLShape.cpp planet/Noise.cpp planet/Planet.cpp planet/TerrainFace.cpp scene/PlanetScene.cpp scene/Scene.cpp scene/OpenGLScene.cpp ui/Canvas3D.cpp ui/Settings.cpp ui/mainwindow.cpp ui/Databinding.cpp lib/CS123XmlSceneParser.cpp lib/ResourceLoader.cpp gl/shaders/Shader.cpp gl/GLDebug.cpp gl/datatype/VBOAttribMarker.cpp gl/datatype/VBO.cpp gl/datatype/IBO.cpp gl/datatype/VAO.cpp gl/datatype/FBO.cpp gl/textures/Texture.cpp gl/textures/Texture2D.cpp gl/textures/TextureParameters.cpp gl/textures/TextureParametersBuilder.cpp gl/textures/RenderBuffer.cpp gl/textures/DepthBuffer.cpp gl/shaders/CS123Shader.cpp gl/util/FullScreenQuad.cpp main.cpp glew-1.10.0/src/glew.c lib/RGBA.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ui/mainwindow.ui $(DISTDIR)/
 
@@ -1084,7 +1085,8 @@ OrbitingCamera.o: camera/OrbitingCamera.cpp glm/gtc/matrix_transform.hpp \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
 		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
-		lib/RGBA.h
+		lib/RGBA.h \
+		planet/PlanetSettings.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o OrbitingCamera.o camera/OrbitingCamera.cpp
 
 OpenGLShape.o: gl/OpenGLShape.cpp gl/OpenGLShape.h \
@@ -1247,7 +1249,10 @@ Noise.o: planet/Noise.cpp planet/Noise.h \
 		glm/vector_relational.hpp \
 		glm/integer.hpp \
 		glm/detail/func_integer.hpp \
-		glm/detail/func_integer.inl
+		glm/detail/func_integer.inl \
+		planet/PlanetSettings.h \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Noise.o planet/Noise.cpp
 
 Planet.o: planet/Planet.cpp planet/Planet.h \
@@ -1330,7 +1335,10 @@ Planet.o: planet/Planet.cpp planet/Planet.h \
 		glm/detail/func_integer.inl \
 		gl/OpenGLShape.h \
 		glew-1.10.0/include/GL/glew.h \
-		planet/Noise.h
+		planet/Noise.h \
+		planet/PlanetSettings.h \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Planet.o planet/Planet.cpp
 
 TerrainFace.o: planet/TerrainFace.cpp planet/TerrainFace.h \
@@ -1412,7 +1420,10 @@ TerrainFace.o: planet/TerrainFace.cpp planet/TerrainFace.h \
 		glm/detail/func_integer.inl \
 		gl/OpenGLShape.h \
 		glew-1.10.0/include/GL/glew.h \
-		planet/Noise.h
+		planet/Noise.h \
+		planet/PlanetSettings.h \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TerrainFace.o planet/TerrainFace.cpp
 
 PlanetScene.o: scene/PlanetScene.cpp scene/PlanetScene.h \
@@ -1504,6 +1515,7 @@ PlanetScene.o: scene/PlanetScene.cpp scene/PlanetScene.h \
 		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
 		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
 		lib/RGBA.h \
+		planet/PlanetSettings.h \
 		planet/Planet.h \
 		planet/TerrainFace.h \
 		gl/OpenGLShape.h \
@@ -1832,7 +1844,8 @@ OpenGLScene.o: scene/OpenGLScene.cpp scene/OpenGLScene.h \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
 		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
-		lib/RGBA.h
+		lib/RGBA.h \
+		planet/PlanetSettings.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o OpenGLScene.o scene/OpenGLScene.cpp
 
 Canvas3D.o: ui/Canvas3D.cpp ui/Canvas3D.h \
@@ -1933,6 +1946,7 @@ Canvas3D.o: ui/Canvas3D.cpp ui/Canvas3D.h \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
 		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
+		planet/PlanetSettings.h \
 		scene/PlanetScene.h \
 		scene/OpenGLScene.h \
 		scene/Scene.h \
@@ -2035,6 +2049,7 @@ Settings.o: ui/Settings.cpp ui/Settings.h \
 		glm/integer.hpp \
 		glm/detail/func_integer.hpp \
 		glm/detail/func_integer.inl \
+		planet/PlanetSettings.h \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QFile \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qfile.h \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QSettings \
@@ -2165,6 +2180,7 @@ mainwindow.o: ui/mainwindow.cpp ui/mainwindow.h \
 		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
 		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
 		lib/RGBA.h \
+		planet/PlanetSettings.h \
 		planet/Planet.h \
 		planet/TerrainFace.h \
 		gl/OpenGLShape.h \
@@ -2544,6 +2560,7 @@ CS123Shader.o: gl/shaders/CS123Shader.cpp gl/shaders/CS123Shader.h \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		lib/RGBA.h \
+		planet/PlanetSettings.h \
 		gl/GLDebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o CS123Shader.o gl/shaders/CS123Shader.cpp
 

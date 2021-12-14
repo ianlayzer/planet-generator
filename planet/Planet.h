@@ -16,6 +16,7 @@ private:
     std::vector<std::unique_ptr<TerrainFace>> m_faces;
     std::unique_ptr<Noise> m_continentNoise;
     std::unique_ptr<Noise> m_mountainNoise;
+    std::unique_ptr<Noise> m_oceanNoise;
 };
 
 #endif // PLANET_H

@@ -46,27 +46,30 @@ void Settings::loadSettingsOrDefaults() {
     // Shapes
     shapeType = s.value("shapeType", SHAPE_SPHERE).toInt();
     resolution = s.value("resolution", 50).toInt();
-    noiseRoughnessCont = s.value("roughnessCont", 1).toFloat();
-    noiseBaseRoughnessCont = s.value("baseRoughnessCont", 1).toFloat();
-    noisePersistenceCont = s.value("persistenceCont", 1).toFloat();
+
+    noiseRoughnessCont = s.value("roughnessCont", 1.83).toFloat();
+    noiseBaseRoughnessCont = s.value("baseRoughnessCont", 0.71).toFloat();
+    noisePersistenceCont = s.value("persistenceCont", 0.54).toFloat();
     noiseNumLayersCont = s.value("numLayersCont", 5).toInt();
-    noiseMinValueCont = s.value("minValueCont", 0).toFloat();
-    noiseStrengthCont = s.value("strengthCont", 1).toFloat();
-    noiseCenterXCont = s.value("noiseCenterXCont", 0).toFloat();
-    noiseCenterYCont = s.value("noiseCenterYCont", 0).toFloat();
-    noiseCenterZCont = s.value("noiseCenterZCont", 0).toFloat();
+    noiseMinValueCont = s.value("minValueCont", 1.1).toFloat();
+    noiseStrengthCont = s.value("strengthCont", 0.12).toFloat();
+    noiseCenterXCont = s.value("noiseCenterXCont", 2.86).toFloat();
+    noiseCenterYCont = s.value("noiseCenterYCont", 1.84).toFloat();
+    noiseCenterZCont = s.value("noiseCenterZCont", 2.48).toFloat();
     continentsEnabled = s.value("noiseContEnabled", true).toBool();
-    noiseRoughnessMount = s.value("roughnessMount", 1).toFloat();
-    noiseBaseRoughnessMount = s.value("baseRoughnessMount", 1).toFloat();
-    noisePersistenceMount = s.value("persistenceMount", 1).toFloat();
+
+    noiseRoughnessMount = s.value("roughnessMount", 2.34).toFloat();
+    noiseBaseRoughnessMount = s.value("baseRoughnessMount", 1.08).toFloat();
+    noisePersistenceMount = s.value("persistenceMount", 0.5).toFloat();
     noiseNumLayersMount = s.value("numLayersMount", 5).toInt();
-    noiseMinValueMount = s.value("minValueMount", 0).toFloat();
-    noiseStrengthMount = s.value("strengthMount", 1).toFloat();
+    noiseMinValueMount = s.value("minValueMount", 1.06).toFloat();
+    noiseStrengthMount = s.value("strengthMount", 5.67).toFloat();
     noiseCenterXMount = s.value("noiseCenterXMount", 0).toFloat();
     noiseCenterYMount = s.value("noiseCenterYMount", 0).toFloat();
     noiseCenterZMount = s.value("noiseCenterZMount", 0).toFloat();
     mountainsEnabled = s.value("noiseMountEnabled", true).toBool();
     useContinentsAsMask = s.value("useContinentsAsMask", true).toBool();
+
     noiseRoughnessOcean = s.value("roughnessOcean", 1).toFloat();
     noiseBaseRoughnessOcean = s.value("baseRoughnessOcean", 1).toFloat();
     noisePersistenceOcean = s.value("persistenceOcean", 1).toFloat();
@@ -237,7 +240,19 @@ PlanetSettings Settings::getPlanetSettings() {
         noiseCenterZMount,
         mountainsEnabled
     );
-    NoiseSettings noiseSettings = NoiseSettings(continentSettings, mountainSettings, useContinentsAsMask);
+    NoiseLayerSettings oceanSettings = NoiseLayerSettings(
+        noiseRoughnessOcean,
+        noiseBaseRoughnessOcean,
+        noisePersistenceOcean,
+        noiseNumLayersOcean,
+        noiseStrengthOcean,
+        noiseMinValueOcean,
+        noiseCenterXOcean,
+        noiseCenterYOcean,
+        noiseCenterZOcean,
+        oceansEnabled
+    );
+    NoiseSettings noiseSettings = NoiseSettings(continentSettings, mountainSettings, oceanSettings, useContinentsAsMask);
     ColorSettings colorSettings = ColorSettings(planetColor, planetColor, planetColor);
     return PlanetSettings(resolution, noiseSettings, colorSettings);
 }
