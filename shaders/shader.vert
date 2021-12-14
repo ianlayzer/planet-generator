@@ -50,7 +50,7 @@ void main() {
     vec3 dcol = diffuse_color;
     if (elevation < 0.85) {
         dcol = vec3(0.f, 0.f, 0.5f);
-    } else if (elevation < 1) {
+    } else if (elevation < 1.001) {
 //        ambient_color = vec3(0.f, 0.f, 1.f);
         dcol = vec3(0.f, 0.f, 1.f);
 //        specular_color = vec3(0.f, 0.f, 1.f);

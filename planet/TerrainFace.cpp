@@ -102,14 +102,22 @@ glm::vec3 TerrainFace::getFaceNormal(glm::vec3 pointA, glm::vec3 pointB, glm::ve
 }
 
 float TerrainFace::evaluateNoise(glm::vec3 point) {
-    float firstLayerNoise = m_continentNoise->evaluate(point);
-    float continentNoise = m_continentNoise->isEnabled() ? firstLayerNoise : 0.f;
+    float oceanLayerVal = m_oceanNoise->evaluate(point);
+    float oceanLayerMaskVal = std::max(0.f, oceanLayerVal - 0.5f);
+    float oceanNoise = m_oceanNoise->isEnabled() ? - oceanLayerVal : 0.f;
+    float continentLayerVal = m_continentNoise->evaluate(point);
+    float continentNoise = m_continentNoise->isEnabled() ? continentLayerVal : 0.f;
     float mountainNoise = m_mountainNoise->isEnabled() ? m_mountainNoise->evaluate(point) : 0.f;
-    float mask = m_useContinentsAsMask ? firstLayerNoise : 1.f;
-    float ocean = 0.f;
-    float elevation = continentNoise + mountainNoise * mask;
-    if (elevation < 0.001f) {
-        ocean = m_oceanNoise->isEnabled() ? - m_oceanNoise->evaluate(point) : 0.f;
-    }
-    return (elevation + ocean + 1);
+    float mask = m_useContinentsAsMask ? continentLayerVal : 1.f;
+    float elevation = oceanNoise + continentNoise + mountainNoise * mask;
+//    float continentLayerVal = m_continentNoise->evaluate(point);
+//    float continentNoise = m_continentNoise->isEnabled() ? continentLayerVal : 0.f;
+//    float mountainNoise = m_mountainNoise->isEnabled() ? m_mountainNoise->evaluate(point) : 0.f;
+//    float mask = m_useContinentsAsMask ? continentLayerVal : 1.f;
+//    float ocean = 0.f;
+//    float elevation = continentNoise + mountainNoise * mask;
+//    if (elevation < 0.001f) {
+//        ocean = m_oceanNoise->isEnabled() ? - m_oceanNoise->evaluate(point) : 0.f;
+//    }
+    return (elevation + 1);
 }
