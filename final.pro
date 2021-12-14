@@ -63,6 +63,7 @@ HEADERS += \
     gl/OpenGLShape.h \
     planet/Noise.h \
     planet/Planet.h \
+    planet/PlanetSettings.h \
     planet/TerrainFace.h \
     scene/PlanetScene.h \
     scene/Scene.h \

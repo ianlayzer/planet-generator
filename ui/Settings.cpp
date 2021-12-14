@@ -191,3 +191,34 @@ int Settings::getCameraMode() {
     else
         return CAMERAMODE_CAMTRANS;
 }
+
+PlanetSettings Settings::getPlanetSettings() {
+    NoiseLayerSettings continentSettings = NoiseLayerSettings(
+        noiseRoughnessCont,
+        noiseBaseRoughnessCont,
+        noisePersistenceCont,
+        noiseNumLayersCont,
+        noiseStrengthCont,
+        noiseMinValueCont,
+        noiseCenterXCont,
+        noiseCenterYCont,
+        noiseCenterZCont,
+        continentsEnabled
+    );
+    NoiseLayerSettings mountainSettings = NoiseLayerSettings(
+        noiseRoughnessMount,
+        noiseBaseRoughnessMount,
+        noisePersistenceMount,
+        noiseNumLayersMount,
+        noiseStrengthMount,
+        noiseMinValueMount,
+        noiseCenterXMount,
+        noiseCenterYMount,
+        noiseCenterZMount,
+        mountainsEnabled
+    );
+    NoiseSettings noiseSettings = NoiseSettings(continentSettings, mountainSettings, useContinentsAsMask);
+    ColorSettings colorSettings = ColorSettings(planetColor, planetColor, planetColor);
+    return PlanetSettings(resolution, noiseSettings, colorSettings);
+}
+

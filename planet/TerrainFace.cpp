@@ -1,8 +1,9 @@
 #include "TerrainFace.h"
 #include <iostream>
 
-TerrainFace::TerrainFace(int resolution, glm::vec3 up, Noise noise):
-    m_resolution(resolution), m_noise(noise), m_up(up)
+TerrainFace::TerrainFace(int resolution, glm::vec3 up, Noise *continentNoise, Noise *mountainNoise, bool useContinentsAsMask):
+    m_resolution(resolution), m_continentNoise(continentNoise), m_mountainNoise(mountainNoise), m_up(up),
+    m_useContinentsAsMask(useContinentsAsMask)
 {
     m_axisA = glm::vec3(m_up.y, m_up.z, m_up.x);
     m_axisB = glm::cross(m_up, m_axisA);
@@ -25,7 +26,7 @@ void TerrainFace::generate() {
             glm::vec2 percent = glm::vec2(x, y) / width;
             glm::vec3 position = m_up + (percent.x - 0.5f) * 2 * m_axisA + (percent.y - 0.5f) * 2 * m_axisB;
             position = glm::normalize(position);
-            float elevation = m_noise.Evaluate(position);
+            float elevation = evaluateNoise(position);
             position *= elevation;
             m_vertices[index] = PlanetVertex(position, elevation, glm::vec3(), 0);
         }
@@ -98,9 +99,10 @@ glm::vec3 TerrainFace::getFaceNormal(glm::vec3 pointA, glm::vec3 pointB, glm::ve
     return glm::normalize(glm::cross(pointB - pointA, pointC - pointA));
 }
 
-float TerrainFace::getNoise(glm::vec3 position) {
-    return (-1.0 + 2.0 * glm::fract(std::sin(position.x * 127.1f + position.y * 311.7f + position.z * 219.4f) * 43758.5453123f)) * 0.02;
+float TerrainFace::evaluateNoise(glm::vec3 point) {
+    float continentNoise = m_continentNoise->evaluate(point);
+    float mountainNoise = m_mountainNoise->evaluate(point);
+    float mask = m_useContinentsAsMask ? continentNoise : 1.f;
+    float elevation = continentNoise + mountainNoise * mask;
+    return (elevation + 1);
 }
-
-
-
