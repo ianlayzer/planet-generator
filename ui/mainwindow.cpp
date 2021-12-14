@@ -129,9 +129,15 @@ void MainWindow::dataBind() {
     BIND(BoolBinding::bindCheckbox(ui->mountainsEnabled, settings.mountainsEnabled))
     BIND(BoolBinding::bindCheckbox(ui->continentMask, settings.useContinentsAsMask))
 
-    BIND(ColorBinding::bindButtonAndTextboxes(ui->colorButton,
-                                              ui->colorRedEdit,ui->colorGreenEdit,
-                                              ui->colorBlueEdit, settings.planetColor));
+    BIND(ColorBinding::bindButtonAndTextboxes(ui->oceanColorButton,
+                                              ui->oceanColorRedEdit,ui->oceanColorGreenEdit,
+                                              ui->oceanColorBlueEdit, settings.oceanColor));
+    BIND(ColorBinding::bindButtonAndTextboxes(ui->landColorButton,
+                                              ui->landColorRedEdit,ui->landColorGreenEdit,
+                                              ui->landColorBlueEdit, settings.landColor));
+    BIND(ColorBinding::bindButtonAndTextboxes(ui->mountainColorButton,
+                                              ui->mountainColorRedEdit,ui->mountainColorGreenEdit,
+                                              ui->mountainColorBlueEdit, settings.mountainColor));
 
 #undef BIND
 

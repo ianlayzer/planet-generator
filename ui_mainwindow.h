@@ -1,13 +1,11 @@
+#pragma once
 /********************************************************************************
-** Form generated from reading UI file 'mainwindow.ui'
+** Form generated from reading UI file ''
 **
 ** Created by: Qt User Interface Compiler version 5.15.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
-
-#ifndef UI_MAINWINDOW_H
-#define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -53,17 +51,18 @@ public:
     QGroupBox *shapeParameters;
     QGridLayout *gridLayout_4;
     QHBoxLayout *horizontalLayout_9;
-    QLabel *colorLabel;
-    QPushButton *colorButton;
-    QLineEdit *colorRedEdit;
-    QLineEdit *colorGreenEdit;
-    QLineEdit *colorBlueEdit;
+    QLabel *oceanColorLabel;
+    QPushButton *oceanColorButton;
+    QLineEdit *oceanColorRedEdit;
+    QLineEdit *oceanColorGreenEdit;
+    QLineEdit *oceanColorBlueEdit;
     QFrame *line;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *resolutionLabel;
-    QSlider *resolutionSlider;
-    QLineEdit *resolutionTextbox;
-    QLabel *noiseLabel;
+    QHBoxLayout *horizontalLayout_19;
+    QLabel *landColorLabel;
+    QPushButton *landColorButton;
+    QLineEdit *landColorRedEdit;
+    QLineEdit *landColorGreenEdit;
+    QLineEdit *landColorBlueEdit;
     QTabWidget *tabWidget;
     QWidget *tab;
     QWidget *verticalLayoutWidget;
@@ -158,6 +157,17 @@ public:
     QLabel *zLabel1_2;
     QDial *noiseCenterZDial1_2;
     QSpacerItem *horizontalSpacer_14;
+    QLabel *noiseLabel;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *resolutionLabel;
+    QSlider *resolutionSlider;
+    QLineEdit *resolutionTextbox;
+    QHBoxLayout *horizontalLayout_20;
+    QLabel *mountainColorLabel;
+    QPushButton *mountainColorButton;
+    QLineEdit *mountainColorRedEdit;
+    QLineEdit *mountainColorGreenEdit;
+    QLineEdit *mountainColorBlueEdit;
     QCheckBox *planetRotationCheckbox;
     QCheckBox *useLightingCheckbox;
     QCheckBox *drawWireframeCheckbox;
@@ -207,7 +217,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         shapesDock = new QDockWidget(MainWindow);
         shapesDock->setObjectName(QString::fromUtf8("shapesDock"));
-        shapesDock->setMinimumSize(QSize(380, 798));
+        shapesDock->setMinimumSize(QSize(380, 845));
         shapesDockContents = new QWidget();
         shapesDockContents->setObjectName(QString::fromUtf8("shapesDockContents"));
         verticalLayout_7 = new QVBoxLayout(shapesDockContents);
@@ -227,30 +237,30 @@ public:
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setSpacing(6);
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        colorLabel = new QLabel(shapeParameters);
-        colorLabel->setObjectName(QString::fromUtf8("colorLabel"));
+        oceanColorLabel = new QLabel(shapeParameters);
+        oceanColorLabel->setObjectName(QString::fromUtf8("oceanColorLabel"));
 
-        horizontalLayout_9->addWidget(colorLabel);
+        horizontalLayout_9->addWidget(oceanColorLabel);
 
-        colorButton = new QPushButton(shapeParameters);
-        colorButton->setObjectName(QString::fromUtf8("colorButton"));
+        oceanColorButton = new QPushButton(shapeParameters);
+        oceanColorButton->setObjectName(QString::fromUtf8("oceanColorButton"));
 
-        horizontalLayout_9->addWidget(colorButton);
+        horizontalLayout_9->addWidget(oceanColorButton);
 
-        colorRedEdit = new QLineEdit(shapeParameters);
-        colorRedEdit->setObjectName(QString::fromUtf8("colorRedEdit"));
+        oceanColorRedEdit = new QLineEdit(shapeParameters);
+        oceanColorRedEdit->setObjectName(QString::fromUtf8("oceanColorRedEdit"));
 
-        horizontalLayout_9->addWidget(colorRedEdit);
+        horizontalLayout_9->addWidget(oceanColorRedEdit);
 
-        colorGreenEdit = new QLineEdit(shapeParameters);
-        colorGreenEdit->setObjectName(QString::fromUtf8("colorGreenEdit"));
+        oceanColorGreenEdit = new QLineEdit(shapeParameters);
+        oceanColorGreenEdit->setObjectName(QString::fromUtf8("oceanColorGreenEdit"));
 
-        horizontalLayout_9->addWidget(colorGreenEdit);
+        horizontalLayout_9->addWidget(oceanColorGreenEdit);
 
-        colorBlueEdit = new QLineEdit(shapeParameters);
-        colorBlueEdit->setObjectName(QString::fromUtf8("colorBlueEdit"));
+        oceanColorBlueEdit = new QLineEdit(shapeParameters);
+        oceanColorBlueEdit->setObjectName(QString::fromUtf8("oceanColorBlueEdit"));
 
-        horizontalLayout_9->addWidget(colorBlueEdit);
+        horizontalLayout_9->addWidget(oceanColorBlueEdit);
 
 
         gridLayout_4->addLayout(horizontalLayout_9, 2, 0, 1, 1);
@@ -260,37 +270,38 @@ public:
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
 
-        gridLayout_4->addWidget(line, 3, 0, 1, 3);
+        gridLayout_4->addWidget(line, 5, 0, 1, 3);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        resolutionLabel = new QLabel(shapeParameters);
-        resolutionLabel->setObjectName(QString::fromUtf8("resolutionLabel"));
+        horizontalLayout_19 = new QHBoxLayout();
+        horizontalLayout_19->setSpacing(6);
+        horizontalLayout_19->setObjectName(QString::fromUtf8("horizontalLayout_19"));
+        landColorLabel = new QLabel(shapeParameters);
+        landColorLabel->setObjectName(QString::fromUtf8("landColorLabel"));
 
-        horizontalLayout_2->addWidget(resolutionLabel);
+        horizontalLayout_19->addWidget(landColorLabel);
 
-        resolutionSlider = new QSlider(shapeParameters);
-        resolutionSlider->setObjectName(QString::fromUtf8("resolutionSlider"));
-        resolutionSlider->setMinimumSize(QSize(100, 0));
-        resolutionSlider->setOrientation(Qt::Horizontal);
+        landColorButton = new QPushButton(shapeParameters);
+        landColorButton->setObjectName(QString::fromUtf8("landColorButton"));
 
-        horizontalLayout_2->addWidget(resolutionSlider);
+        horizontalLayout_19->addWidget(landColorButton);
 
-        resolutionTextbox = new QLineEdit(shapeParameters);
-        resolutionTextbox->setObjectName(QString::fromUtf8("resolutionTextbox"));
-        resolutionTextbox->setMinimumSize(QSize(40, 0));
-        resolutionTextbox->setMaximumSize(QSize(40, 16777215));
+        landColorRedEdit = new QLineEdit(shapeParameters);
+        landColorRedEdit->setObjectName(QString::fromUtf8("landColorRedEdit"));
 
-        horizontalLayout_2->addWidget(resolutionTextbox);
+        horizontalLayout_19->addWidget(landColorRedEdit);
+
+        landColorGreenEdit = new QLineEdit(shapeParameters);
+        landColorGreenEdit->setObjectName(QString::fromUtf8("landColorGreenEdit"));
+
+        horizontalLayout_19->addWidget(landColorGreenEdit);
+
+        landColorBlueEdit = new QLineEdit(shapeParameters);
+        landColorBlueEdit->setObjectName(QString::fromUtf8("landColorBlueEdit"));
+
+        horizontalLayout_19->addWidget(landColorBlueEdit);
 
 
-        gridLayout_4->addLayout(horizontalLayout_2, 1, 0, 1, 1);
-
-        noiseLabel = new QLabel(shapeParameters);
-        noiseLabel->setObjectName(QString::fromUtf8("noiseLabel"));
-
-        gridLayout_4->addWidget(noiseLabel, 4, 0, 1, 1);
+        gridLayout_4->addLayout(horizontalLayout_19, 3, 0, 1, 1);
 
         tabWidget = new QTabWidget(shapeParameters);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
@@ -826,7 +837,68 @@ public:
 
         tabWidget->addTab(tab_2, QString());
 
-        gridLayout_4->addWidget(tabWidget, 7, 0, 1, 1);
+        gridLayout_4->addWidget(tabWidget, 9, 0, 1, 1);
+
+        noiseLabel = new QLabel(shapeParameters);
+        noiseLabel->setObjectName(QString::fromUtf8("noiseLabel"));
+
+        gridLayout_4->addWidget(noiseLabel, 6, 0, 1, 1);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        resolutionLabel = new QLabel(shapeParameters);
+        resolutionLabel->setObjectName(QString::fromUtf8("resolutionLabel"));
+
+        horizontalLayout_2->addWidget(resolutionLabel);
+
+        resolutionSlider = new QSlider(shapeParameters);
+        resolutionSlider->setObjectName(QString::fromUtf8("resolutionSlider"));
+        resolutionSlider->setMinimumSize(QSize(100, 0));
+        resolutionSlider->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_2->addWidget(resolutionSlider);
+
+        resolutionTextbox = new QLineEdit(shapeParameters);
+        resolutionTextbox->setObjectName(QString::fromUtf8("resolutionTextbox"));
+        resolutionTextbox->setMinimumSize(QSize(40, 0));
+        resolutionTextbox->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout_2->addWidget(resolutionTextbox);
+
+
+        gridLayout_4->addLayout(horizontalLayout_2, 1, 0, 1, 1);
+
+        horizontalLayout_20 = new QHBoxLayout();
+        horizontalLayout_20->setSpacing(6);
+        horizontalLayout_20->setObjectName(QString::fromUtf8("horizontalLayout_20"));
+        mountainColorLabel = new QLabel(shapeParameters);
+        mountainColorLabel->setObjectName(QString::fromUtf8("mountainColorLabel"));
+
+        horizontalLayout_20->addWidget(mountainColorLabel);
+
+        mountainColorButton = new QPushButton(shapeParameters);
+        mountainColorButton->setObjectName(QString::fromUtf8("mountainColorButton"));
+
+        horizontalLayout_20->addWidget(mountainColorButton);
+
+        mountainColorRedEdit = new QLineEdit(shapeParameters);
+        mountainColorRedEdit->setObjectName(QString::fromUtf8("mountainColorRedEdit"));
+
+        horizontalLayout_20->addWidget(mountainColorRedEdit);
+
+        mountainColorGreenEdit = new QLineEdit(shapeParameters);
+        mountainColorGreenEdit->setObjectName(QString::fromUtf8("mountainColorGreenEdit"));
+
+        horizontalLayout_20->addWidget(mountainColorGreenEdit);
+
+        mountainColorBlueEdit = new QLineEdit(shapeParameters);
+        mountainColorBlueEdit->setObjectName(QString::fromUtf8("mountainColorBlueEdit"));
+
+        horizontalLayout_20->addWidget(mountainColorBlueEdit);
+
+
+        gridLayout_4->addLayout(horizontalLayout_20, 4, 0, 1, 1);
 
 
         verticalLayout_7->addWidget(shapeParameters);
@@ -929,10 +1001,10 @@ public:
 #endif // QT_CONFIG(shortcut)
         shapesDock->setWindowTitle(QCoreApplication::translate("MainWindow", "Planet Properties", nullptr));
         shapeParameters->setTitle(QCoreApplication::translate("MainWindow", "Planet Parameters", nullptr));
-        colorLabel->setText(QCoreApplication::translate("MainWindow", "Color", nullptr));
-        colorButton->setText(QString());
-        resolutionLabel->setText(QCoreApplication::translate("MainWindow", "Resolution", nullptr));
-        noiseLabel->setText(QCoreApplication::translate("MainWindow", "Noise", nullptr));
+        oceanColorLabel->setText(QCoreApplication::translate("MainWindow", "Ocean Color", nullptr));
+        oceanColorButton->setText(QString());
+        landColorLabel->setText(QCoreApplication::translate("MainWindow", "Land Color", nullptr));
+        landColorButton->setText(QString());
         continentNoiseLabel->setText(QCoreApplication::translate("MainWindow", "Noise Layer 1 (Continents)", nullptr));
         continentsEnabled->setText(QCoreApplication::translate("MainWindow", "Enabled", nullptr));
         strengthLabel1->setText(QCoreApplication::translate("MainWindow", "Strength", nullptr));
@@ -962,6 +1034,10 @@ public:
         yLabel1_2->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
         zLabel1_2->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Mountains", nullptr));
+        noiseLabel->setText(QCoreApplication::translate("MainWindow", "Noise", nullptr));
+        resolutionLabel->setText(QCoreApplication::translate("MainWindow", "Resolution", nullptr));
+        mountainColorLabel->setText(QCoreApplication::translate("MainWindow", "Mountain Color", nullptr));
+        mountainColorButton->setText(QString());
         planetRotationCheckbox->setText(QCoreApplication::translate("MainWindow", "Planet rotation", nullptr));
         useLightingCheckbox->setText(QCoreApplication::translate("MainWindow", "Use lighting", nullptr));
         drawWireframeCheckbox->setText(QCoreApplication::translate("MainWindow", "Draw wireframe", nullptr));
@@ -978,4 +1054,3 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_MAINWINDOW_H

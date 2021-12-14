@@ -6,7 +6,6 @@
 
 #include <sstream>
 #include <iostream>
-#include <chrono>
 
 #include "planet/ExampleShape.h"
 
@@ -29,7 +28,7 @@ PlanetScene::PlanetScene(int width, int height) :
     loadWireframeShader();
     loadNormalsShader();
     loadNormalsArrowShader();
-    m_phongShader->setColor(settings.planetColor);
+    m_phongShader->setColor(settings.landColor);
     //TODO: [SHAPES] Allocate any additional memory you need...
 
 }
@@ -42,12 +41,12 @@ PlanetScene::~PlanetScene()
 void PlanetScene::initializeSceneMaterial() {
     // Use a shiny orange material
 //    m_material.clear();
-    m_material.cAmbient.r = settings.planetColor.redF() / 5.f;
-    m_material.cAmbient.g = settings.planetColor.greenF() / 5.f;
-    m_material.cAmbient.b = settings.planetColor.blueF() / 5.f;
-    m_material.cDiffuse.r = settings.planetColor.redF();
-    m_material.cDiffuse.g = settings.planetColor.greenF();
-    m_material.cDiffuse.b = settings.planetColor.blueF();
+    m_material.cAmbient.r = settings.landColor.redF() / 5.f;
+    m_material.cAmbient.g = settings.landColor.greenF() / 5.f;
+    m_material.cAmbient.b = settings.landColor.blueF() / 5.f;
+    m_material.cDiffuse.r = settings.landColor.redF();
+    m_material.cDiffuse.g = settings.landColor.greenF();
+    m_material.cDiffuse.b = settings.landColor.blueF();
     m_material.cSpecular.r = m_material.cSpecular.g = m_material.cSpecular.b = 0.2f;
     m_material.shininess = 15;
 }
@@ -101,10 +100,6 @@ void PlanetScene::render(Canvas3D *context) {
     if (settings.drawNormals) {
         renderNormalsPass(context);
     }
-    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-    long duration = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count();
-    long fps = 1000000 / duration;
-    std::cout << fps << " fps" << std::endl;
 }
 
 void PlanetScene::renderPhongPass(Canvas3D *context) {

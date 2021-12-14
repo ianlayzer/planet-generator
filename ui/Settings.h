@@ -127,7 +127,9 @@ struct Settings {
     bool mountainsEnabled;
     bool useContinentsAsMask;
     float shapeParameter3;
-    QColor planetColor;
+    QColor oceanColor;
+    QColor landColor;
+    QColor mountainColor;
     bool enableRotation;
     bool useLighting;           // Enable default lighting
     bool drawWireframe;         // Draw wireframe only
