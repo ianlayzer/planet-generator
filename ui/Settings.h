@@ -12,6 +12,7 @@
 #include <QColor>
 #include "RGBA.h"
 #include <glm/glm.hpp>
+#include "planet/PlanetSettings.h"
 
 // Enumeration values for the Brush types from which the user can choose in the GUI.
 enum BrushType {
@@ -83,6 +84,8 @@ struct Settings {
 
     // Saves the current settings to disk.
     void saveSettings();
+
+    PlanetSettings getPlanetSettings();
 
     // Brush
     int brushType;      // The user's selected brush @see BrushType

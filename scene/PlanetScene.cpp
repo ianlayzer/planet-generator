@@ -189,13 +189,7 @@ void PlanetScene::setLights(const glm::mat4 viewMatrix) {
 
 void PlanetScene::settingsChanged() {
     // TODO: [SHAPES] Fill this in, for now default to an example shape
-    m_planet = std::make_unique<Planet>(std::max(settings.resolution, 2), settings.noiseStrengthCont, settings.noiseRoughnessCont,
-                                        glm::vec3({settings.noiseCenterXCont, settings.noiseCenterYCont, settings.noiseCenterZCont}),
-                                        settings.noiseBaseRoughnessCont, settings.noiseNumLayersCont, settings.noisePersistenceCont,
-                                        settings.noiseMinValueCont, settings.noiseStrengthMount, settings.noiseRoughnessMount,
-                                        glm::vec3({settings.noiseCenterXMount, settings.noiseCenterYMount, settings.noiseCenterZMount}),
-                                        settings.noiseBaseRoughnessMount, settings.noiseNumLayersMount, settings.noisePersistenceMount,
-                                        settings.noiseMinValueMount, settings.continentsEnabled, settings.mountainsEnabled, settings.useContinentsAsMask);
+    m_planet = std::make_unique<Planet>(settings.getPlanetSettings());
     initializeSceneMaterial();
 }
 

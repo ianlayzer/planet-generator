@@ -3,21 +3,19 @@
 
 #include "TerrainFace.h"
 #include "Noise.h"
+#include "PlanetSettings.h"
 
 class Planet {
 public:
-    Planet(int resolution, float noiseStrength, float noiseRoughness, glm::vec3 noiseCenter,
-           float noiseBaseRoughness, int noiseNumLayers, float noisePersistence, float noiseMinValue,
-           float noiseStrengthMount, float noiseRoughnessMount, glm::vec3 noiseCenterMount,
-           float noiseBaseRoughnessMount, int noiseNumLayersMount, float noisePersistenceMount, float noiseMinValueMount,
-           bool continentsEnabled, bool mountainsEnabled, bool useContinentsAsMask);
+    Planet(PlanetSettings planetSettings);
     ~Planet();
     void generate();
     void draw();
 private:
     int m_resolution;
     std::vector<std::unique_ptr<TerrainFace>> m_faces;
-    std::unique_ptr<Noise> m_noise;
+    std::unique_ptr<Noise> m_continentNoise;
+    std::unique_ptr<Noise> m_mountainNoise;
 };
 
 #endif // PLANET_H
