@@ -60,7 +60,7 @@ SOURCES       = camera/OrbitingCamera.cpp \
 		scene/PlanetScene.cpp \
 		scene/Scene.cpp \
 		scene/OpenGLScene.cpp \
-		ui/SupportCanvas3D.cpp \
+		ui/Canvas3D.cpp \
 		ui/Settings.cpp \
 		ui/mainwindow.cpp \
 		ui/Databinding.cpp \
@@ -84,7 +84,7 @@ SOURCES       = camera/OrbitingCamera.cpp \
 		main.cpp \
 		glew-1.10.0/src/glew.c \
 		lib/RGBA.cpp qrc_resources.cpp \
-		moc_SupportCanvas3D.cpp \
+		moc_Canvas3D.cpp \
 		moc_mainwindow.cpp \
 		moc_Databinding.cpp
 OBJECTS       = OrbitingCamera.o \
@@ -95,7 +95,7 @@ OBJECTS       = OrbitingCamera.o \
 		PlanetScene.o \
 		Scene.o \
 		OpenGLScene.o \
-		SupportCanvas3D.o \
+		Canvas3D.o \
 		Settings.o \
 		mainwindow.o \
 		Databinding.o \
@@ -120,7 +120,7 @@ OBJECTS       = OrbitingCamera.o \
 		glew.o \
 		RGBA.o \
 		qrc_resources.o \
-		moc_SupportCanvas3D.o \
+		moc_Canvas3D.o \
 		moc_mainwindow.o \
 		moc_Databinding.o
 DIST          = shaders/normals/normals.vert \
@@ -315,7 +315,7 @@ DIST          = shaders/normals/normals.vert \
 		scene/PlanetScene.h \
 		scene/Scene.h \
 		scene/OpenGLScene.h \
-		ui/SupportCanvas3D.h \
+		ui/Canvas3D.h \
 		ui/Settings.h \
 		ui/mainwindow.h \
 		ui/Databinding.h \
@@ -349,7 +349,7 @@ DIST          = shaders/normals/normals.vert \
 		scene/PlanetScene.cpp \
 		scene/Scene.cpp \
 		scene/OpenGLScene.cpp \
-		ui/SupportCanvas3D.cpp \
+		ui/Canvas3D.cpp \
 		ui/Settings.cpp \
 		ui/mainwindow.cpp \
 		ui/Databinding.cpp \
@@ -795,8 +795,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.15.2/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents camera/Camera.h camera/OrbitingCamera.h gl/OpenGLShape.h planet/Noise.h planet/Planet.h planet/TerrainFace.h scene/PlanetScene.h scene/Scene.h scene/OpenGLScene.h ui/SupportCanvas3D.h ui/Settings.h ui/mainwindow.h ui/Databinding.h ui_mainwindow.h gl/shaders/Shader.h gl/GLDebug.h gl/shaders/ShaderAttribLocations.h gl/datatype/VBOAttribMarker.h gl/datatype/VBO.h gl/datatype/IBO.h gl/datatype/VAO.h gl/datatype/FBO.h gl/textures/Texture.h gl/textures/Texture2D.h gl/textures/TextureParameters.h gl/textures/TextureParametersBuilder.h gl/textures/RenderBuffer.h gl/textures/DepthBuffer.h gl/shaders/CS123Shader.h gl/util/FullScreenQuad.h lib/CS123XmlSceneParser.h lib/CS123SceneData.h lib/CS123ISceneParser.h lib/ResourceLoader.h glew-1.10.0/include/GL/glew.h lib/RGBA.h $(DISTDIR)/
-	$(COPY_FILE) --parents camera/OrbitingCamera.cpp gl/OpenGLShape.cpp planet/Noise.cpp planet/Planet.cpp planet/TerrainFace.cpp scene/PlanetScene.cpp scene/Scene.cpp scene/OpenGLScene.cpp ui/SupportCanvas3D.cpp ui/Settings.cpp ui/mainwindow.cpp ui/Databinding.cpp lib/CS123XmlSceneParser.cpp lib/ResourceLoader.cpp gl/shaders/Shader.cpp gl/GLDebug.cpp gl/datatype/VBOAttribMarker.cpp gl/datatype/VBO.cpp gl/datatype/IBO.cpp gl/datatype/VAO.cpp gl/datatype/FBO.cpp gl/textures/Texture.cpp gl/textures/Texture2D.cpp gl/textures/TextureParameters.cpp gl/textures/TextureParametersBuilder.cpp gl/textures/RenderBuffer.cpp gl/textures/DepthBuffer.cpp gl/shaders/CS123Shader.cpp gl/util/FullScreenQuad.cpp main.cpp glew-1.10.0/src/glew.c lib/RGBA.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents camera/Camera.h camera/OrbitingCamera.h gl/OpenGLShape.h planet/Noise.h planet/Planet.h planet/TerrainFace.h scene/PlanetScene.h scene/Scene.h scene/OpenGLScene.h ui/Canvas3D.h ui/Settings.h ui/mainwindow.h ui/Databinding.h ui_mainwindow.h gl/shaders/Shader.h gl/GLDebug.h gl/shaders/ShaderAttribLocations.h gl/datatype/VBOAttribMarker.h gl/datatype/VBO.h gl/datatype/IBO.h gl/datatype/VAO.h gl/datatype/FBO.h gl/textures/Texture.h gl/textures/Texture2D.h gl/textures/TextureParameters.h gl/textures/TextureParametersBuilder.h gl/textures/RenderBuffer.h gl/textures/DepthBuffer.h gl/shaders/CS123Shader.h gl/util/FullScreenQuad.h lib/CS123XmlSceneParser.h lib/CS123SceneData.h lib/CS123ISceneParser.h lib/ResourceLoader.h glew-1.10.0/include/GL/glew.h lib/RGBA.h $(DISTDIR)/
+	$(COPY_FILE) --parents camera/OrbitingCamera.cpp gl/OpenGLShape.cpp planet/Noise.cpp planet/Planet.cpp planet/TerrainFace.cpp scene/PlanetScene.cpp scene/Scene.cpp scene/OpenGLScene.cpp ui/Canvas3D.cpp ui/Settings.cpp ui/mainwindow.cpp ui/Databinding.cpp lib/CS123XmlSceneParser.cpp lib/ResourceLoader.cpp gl/shaders/Shader.cpp gl/GLDebug.cpp gl/datatype/VBOAttribMarker.cpp gl/datatype/VBO.cpp gl/datatype/IBO.cpp gl/datatype/VAO.cpp gl/datatype/FBO.cpp gl/textures/Texture.cpp gl/textures/Texture2D.cpp gl/textures/TextureParameters.cpp gl/textures/TextureParametersBuilder.cpp gl/textures/RenderBuffer.cpp gl/textures/DepthBuffer.cpp gl/shaders/CS123Shader.cpp gl/util/FullScreenQuad.cpp main.cpp glew-1.10.0/src/glew.c lib/RGBA.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ui/mainwindow.ui $(DISTDIR)/
 
 
@@ -849,13 +849,15 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Qt/5.15.2/clang_64/mkspecs/features/data/dummy.cpp
 	/Library/Developer/CommandLineTools/usr/bin/clang++ -pipe -stdlib=libc++ -std=c++14 -g -g -std=gnu++1y $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.13 -Wextra -Waddress -Wchar-subscripts -Wformat -Wmain -Wmissing-braces -Wparentheses -Wreorder -Wreturn-type -Wsequence-point -Wsign-compare -Wstrict-overflow=1 -Wswitch -Wtrigraphs -Wuninitialized -Wunused-label -Wunused-variable -Wvolatile-register-var -Wno-extra -dM -E -o moc_predefs.h ../../../Qt/5.15.2/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_SupportCanvas3D.cpp moc_mainwindow.cpp moc_Databinding.cpp
+compiler_moc_header_make_all: moc_Canvas3D.cpp moc_mainwindow.cpp moc_Databinding.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_SupportCanvas3D.cpp moc_mainwindow.cpp moc_Databinding.cpp
-moc_SupportCanvas3D.cpp: ui/SupportCanvas3D.h \
+	-$(DEL_FILE) moc_Canvas3D.cpp moc_mainwindow.cpp moc_Databinding.cpp
+moc_Canvas3D.cpp: ui/Canvas3D.h \
 		glew-1.10.0/include/GL/glew.h \
 		../../../Qt/5.15.2/clang_64/lib/QtOpenGL.framework/Headers/QGLWidget \
 		../../../Qt/5.15.2/clang_64/lib/QtOpenGL.framework/Headers/qgl.h \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		glm/glm.hpp \
 		glm/detail/_fixes.hpp \
 		glm/fwd.hpp \
@@ -934,7 +936,7 @@ moc_SupportCanvas3D.cpp: ui/SupportCanvas3D.h \
 		glm/detail/func_integer.inl \
 		moc_predefs.h \
 		../../../Qt/5.15.2/clang_64/bin/moc
-	/Users/mikeyabela/Qt/5.15.2/clang_64/bin/moc $(DEFINES) --include /Users/mikeyabela/course/cs1230/planet-generator/moc_predefs.h -I/Users/mikeyabela/Qt/5.15.2/clang_64/mkspecs/macx-clang -I/Users/mikeyabela/course/cs1230/planet-generator -I/Users/mikeyabela/course/cs1230/planet-generator/glm -I/Users/mikeyabela/course/cs1230/planet-generator/brush -I/Users/mikeyabela/course/cs1230/planet-generator/camera -I/Users/mikeyabela/course/cs1230/planet-generator/lib -I/Users/mikeyabela/course/cs1230/planet-generator/scenegraph -I/Users/mikeyabela/course/cs1230/planet-generator/ui -I/Users/mikeyabela/course/cs1230/planet-generator/glew-1.10.0/include -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtOpenGL.framework/Headers -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtXml.framework/Headers -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/mikeyabela/Qt/5.15.2/clang_64/lib ui/SupportCanvas3D.h -o moc_SupportCanvas3D.cpp
+	/Users/mikeyabela/Qt/5.15.2/clang_64/bin/moc $(DEFINES) --include /Users/mikeyabela/course/cs1230/planet-generator/moc_predefs.h -I/Users/mikeyabela/Qt/5.15.2/clang_64/mkspecs/macx-clang -I/Users/mikeyabela/course/cs1230/planet-generator -I/Users/mikeyabela/course/cs1230/planet-generator/glm -I/Users/mikeyabela/course/cs1230/planet-generator/brush -I/Users/mikeyabela/course/cs1230/planet-generator/camera -I/Users/mikeyabela/course/cs1230/planet-generator/lib -I/Users/mikeyabela/course/cs1230/planet-generator/scenegraph -I/Users/mikeyabela/course/cs1230/planet-generator/ui -I/Users/mikeyabela/course/cs1230/planet-generator/glew-1.10.0/include -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtOpenGL.framework/Headers -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtXml.framework/Headers -I/Users/mikeyabela/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/mikeyabela/Qt/5.15.2/clang_64/lib ui/Canvas3D.h -o moc_Canvas3D.cpp
 
 moc_mainwindow.cpp: ui/mainwindow.h \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QButtonGroup \
@@ -1507,14 +1509,155 @@ PlanetScene.o: scene/PlanetScene.cpp scene/PlanetScene.h \
 		gl/OpenGLShape.h \
 		planet/Noise.h \
 		camera/Camera.h \
-		ui/SupportCanvas3D.h \
+		ui/Canvas3D.h \
 		../../../Qt/5.15.2/clang_64/lib/QtOpenGL.framework/Headers/QGLWidget \
 		../../../Qt/5.15.2/clang_64/lib/QtOpenGL.framework/Headers/qgl.h \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		planet/ExampleShape.h \
 		gl/shaders/CS123Shader.h \
 		gl/shaders/Shader.h \
+		glm/ext.hpp \
+		glm/gtc/constants.hpp \
+		glm/gtc/constants.inl \
+		glm/gtc/epsilon.hpp \
+		glm/gtc/epsilon.inl \
+		glm/gtc/quaternion.hpp \
+		glm/gtc/quaternion.inl \
+		glm/gtc/matrix_access.hpp \
+		glm/gtc/matrix_access.inl \
+		glm/gtc/matrix_integer.hpp \
+		glm/gtc/matrix_inverse.hpp \
+		glm/gtc/matrix_inverse.inl \
+		glm/gtc/matrix_transform.hpp \
+		glm/gtc/matrix_transform.inl \
+		glm/gtc/noise.hpp \
+		glm/gtc/noise.inl \
+		glm/detail/_noise.hpp \
+		glm/gtc/packing.hpp \
+		glm/gtc/type_precision.hpp \
+		glm/gtc/type_precision.inl \
+		glm/gtc/packing.inl \
+		glm/gtc/random.hpp \
+		glm/gtc/random.inl \
+		glm/gtc/reciprocal.hpp \
+		glm/gtc/reciprocal.inl \
+		glm/gtc/type_ptr.hpp \
+		glm/gtc/type_ptr.inl \
+		glm/gtc/ulp.hpp \
+		glm/gtc/ulp.inl \
+		glm/gtx/associated_min_max.hpp \
+		glm/gtx/associated_min_max.inl \
+		glm/gtx/bit.hpp \
+		glm/gtx/bit.inl \
+		glm/gtx/closest_point.hpp \
+		glm/gtx/closest_point.inl \
+		glm/gtx/color_space.hpp \
+		glm/gtx/color_space.inl \
+		glm/gtx/color_space_YCoCg.hpp \
+		glm/gtx/color_space_YCoCg.inl \
+		glm/gtx/compatibility.hpp \
+		glm/gtx/compatibility.inl \
+		glm/gtx/component_wise.hpp \
+		glm/gtx/component_wise.inl \
+		glm/gtx/dual_quaternion.hpp \
+		glm/gtx/dual_quaternion.inl \
+		glm/gtx/euler_angles.hpp \
+		glm/gtx/euler_angles.inl \
+		glm/gtx/extend.hpp \
+		glm/gtx/extend.inl \
+		glm/gtx/extented_min_max.hpp \
+		glm/gtx/extented_min_max.inl \
+		glm/gtx/fast_exponential.hpp \
+		glm/gtx/fast_exponential.inl \
+		glm/gtx/fast_square_root.hpp \
+		glm/gtx/fast_square_root.inl \
+		glm/gtx/fast_trigonometry.hpp \
+		glm/gtx/fast_trigonometry.inl \
+		glm/gtx/gradient_paint.hpp \
+		glm/gtx/optimum_pow.hpp \
+		glm/gtx/optimum_pow.inl \
+		glm/gtx/gradient_paint.inl \
+		glm/gtx/handed_coordinate_space.hpp \
+		glm/gtx/handed_coordinate_space.inl \
+		glm/gtx/inertia.hpp \
+		glm/gtx/inertia.inl \
+		glm/gtx/int_10_10_10_2.hpp \
+		glm/gtx/raw_data.hpp \
+		glm/gtx/raw_data.inl \
+		glm/gtx/int_10_10_10_2.inl \
+		glm/gtx/integer.hpp \
+		glm/gtx/integer.inl \
+		glm/gtx/intersect.hpp \
+		glm/gtx/intersect.inl \
+		glm/gtx/log_base.hpp \
+		glm/gtx/log_base.inl \
+		glm/gtx/matrix_cross_product.hpp \
+		glm/gtx/matrix_cross_product.inl \
+		glm/gtx/matrix_interpolation.hpp \
+		glm/gtx/matrix_interpolation.inl \
+		glm/gtx/matrix_major_storage.hpp \
+		glm/gtx/matrix_major_storage.inl \
+		glm/gtx/matrix_operation.hpp \
+		glm/gtx/matrix_operation.inl \
+		glm/gtx/matrix_query.hpp \
+		glm/gtx/vector_query.hpp \
+		glm/gtx/vector_query.inl \
+		glm/gtx/matrix_query.inl \
+		glm/gtx/mixed_product.hpp \
+		glm/gtx/mixed_product.inl \
+		glm/gtx/multiple.hpp \
+		glm/gtx/multiple.inl \
+		glm/gtx/norm.hpp \
+		glm/gtx/quaternion.hpp \
+		glm/gtx/quaternion.inl \
+		glm/gtx/norm.inl \
+		glm/gtx/normal.hpp \
+		glm/gtx/normal.inl \
+		glm/gtx/normalize_dot.hpp \
+		glm/gtx/normalize_dot.inl \
+		glm/gtx/number_precision.hpp \
+		glm/gtx/number_precision.inl \
+		glm/gtx/orthonormalize.hpp \
+		glm/gtx/orthonormalize.inl \
+		glm/gtx/perpendicular.hpp \
+		glm/gtx/projection.hpp \
+		glm/gtx/projection.inl \
+		glm/gtx/perpendicular.inl \
+		glm/gtx/polar_coordinates.hpp \
+		glm/gtx/polar_coordinates.inl \
+		glm/gtx/rotate_vector.hpp \
+		glm/gtx/transform.hpp \
+		glm/gtx/transform.inl \
+		glm/gtx/rotate_vector.inl \
+		glm/gtx/spline.hpp \
+		glm/gtx/spline.inl \
+		glm/gtx/std_based_type.hpp \
+		glm/gtx/std_based_type.inl \
+		glm/gtx/string_cast.hpp \
+		glm/gtx/string_cast.inl \
+		glm/gtx/transform2.hpp \
+		glm/gtx/transform2.inl \
+		glm/gtx/vec1.hpp \
+		glm/gtx/vec1.inl \
+		glm/gtx/vector_angle.hpp \
+		glm/gtx/vector_angle.inl \
+		glm/gtx/wrap.hpp \
+		glm/gtx/wrap.inl \
+		glm/gtx/simd_vec4.hpp \
+		glm/detail/intrinsic_common.hpp \
+		glm/detail/intrinsic_common.inl \
+		glm/detail/intrinsic_geometric.hpp \
+		glm/detail/intrinsic_geometric.inl \
+		glm/detail/intrinsic_integer.hpp \
+		glm/detail/intrinsic_integer.inl \
+		glm/gtx/simd_vec4.inl \
+		glm/gtx/simd_mat4.hpp \
+		glm/detail/intrinsic_matrix.hpp \
+		glm/detail/intrinsic_matrix.inl \
+		glm/gtx/simd_mat4.inl \
 		lib/ResourceLoader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o PlanetScene.o scene/PlanetScene.cpp
 
@@ -1692,10 +1835,12 @@ OpenGLScene.o: scene/OpenGLScene.cpp scene/OpenGLScene.h \
 		lib/RGBA.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o OpenGLScene.o scene/OpenGLScene.cpp
 
-SupportCanvas3D.o: ui/SupportCanvas3D.cpp ui/SupportCanvas3D.h \
+Canvas3D.o: ui/Canvas3D.cpp ui/Canvas3D.h \
 		glew-1.10.0/include/GL/glew.h \
 		../../../Qt/5.15.2/clang_64/lib/QtOpenGL.framework/Headers/QGLWidget \
 		../../../Qt/5.15.2/clang_64/lib/QtOpenGL.framework/Headers/qgl.h \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		glm/glm.hpp \
 		glm/detail/_fixes.hpp \
 		glm/fwd.hpp \
@@ -1806,7 +1951,7 @@ SupportCanvas3D.o: ui/SupportCanvas3D.cpp ui/SupportCanvas3D.h \
 		../../../Qt/5.15.2/clang_64/lib/QtXml.framework/Headers/qdom.h \
 		../../../Qt/5.15.2/clang_64/lib/QtXml.framework/Headers/qxml.h \
 		../../../Qt/5.15.2/clang_64/lib/QtXml.framework/Headers/qtxmlversion.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SupportCanvas3D.o ui/SupportCanvas3D.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Canvas3D.o ui/Canvas3D.cpp
 
 Settings.o: ui/Settings.cpp ui/Settings.h \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
@@ -1923,7 +2068,7 @@ mainwindow.o: ui/mainwindow.cpp ui/mainwindow.h \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qdial.h \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
 		../../../Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		ui/SupportCanvas3D.h \
+		ui/Canvas3D.h \
 		glew-1.10.0/include/GL/glew.h \
 		../../../Qt/5.15.2/clang_64/lib/QtOpenGL.framework/Headers/QGLWidget \
 		../../../Qt/5.15.2/clang_64/lib/QtOpenGL.framework/Headers/qgl.h \
@@ -2430,8 +2575,8 @@ RGBA.o: lib/RGBA.cpp lib/RGBA.h
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
-moc_SupportCanvas3D.o: moc_SupportCanvas3D.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_SupportCanvas3D.o moc_SupportCanvas3D.cpp
+moc_Canvas3D.o: moc_Canvas3D.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Canvas3D.o moc_Canvas3D.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

@@ -26,7 +26,9 @@ void TerrainFace::generate() {
             glm::vec3 position = m_up + (percent.x - 0.5f) * 2 * m_axisA + (percent.y - 0.5f) * 2 * m_axisB;
             position = glm::normalize(position);
             float elevation = m_noise.Evaluate(position);
-            position *= elevation;
+//            if (elevation > 0) {
+                position *= elevation;
+//            }
             m_vertices[index] = PlanetVertex(position, elevation, glm::vec3(), 0);
         }
     }

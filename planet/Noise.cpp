@@ -214,11 +214,29 @@ float Noise::evaluateMountains(glm::vec3 point) {
     return noiseValue * m_strengthMount;
 }
 
+float Noise::evaluateOceans(glm::vec3 point) {
+    float noiseValue = 0.f;
+    float frequency = m_baseRoughnessCont;
+    float amplitude = 1.f;
+    for (int i = 0; i < m_numLayersCont; i++) {
+        float v = getNoise(point * frequency + m_centerCont);
+        noiseValue += (v + 1) * 0.5f * amplitude;
+        frequency *= m_roughnessCont;
+        amplitude *= m_persistenceCont;
+    }
+    noiseValue = std::max(0.f, noiseValue - m_minValueCont);
+    return -(noiseValue * m_strengthCont);
+}
+
 float Noise::Evaluate(glm::vec3 point) {
-    float firstLayerVal = evaluateContinents(point);
-    float continents = m_continentsEnabled ? firstLayerVal : 0.f;
-    float mask = m_useContinentsAsMask ? firstLayerVal : 1.f;
-    float mountains = m_mountainsEnabled ? evaluateMountains(point) : 0.f;
-    float elevation = continents + mountains * mask;
-    return (elevation + 1);
+//    float firstLayerVal = evaluateContinents(point);
+//    float continents = m_continentsEnabled ? firstLayerVal : 0.f;
+//    float mask = m_useContinentsAsMask ? firstLayerVal : 1.f;
+//    float mountains = m_mountainsEnabled ? evaluateMountains(point) : 0.f;
+//    float elevation = continents + mountains * mask;
+//    if (elevation < .001) {
+        float oceans = evaluateOceans(point);
+        return (oceans + 1);
+//    }
+//    return (elevation + 1);
 }

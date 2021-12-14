@@ -37,6 +37,7 @@ private:
 
     float evaluateContinents(glm::vec3 point);
     float evaluateMountains(glm::vec3 point);
+    float evaluateOceans(glm::vec3 point);
 };
 
 #endif // NOISE_H

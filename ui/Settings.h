@@ -123,6 +123,16 @@ struct Settings {
     float noiseCenterZMount;
     bool mountainsEnabled;
     bool useContinentsAsMask;
+    float noiseRoughnessOcean;
+    float noiseBaseRoughnessOcean;
+    float noisePersistenceOcean;
+    int noiseNumLayersOcean;
+    float noiseStrengthOcean;
+    float noiseMinValueOcean;
+    float noiseCenterXOcean;
+    float noiseCenterYOcean;
+    float noiseCenterZOcean;
+    bool oceansEnabled;
     float shapeParameter3;
     QColor planetColor;
     bool enableRotation;
