@@ -37,11 +37,12 @@ struct ColorSettings {
 };
 
 struct PlanetSettings {
-    PlanetSettings(int resolution, NoiseSettings noiseSettings, ColorSettings colorSettings):
-        resolution(resolution), noiseSettings(noiseSettings), colorSettings(colorSettings) {}
+    PlanetSettings(int resolution, NoiseSettings noiseSettings, ColorSettings colorSettings, bool onlyShowOneFace):
+        resolution(resolution), noiseSettings(noiseSettings), colorSettings(colorSettings), onlyShowOneFace(onlyShowOneFace) {}
     int resolution;
     NoiseSettings noiseSettings;
     ColorSettings colorSettings;
+    bool onlyShowOneFace;
 };
 
 #endif // PLANETSETTINGS_H

@@ -128,6 +128,7 @@ void MainWindow::dataBind() {
     BIND(BoolBinding::bindCheckbox(ui->continentsEnabled, settings.continentsEnabled))
     BIND(BoolBinding::bindCheckbox(ui->mountainsEnabled, settings.mountainsEnabled))
     BIND(BoolBinding::bindCheckbox(ui->continentMask, settings.useContinentsAsMask))
+    BIND(BoolBinding::bindCheckbox(ui->oneFaceCheckbox, settings.onlyShowOneFace))
 
     BIND(ColorBinding::bindButtonAndTextboxes(ui->oceanColorButton,
                                               ui->oceanColorRedEdit,ui->oceanColorGreenEdit,
