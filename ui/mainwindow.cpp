@@ -90,7 +90,7 @@ void MainWindow::dataBind() {
 
     // Shapes dock
     BIND(IntBinding::bindSliderAndTextbox(
-        ui->resolutionSlider, ui->resolutionTextbox, settings.resolution, 1.f, 200.f))
+        ui->resolutionSlider, ui->resolutionTextbox, settings.resolution, 1.f, 300.f))
     BIND(FloatBinding::bindSliderAndTextbox(
         ui->strengthSlider1, ui->strengthTextbox1, settings.noiseStrengthCont, 0.0f, 1.0f))
     BIND(FloatBinding::bindSliderAndTextbox(
@@ -132,7 +132,7 @@ void MainWindow::dataBind() {
     BIND(FloatBinding::bindSliderAndTextbox(
          ui->persistenceSlider1_3, ui->persistenceTextbox1_3, settings.noisePersistenceOcean, 0.f, 1.f))
     BIND(FloatBinding::bindSliderAndTextbox(
-         ui->minValueSlider1_2, ui->minValueTextbox1_3, settings.noiseMinValueOcean, 0.f, 2.f))
+         ui->minValueSlider1_3, ui->minValueTextbox1_3, settings.noiseMinValueOcean, 0.f, 2.f))
     BIND(FloatBinding::bindDial(ui->noiseCenterXDial1_3, settings.noiseCenterXOcean, -5.f, 5.f, true))
     BIND(FloatBinding::bindDial(ui->noiseCenterYDial1_3, settings.noiseCenterYOcean, -5.f, 5.f, true))
     BIND(FloatBinding::bindDial(ui->noiseCenterZDial1_3, settings.noiseCenterZOcean, -5.f, 5.f, true))
@@ -145,9 +145,15 @@ void MainWindow::dataBind() {
     BIND(BoolBinding::bindCheckbox(ui->oceansEnabled, settings.oceansEnabled))
     BIND(BoolBinding::bindCheckbox(ui->continentMask, settings.useContinentsAsMask))
 
-    BIND(ColorBinding::bindButtonAndTextboxes(ui->colorButton,
-                                              ui->colorRedEdit,ui->colorGreenEdit,
-                                              ui->colorBlueEdit, settings.planetColor));
+    BIND(ColorBinding::bindButtonAndTextboxes(ui->oceanColorButton,
+                                              ui->oceanColorRedEdit,ui->oceanColorGreenEdit,
+                                              ui->oceanColorBlueEdit, settings.oceanColor));
+    BIND(ColorBinding::bindButtonAndTextboxes(ui->landColorButton,
+                                              ui->landColorRedEdit,ui->landColorGreenEdit,
+                                              ui->landColorBlueEdit, settings.landColor));
+    BIND(ColorBinding::bindButtonAndTextboxes(ui->mountainColorButton,
+                                              ui->mountainColorRedEdit,ui->mountainColorGreenEdit,
+                                              ui->mountainColorBlueEdit, settings.mountainColor));
 
 #undef BIND
 

@@ -81,7 +81,9 @@ void Settings::loadSettingsOrDefaults() {
     noiseCenterZOcean = s.value("noiseCenterZOcean", 0).toFloat();
     oceansEnabled = s.value("noiseOceanEnabled", true).toBool();
     shapeParameter3 = s.value("shapeParameter3", 15).toDouble();
-    planetColor = s.value("planetColor", QColor(255, 100, 230)).value<QColor>();
+    oceanColor = s.value("oceanColor", QColor(0, 100, 255)).value<QColor>();
+    landColor = s.value("landColor", QColor(40, 230, 20)).value<QColor>();
+    mountainColor = s.value("mountainColor", QColor(100, 100, 100)).value<QColor>();
     enableRotation = s.value("enableRotation", false).toBool();
     useLighting = s.value("useLighting", true).toBool();
     drawWireframe = s.value("drawWireframe", true).toBool();
@@ -253,7 +255,7 @@ PlanetSettings Settings::getPlanetSettings() {
         oceansEnabled
     );
     NoiseSettings noiseSettings = NoiseSettings(continentSettings, mountainSettings, oceanSettings, useContinentsAsMask);
-    ColorSettings colorSettings = ColorSettings(planetColor, planetColor, planetColor);
+    ColorSettings colorSettings = ColorSettings(landColor, landColor, landColor);
     return PlanetSettings(resolution, noiseSettings, colorSettings);
 }
 

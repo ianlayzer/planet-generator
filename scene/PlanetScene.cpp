@@ -6,7 +6,6 @@
 
 #include <sstream>
 #include <iostream>
-#include <chrono>
 
 #include "planet/ExampleShape.h"
 
@@ -29,7 +28,7 @@ PlanetScene::PlanetScene(int width, int height) :
     loadWireframeShader();
     loadNormalsShader();
     loadNormalsArrowShader();
-    m_phongShader->setColor(settings.planetColor);
+    m_phongShader->setColor(settings.landColor);
     //TODO: [SHAPES] Allocate any additional memory you need...
 
 }
@@ -41,17 +40,14 @@ PlanetScene::~PlanetScene()
 
 void PlanetScene::initializeSceneMaterial() {
     // Use a shiny orange material
-    m_material.clear();
-    m_material.cAmbient.r = settings.planetColor.redF() / 5.f;
-    m_material.cAmbient.g = settings.planetColor.greenF() / 5.f;
-    m_material.cAmbient.b = settings.planetColor.blueF() / 5.f;
-    m_material.cDiffuse.r = settings.planetColor.redF();
-    m_material.cDiffuse.g = settings.planetColor.greenF();
-    m_material.cDiffuse.b = settings.planetColor.blueF();
-    m_material.cSpecular.r = m_material.cSpecular.g = m_material.cSpecular.b = 0.4f;
-//    m_material.cSpecular.r = settings.planetColor.redF();
-//    m_material.cSpecular.g = settings.planetColor.greenF();
-//    m_material.cSpecular.b = settings.planetColor.blueF();
+//    m_material.clear();
+    m_material.cAmbient.r = settings.landColor.redF() / 5.f;
+    m_material.cAmbient.g = settings.landColor.greenF() / 5.f;
+    m_material.cAmbient.b = settings.landColor.blueF() / 5.f;
+    m_material.cDiffuse.r = settings.landColor.redF();
+    m_material.cDiffuse.g = settings.landColor.greenF();
+    m_material.cDiffuse.b = settings.landColor.blueF();
+    m_material.cSpecular.r = m_material.cSpecular.g = m_material.cSpecular.b = 0.2f;
     m_material.shininess = 15;
 }
 
