@@ -220,6 +220,7 @@ public:
     QCheckBox *useLightingCheckbox;
     QCheckBox *drawWireframeCheckbox;
     QCheckBox *drawNormalsCheckbox;
+    QCheckBox *oneFaceCheckbox;
     QWidget *shapesDockEmptySpace;
     QMenuBar *menuBar;
     QMenu *menuFile;
@@ -265,7 +266,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         shapesDock = new QDockWidget(MainWindow);
         shapesDock->setObjectName(QString::fromUtf8("shapesDock"));
-        shapesDock->setMinimumSize(QSize(380, 845));
+        shapesDock->setMinimumSize(QSize(380, 866));
         shapesDockContents = new QWidget();
         shapesDockContents->setObjectName(QString::fromUtf8("shapesDockContents"));
         verticalLayout_7 = new QVBoxLayout(shapesDockContents);
@@ -1232,6 +1233,11 @@ public:
 
         verticalLayout_7->addWidget(drawNormalsCheckbox);
 
+        oneFaceCheckbox = new QCheckBox(shapesDockContents);
+        oneFaceCheckbox->setObjectName(QString::fromUtf8("oneFaceCheckbox"));
+
+        verticalLayout_7->addWidget(oneFaceCheckbox);
+
         shapesDockEmptySpace = new QWidget(shapesDockContents);
         shapesDockEmptySpace->setObjectName(QString::fromUtf8("shapesDockEmptySpace"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
@@ -1365,6 +1371,7 @@ public:
         useLightingCheckbox->setText(QCoreApplication::translate("MainWindow", "Use lighting", nullptr));
         drawWireframeCheckbox->setText(QCoreApplication::translate("MainWindow", "Draw wireframe", nullptr));
         drawNormalsCheckbox->setText(QCoreApplication::translate("MainWindow", "Draw normals", nullptr));
+        oneFaceCheckbox->setText(QCoreApplication::translate("MainWindow", "One face only", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "&File", nullptr));
         menuToolbars->setTitle(QCoreApplication::translate("MainWindow", "&Toolbars", nullptr));
     } // retranslateUi

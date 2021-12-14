@@ -17,6 +17,7 @@ private:
     std::unique_ptr<Noise> m_continentNoise;
     std::unique_ptr<Noise> m_mountainNoise;
     std::unique_ptr<Noise> m_oceanNoise;
+    bool m_onlyShowOneFace;
 };
 
 #endif // PLANET_H
