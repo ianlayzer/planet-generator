@@ -1,11 +1,13 @@
-#pragma once
 /********************************************************************************
-** Form generated from reading UI file ''
+** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.0
+** Created by: Qt User Interface Compiler version 5.15.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
+
+#ifndef UI_MAINWINDOW_H
+#define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -50,19 +52,32 @@ public:
     QVBoxLayout *verticalLayout_7;
     QGroupBox *shapeParameters;
     QGridLayout *gridLayout_4;
-    QHBoxLayout *horizontalLayout_9;
-    QLabel *oceanColorLabel;
-    QPushButton *oceanColorButton;
-    QLineEdit *oceanColorRedEdit;
-    QLineEdit *oceanColorGreenEdit;
-    QLineEdit *oceanColorBlueEdit;
-    QFrame *line;
     QHBoxLayout *horizontalLayout_19;
     QLabel *landColorLabel;
     QPushButton *landColorButton;
     QLineEdit *landColorRedEdit;
     QLineEdit *landColorGreenEdit;
     QLineEdit *landColorBlueEdit;
+    QHBoxLayout *horizontalLayout_9;
+    QLabel *oceanColorLabel;
+    QPushButton *oceanColorButton;
+    QLineEdit *oceanColorRedEdit;
+    QLineEdit *oceanColorGreenEdit;
+    QLineEdit *oceanColorBlueEdit;
+    QLabel *noiseLabel;
+    QHBoxLayout *horizontalLayout_ocean_2;
+    QLabel *mountainColorLabel;
+    QPushButton *mountainColorButton;
+    QLineEdit *mountainColorRedEdit;
+    QLineEdit *mountainColorGreenEdit;
+    QLineEdit *mountainColorBlueEdit;
+    QHBoxLayout *horizontalLayout_27;
+    QLabel *mountainCapColorLabel;
+    QPushButton *mountainCapColorButton;
+    QLineEdit *mountainCapColorRedEdit;
+    QLineEdit *mountainCapColorGreenEdit;
+    QLineEdit *mountainCapColorBlueEdit;
+    QFrame *line;
     QTabWidget *tabWidget;
     QWidget *tab;
     QWidget *verticalLayoutWidget;
@@ -203,17 +218,16 @@ public:
     QLabel *zLabel1_3;
     QDial *noiseCenterZDial1_3;
     QSpacerItem *horizontalSpacer_21;
-    QLabel *noiseLabel;
+    QHBoxLayout *horizontalLayout_28;
+    QLabel *shoreColorLabel_2;
+    QPushButton *shoreColorButton;
+    QLineEdit *shoreColorRedEdit;
+    QLineEdit *shoreColorGreenEdit;
+    QLineEdit *shoreColorBlueEdit;
     QHBoxLayout *horizontalLayout_2;
     QLabel *resolutionLabel;
     QSlider *resolutionSlider;
     QLineEdit *resolutionTextbox;
-    QHBoxLayout *horizontalLayout_ocean_2;
-    QLabel *mountainColorLabel;
-    QPushButton *mountainColorButton;
-    QLineEdit *mountainColorRedEdit;
-    QLineEdit *mountainColorGreenEdit;
-    QLineEdit *mountainColorBlueEdit;
     QCheckBox *planetRotationCheckbox;
     QCheckBox *oneFaceCheckbox;
     QCheckBox *smoothColorsCheckbox;
@@ -222,32 +236,32 @@ public:
     QMenu *menuFile;
     QMenu *menuToolbars;
 
-    void setupUi(QMainWindow *MainWindow)
+    void setupUi(QMainWindow *Ui_MainWindow)
     {
-        if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(600, 890);
-        MainWindow->setDockNestingEnabled(true);
-        MainWindow->setDockOptions(QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks|QMainWindow::ForceTabbedDocks|QMainWindow::VerticalTabs);
-        actionNew = new QAction(MainWindow);
+        if (Ui_MainWindow->objectName().isEmpty())
+            Ui_MainWindow->setObjectName(QString::fromUtf8("Ui_MainWindow"));
+        Ui_MainWindow->resize(600, 890);
+        Ui_MainWindow->setDockNestingEnabled(true);
+        Ui_MainWindow->setDockOptions(QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks|QMainWindow::ForceTabbedDocks|QMainWindow::VerticalTabs);
+        actionNew = new QAction(Ui_MainWindow);
         actionNew->setObjectName(QString::fromUtf8("actionNew"));
-        actionOpen = new QAction(MainWindow);
+        actionOpen = new QAction(Ui_MainWindow);
         actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
-        actionSave = new QAction(MainWindow);
+        actionSave = new QAction(Ui_MainWindow);
         actionSave->setObjectName(QString::fromUtf8("actionSave"));
-        actionQuit = new QAction(MainWindow);
+        actionQuit = new QAction(Ui_MainWindow);
         actionQuit->setObjectName(QString::fromUtf8("actionQuit"));
-        actionRevert = new QAction(MainWindow);
+        actionRevert = new QAction(Ui_MainWindow);
         actionRevert->setObjectName(QString::fromUtf8("actionRevert"));
         actionRevert->setEnabled(true);
-        actionCopy3Dto2D = new QAction(MainWindow);
+        actionCopy3Dto2D = new QAction(Ui_MainWindow);
         actionCopy3Dto2D->setObjectName(QString::fromUtf8("actionCopy3Dto2D"));
-        actionClear = new QAction(MainWindow);
+        actionClear = new QAction(Ui_MainWindow);
         actionClear->setObjectName(QString::fromUtf8("actionClear"));
-        actionUseOrbitingCamera = new QAction(MainWindow);
+        actionUseOrbitingCamera = new QAction(Ui_MainWindow);
         actionUseOrbitingCamera->setObjectName(QString::fromUtf8("actionUseOrbitingCamera"));
         actionUseOrbitingCamera->setCheckable(true);
-        centralWidget = new QWidget(MainWindow);
+        centralWidget = new QWidget(Ui_MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gridLayout_10 = new QGridLayout(centralWidget);
         gridLayout_10->setSpacing(6);
@@ -259,10 +273,10 @@ public:
 
         gridLayout_10->addWidget(canvas3D, 0, 0, 1, 1);
 
-        MainWindow->setCentralWidget(centralWidget);
-        shapesDock = new QDockWidget(MainWindow);
+        Ui_MainWindow->setCentralWidget(centralWidget);
+        shapesDock = new QDockWidget(Ui_MainWindow);
         shapesDock->setObjectName(QString::fromUtf8("shapesDock"));
-        shapesDock->setMinimumSize(QSize(380, 824));
+        shapesDock->setMinimumSize(QSize(380, 900));
         shapesDockContents = new QWidget();
         shapesDockContents->setObjectName(QString::fromUtf8("shapesDockContents"));
         verticalLayout_7 = new QVBoxLayout(shapesDockContents);
@@ -279,6 +293,37 @@ public:
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         gridLayout_4->setVerticalSpacing(5);
         gridLayout_4->setContentsMargins(-1, 5, -1, 5);
+        horizontalLayout_19 = new QHBoxLayout();
+        horizontalLayout_19->setSpacing(6);
+        horizontalLayout_19->setObjectName(QString::fromUtf8("horizontalLayout_19"));
+        landColorLabel = new QLabel(shapeParameters);
+        landColorLabel->setObjectName(QString::fromUtf8("landColorLabel"));
+
+        horizontalLayout_19->addWidget(landColorLabel);
+
+        landColorButton = new QPushButton(shapeParameters);
+        landColorButton->setObjectName(QString::fromUtf8("landColorButton"));
+
+        horizontalLayout_19->addWidget(landColorButton);
+
+        landColorRedEdit = new QLineEdit(shapeParameters);
+        landColorRedEdit->setObjectName(QString::fromUtf8("landColorRedEdit"));
+
+        horizontalLayout_19->addWidget(landColorRedEdit);
+
+        landColorGreenEdit = new QLineEdit(shapeParameters);
+        landColorGreenEdit->setObjectName(QString::fromUtf8("landColorGreenEdit"));
+
+        horizontalLayout_19->addWidget(landColorGreenEdit);
+
+        landColorBlueEdit = new QLineEdit(shapeParameters);
+        landColorBlueEdit->setObjectName(QString::fromUtf8("landColorBlueEdit"));
+
+        horizontalLayout_19->addWidget(landColorBlueEdit);
+
+
+        gridLayout_4->addLayout(horizontalLayout_19, 5, 0, 1, 1);
+
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setSpacing(6);
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
@@ -310,43 +355,79 @@ public:
 
         gridLayout_4->addLayout(horizontalLayout_9, 2, 0, 1, 1);
 
+        noiseLabel = new QLabel(shapeParameters);
+        noiseLabel->setObjectName(QString::fromUtf8("noiseLabel"));
+
+        gridLayout_4->addWidget(noiseLabel, 11, 0, 1, 1);
+
+        horizontalLayout_ocean_2 = new QHBoxLayout();
+        horizontalLayout_ocean_2->setSpacing(6);
+        horizontalLayout_ocean_2->setObjectName(QString::fromUtf8("horizontalLayout_ocean_2"));
+        mountainColorLabel = new QLabel(shapeParameters);
+        mountainColorLabel->setObjectName(QString::fromUtf8("mountainColorLabel"));
+
+        horizontalLayout_ocean_2->addWidget(mountainColorLabel);
+
+        mountainColorButton = new QPushButton(shapeParameters);
+        mountainColorButton->setObjectName(QString::fromUtf8("mountainColorButton"));
+
+        horizontalLayout_ocean_2->addWidget(mountainColorButton);
+
+        mountainColorRedEdit = new QLineEdit(shapeParameters);
+        mountainColorRedEdit->setObjectName(QString::fromUtf8("mountainColorRedEdit"));
+
+        horizontalLayout_ocean_2->addWidget(mountainColorRedEdit);
+
+        mountainColorGreenEdit = new QLineEdit(shapeParameters);
+        mountainColorGreenEdit->setObjectName(QString::fromUtf8("mountainColorGreenEdit"));
+
+        horizontalLayout_ocean_2->addWidget(mountainColorGreenEdit);
+
+        mountainColorBlueEdit = new QLineEdit(shapeParameters);
+        mountainColorBlueEdit->setObjectName(QString::fromUtf8("mountainColorBlueEdit"));
+
+        horizontalLayout_ocean_2->addWidget(mountainColorBlueEdit);
+
+
+        gridLayout_4->addLayout(horizontalLayout_ocean_2, 6, 0, 1, 1);
+
+        horizontalLayout_27 = new QHBoxLayout();
+        horizontalLayout_27->setSpacing(6);
+        horizontalLayout_27->setObjectName(QString::fromUtf8("horizontalLayout_27"));
+        mountainCapColorLabel = new QLabel(shapeParameters);
+        mountainCapColorLabel->setObjectName(QString::fromUtf8("mountainCapColorLabel"));
+
+        horizontalLayout_27->addWidget(mountainCapColorLabel);
+
+        mountainCapColorButton = new QPushButton(shapeParameters);
+        mountainCapColorButton->setObjectName(QString::fromUtf8("mountainCapColorButton"));
+
+        horizontalLayout_27->addWidget(mountainCapColorButton);
+
+        mountainCapColorRedEdit = new QLineEdit(shapeParameters);
+        mountainCapColorRedEdit->setObjectName(QString::fromUtf8("mountainCapColorRedEdit"));
+
+        horizontalLayout_27->addWidget(mountainCapColorRedEdit);
+
+        mountainCapColorGreenEdit = new QLineEdit(shapeParameters);
+        mountainCapColorGreenEdit->setObjectName(QString::fromUtf8("mountainCapColorGreenEdit"));
+
+        horizontalLayout_27->addWidget(mountainCapColorGreenEdit);
+
+        mountainCapColorBlueEdit = new QLineEdit(shapeParameters);
+        mountainCapColorBlueEdit->setObjectName(QString::fromUtf8("mountainCapColorBlueEdit"));
+
+        horizontalLayout_27->addWidget(mountainCapColorBlueEdit);
+
+
+        gridLayout_4->addLayout(horizontalLayout_27, 8, 0, 1, 1);
+
         line = new QFrame(shapeParameters);
         line->setObjectName(QString::fromUtf8("line"));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
 
-        gridLayout_4->addWidget(line, 5, 0, 1, 3);
-
-        horizontalLayout_19 = new QHBoxLayout();
-        horizontalLayout_19->setSpacing(6);
-        horizontalLayout_19->setObjectName(QString::fromUtf8("horizontalLayout_19"));
-        landColorLabel = new QLabel(shapeParameters);
-        landColorLabel->setObjectName(QString::fromUtf8("landColorLabel"));
-
-        horizontalLayout_19->addWidget(landColorLabel);
-
-        landColorButton = new QPushButton(shapeParameters);
-        landColorButton->setObjectName(QString::fromUtf8("landColorButton"));
-
-        horizontalLayout_19->addWidget(landColorButton);
-
-        landColorRedEdit = new QLineEdit(shapeParameters);
-        landColorRedEdit->setObjectName(QString::fromUtf8("landColorRedEdit"));
-
-        horizontalLayout_19->addWidget(landColorRedEdit);
-
-        landColorGreenEdit = new QLineEdit(shapeParameters);
-        landColorGreenEdit->setObjectName(QString::fromUtf8("landColorGreenEdit"));
-
-        horizontalLayout_19->addWidget(landColorGreenEdit);
-
-        landColorBlueEdit = new QLineEdit(shapeParameters);
-        landColorBlueEdit->setObjectName(QString::fromUtf8("landColorBlueEdit"));
-
-        horizontalLayout_19->addWidget(landColorBlueEdit);
-
-
-        gridLayout_4->addLayout(horizontalLayout_19, 3, 0, 1, 1);
+        gridLayout_4->addWidget(line, 10, 0, 1, 3);
 
         tabWidget = new QTabWidget(shapeParameters);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
@@ -1143,12 +1224,38 @@ public:
 
         tabWidget->addTab(tab_3, QString());
 
-        gridLayout_4->addWidget(tabWidget, 9, 0, 1, 1);
+        gridLayout_4->addWidget(tabWidget, 14, 0, 1, 1);
 
-        noiseLabel = new QLabel(shapeParameters);
-        noiseLabel->setObjectName(QString::fromUtf8("noiseLabel"));
+        horizontalLayout_28 = new QHBoxLayout();
+        horizontalLayout_28->setSpacing(6);
+        horizontalLayout_28->setObjectName(QString::fromUtf8("horizontalLayout_28"));
+        shoreColorLabel_2 = new QLabel(shapeParameters);
+        shoreColorLabel_2->setObjectName(QString::fromUtf8("shoreColorLabel_2"));
 
-        gridLayout_4->addWidget(noiseLabel, 6, 0, 1, 1);
+        horizontalLayout_28->addWidget(shoreColorLabel_2);
+
+        shoreColorButton = new QPushButton(shapeParameters);
+        shoreColorButton->setObjectName(QString::fromUtf8("shoreColorButton"));
+
+        horizontalLayout_28->addWidget(shoreColorButton);
+
+        shoreColorRedEdit = new QLineEdit(shapeParameters);
+        shoreColorRedEdit->setObjectName(QString::fromUtf8("shoreColorRedEdit"));
+
+        horizontalLayout_28->addWidget(shoreColorRedEdit);
+
+        shoreColorGreenEdit = new QLineEdit(shapeParameters);
+        shoreColorGreenEdit->setObjectName(QString::fromUtf8("shoreColorGreenEdit"));
+
+        horizontalLayout_28->addWidget(shoreColorGreenEdit);
+
+        shoreColorBlueEdit = new QLineEdit(shapeParameters);
+        shoreColorBlueEdit->setObjectName(QString::fromUtf8("shoreColorBlueEdit"));
+
+        horizontalLayout_28->addWidget(shoreColorBlueEdit);
+
+
+        gridLayout_4->addLayout(horizontalLayout_28, 3, 0, 1, 1);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
@@ -1174,37 +1281,6 @@ public:
 
 
         gridLayout_4->addLayout(horizontalLayout_2, 1, 0, 1, 1);
-
-        horizontalLayout_ocean_2 = new QHBoxLayout();
-        horizontalLayout_ocean_2->setSpacing(6);
-        horizontalLayout_ocean_2->setObjectName(QString::fromUtf8("horizontalLayout_ocean_2"));
-        mountainColorLabel = new QLabel(shapeParameters);
-        mountainColorLabel->setObjectName(QString::fromUtf8("mountainColorLabel"));
-
-        horizontalLayout_ocean_2->addWidget(mountainColorLabel);
-
-        mountainColorButton = new QPushButton(shapeParameters);
-        mountainColorButton->setObjectName(QString::fromUtf8("mountainColorButton"));
-
-        horizontalLayout_ocean_2->addWidget(mountainColorButton);
-
-        mountainColorRedEdit = new QLineEdit(shapeParameters);
-        mountainColorRedEdit->setObjectName(QString::fromUtf8("mountainColorRedEdit"));
-
-        horizontalLayout_ocean_2->addWidget(mountainColorRedEdit);
-
-        mountainColorGreenEdit = new QLineEdit(shapeParameters);
-        mountainColorGreenEdit->setObjectName(QString::fromUtf8("mountainColorGreenEdit"));
-
-        horizontalLayout_ocean_2->addWidget(mountainColorGreenEdit);
-
-        mountainColorBlueEdit = new QLineEdit(shapeParameters);
-        mountainColorBlueEdit->setObjectName(QString::fromUtf8("mountainColorBlueEdit"));
-
-        horizontalLayout_ocean_2->addWidget(mountainColorBlueEdit);
-
-
-        gridLayout_4->addLayout(horizontalLayout_ocean_2, 4, 0, 1, 1);
 
 
         verticalLayout_7->addWidget(shapeParameters);
@@ -1235,129 +1311,133 @@ public:
         verticalLayout_7->addWidget(shapesDockEmptySpace);
 
         shapesDock->setWidget(shapesDockContents);
-        MainWindow->addDockWidget(Qt::LeftDockWidgetArea, shapesDock);
-        menuBar = new QMenuBar(MainWindow);
+        Ui_MainWindow->addDockWidget(Qt::LeftDockWidgetArea, shapesDock);
+        menuBar = new QMenuBar(Ui_MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 600, 24));
+        menuBar->setGeometry(QRect(0, 0, 600, 22));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuToolbars = new QMenu(menuBar);
         menuToolbars->setObjectName(QString::fromUtf8("menuToolbars"));
-        MainWindow->setMenuBar(menuBar);
+        Ui_MainWindow->setMenuBar(menuBar);
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuToolbars->menuAction());
         menuFile->addSeparator();
         menuFile->addAction(actionQuit);
 
-        retranslateUi(MainWindow);
-        QObject::connect(actionQuit, SIGNAL(triggered()), MainWindow, SLOT(close()));
-        QObject::connect(actionSave, SIGNAL(triggered()), MainWindow, SLOT(fileSave()));
-        QObject::connect(actionOpen, SIGNAL(triggered()), MainWindow, SLOT(fileOpen()));
-        QObject::connect(actionNew, SIGNAL(triggered()), MainWindow, SLOT(fileNew()));
-        QObject::connect(actionCopy3Dto2D, SIGNAL(triggered()), MainWindow, SLOT(fileCopy3Dto2D()));
-        QObject::connect(actionClear, SIGNAL(triggered()), MainWindow, SLOT(clearImage()));
-        QObject::connect(actionRevert, SIGNAL(triggered()), MainWindow, SLOT(revertImage()));
+        retranslateUi(Ui_MainWindow);
+        QObject::connect(actionQuit, SIGNAL(triggered()), Ui_MainWindow, SLOT(close()));
+        QObject::connect(actionSave, SIGNAL(triggered()), Ui_MainWindow, SLOT(fileSave()));
+        QObject::connect(actionOpen, SIGNAL(triggered()), Ui_MainWindow, SLOT(fileOpen()));
+        QObject::connect(actionNew, SIGNAL(triggered()), Ui_MainWindow, SLOT(fileNew()));
+        QObject::connect(actionCopy3Dto2D, SIGNAL(triggered()), Ui_MainWindow, SLOT(fileCopy3Dto2D()));
+        QObject::connect(actionClear, SIGNAL(triggered()), Ui_MainWindow, SLOT(clearImage()));
+        QObject::connect(actionRevert, SIGNAL(triggered()), Ui_MainWindow, SLOT(revertImage()));
 
         tabWidget->setCurrentIndex(0);
 
 
-        QMetaObject::connectSlotsByName(MainWindow);
+        QMetaObject::connectSlotsByName(Ui_MainWindow);
     } // setupUi
 
-    void retranslateUi(QMainWindow *MainWindow)
+    void retranslateUi(QMainWindow *Ui_MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Planet Generator", nullptr));
-        actionNew->setText(QCoreApplication::translate("MainWindow", "&New", nullptr));
+        Ui_MainWindow->setWindowTitle(QCoreApplication::translate("Ui_MainWindow", "Planet Generator", nullptr));
+        actionNew->setText(QCoreApplication::translate("Ui_MainWindow", "&New", nullptr));
 #if QT_CONFIG(shortcut)
-        actionNew->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+N", nullptr));
+        actionNew->setShortcut(QCoreApplication::translate("Ui_MainWindow", "Ctrl+N", nullptr));
 #endif // QT_CONFIG(shortcut)
-        actionOpen->setText(QCoreApplication::translate("MainWindow", "&Open...", nullptr));
+        actionOpen->setText(QCoreApplication::translate("Ui_MainWindow", "&Open...", nullptr));
 #if QT_CONFIG(shortcut)
-        actionOpen->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+O", nullptr));
+        actionOpen->setShortcut(QCoreApplication::translate("Ui_MainWindow", "Ctrl+O", nullptr));
 #endif // QT_CONFIG(shortcut)
-        actionSave->setText(QCoreApplication::translate("MainWindow", "&Save...", nullptr));
+        actionSave->setText(QCoreApplication::translate("Ui_MainWindow", "&Save...", nullptr));
 #if QT_CONFIG(shortcut)
-        actionSave->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+S", nullptr));
+        actionSave->setShortcut(QCoreApplication::translate("Ui_MainWindow", "Ctrl+S", nullptr));
 #endif // QT_CONFIG(shortcut)
-        actionQuit->setText(QCoreApplication::translate("MainWindow", "&Quit", nullptr));
+        actionQuit->setText(QCoreApplication::translate("Ui_MainWindow", "&Quit", nullptr));
 #if QT_CONFIG(shortcut)
-        actionQuit->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+Q", nullptr));
+        actionQuit->setShortcut(QCoreApplication::translate("Ui_MainWindow", "Ctrl+Q", nullptr));
 #endif // QT_CONFIG(shortcut)
-        actionRevert->setText(QCoreApplication::translate("MainWindow", "&Revert Image", nullptr));
+        actionRevert->setText(QCoreApplication::translate("Ui_MainWindow", "&Revert Image", nullptr));
 #if QT_CONFIG(shortcut)
-        actionRevert->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+R", nullptr));
+        actionRevert->setShortcut(QCoreApplication::translate("Ui_MainWindow", "Ctrl+R", nullptr));
 #endif // QT_CONFIG(shortcut)
-        actionCopy3Dto2D->setText(QCoreApplication::translate("MainWindow", "Copy &3D tab to 2D tab", nullptr));
-        actionClear->setText(QCoreApplication::translate("MainWindow", "&Clear Image", nullptr));
+        actionCopy3Dto2D->setText(QCoreApplication::translate("Ui_MainWindow", "Copy &3D tab to 2D tab", nullptr));
+        actionClear->setText(QCoreApplication::translate("Ui_MainWindow", "&Clear Image", nullptr));
 #if QT_CONFIG(tooltip)
-        actionClear->setToolTip(QCoreApplication::translate("MainWindow", "Clear Image", nullptr));
+        actionClear->setToolTip(QCoreApplication::translate("Ui_MainWindow", "Clear Image", nullptr));
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(shortcut)
-        actionClear->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+C", nullptr));
+        actionClear->setShortcut(QCoreApplication::translate("Ui_MainWindow", "Ctrl+C", nullptr));
 #endif // QT_CONFIG(shortcut)
-        actionUseOrbitingCamera->setText(QCoreApplication::translate("MainWindow", "&Use Orbiting Camera", nullptr));
+        actionUseOrbitingCamera->setText(QCoreApplication::translate("Ui_MainWindow", "&Use Orbiting Camera", nullptr));
 #if QT_CONFIG(shortcut)
-        actionUseOrbitingCamera->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+B", nullptr));
+        actionUseOrbitingCamera->setShortcut(QCoreApplication::translate("Ui_MainWindow", "Ctrl+B", nullptr));
 #endif // QT_CONFIG(shortcut)
-        shapesDock->setWindowTitle(QCoreApplication::translate("MainWindow", "Planet Properties", nullptr));
-        shapeParameters->setTitle(QCoreApplication::translate("MainWindow", "Planet Parameters", nullptr));
-        oceanColorLabel->setText(QCoreApplication::translate("MainWindow", "Ocean Color", nullptr));
-        oceanColorButton->setText(QString());
-        landColorLabel->setText(QCoreApplication::translate("MainWindow", "Land Color", nullptr));
+        shapesDock->setWindowTitle(QCoreApplication::translate("Ui_MainWindow", "Planet Properties", nullptr));
+        shapeParameters->setTitle(QCoreApplication::translate("Ui_MainWindow", "Planet Parameters", nullptr));
+        landColorLabel->setText(QCoreApplication::translate("Ui_MainWindow", "Land Color", nullptr));
         landColorButton->setText(QString());
-        continentNoiseLabel->setText(QCoreApplication::translate("MainWindow", "Noise Layer 1 (Continents)", nullptr));
-        continentsEnabled->setText(QCoreApplication::translate("MainWindow", "Enabled", nullptr));
-        strengthLabel1->setText(QCoreApplication::translate("MainWindow", "Strength", nullptr));
-        strengthTextbox1->setText(QString());
-        numLayersLabel1->setText(QCoreApplication::translate("MainWindow", "Num Layers", nullptr));
-        baseRoughnessLabel1->setText(QCoreApplication::translate("MainWindow", "Base Roughness", nullptr));
-        roughnessLabel1->setText(QCoreApplication::translate("MainWindow", "Roughness", nullptr));
-        persistenceLabel1->setText(QCoreApplication::translate("MainWindow", "Persistence", nullptr));
-        minValueLabel1->setText(QCoreApplication::translate("MainWindow", "Min Value", nullptr));
-        centerLabel1->setText(QCoreApplication::translate("MainWindow", "Center", nullptr));
-        xLabel1->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
-        yLabel1->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
-        zLabel1->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Continents", nullptr));
-        mountainNoiseLabel->setText(QCoreApplication::translate("MainWindow", "Noise Layer 2 (Mountains)", nullptr));
-        mountainsEnabled->setText(QCoreApplication::translate("MainWindow", "Enabled", nullptr));
-        continentMask->setText(QCoreApplication::translate("MainWindow", "Use Continents as Mask", nullptr));
-        strengthLabel1_2->setText(QCoreApplication::translate("MainWindow", "Strength", nullptr));
-        strengthTextbox1_2->setText(QString());
-        numLayersLabel1_2->setText(QCoreApplication::translate("MainWindow", "Num Layers", nullptr));
-        baseRoughnessLabel1_2->setText(QCoreApplication::translate("MainWindow", "Base Roughness", nullptr));
-        roughnessLabel1_2->setText(QCoreApplication::translate("MainWindow", "Roughness", nullptr));
-        persistenceLabel1_2->setText(QCoreApplication::translate("MainWindow", "Persistence", nullptr));
-        minValueLabel1_2->setText(QCoreApplication::translate("MainWindow", "Min Value", nullptr));
-        centerLabel1_2->setText(QCoreApplication::translate("MainWindow", "Center", nullptr));
-        xLabel1_2->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
-        yLabel1_2->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
-        zLabel1_2->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Mountains", nullptr));
-        oceanNoiseLabel->setText(QCoreApplication::translate("MainWindow", "Noise Layer 3 (Oceans)", nullptr));
-        oceansEnabled->setText(QCoreApplication::translate("MainWindow", "Enabled", nullptr));
-        strengthLabel1_3->setText(QCoreApplication::translate("MainWindow", "Strength", nullptr));
-        strengthTextbox1_3->setText(QString());
-        numLayersLabel1_3->setText(QCoreApplication::translate("MainWindow", "Num Layers", nullptr));
-        baseRoughnessLabel1_3->setText(QCoreApplication::translate("MainWindow", "Base Roughness", nullptr));
-        roughnessLabel1_3->setText(QCoreApplication::translate("MainWindow", "Roughness", nullptr));
-        persistenceLabel1_3->setText(QCoreApplication::translate("MainWindow", "Persistence", nullptr));
-        minValueLabel1_3->setText(QCoreApplication::translate("MainWindow", "Min Value", nullptr));
-        centerLabel1_3->setText(QCoreApplication::translate("MainWindow", "Center", nullptr));
-        xLabel1_3->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
-        yLabel1_3->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
-        zLabel1_3->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Oceans", nullptr));
-        noiseLabel->setText(QCoreApplication::translate("MainWindow", "Noise", nullptr));
-        resolutionLabel->setText(QCoreApplication::translate("MainWindow", "Resolution", nullptr));
-        mountainColorLabel->setText(QCoreApplication::translate("MainWindow", "Mountain Color", nullptr));
+        oceanColorLabel->setText(QCoreApplication::translate("Ui_MainWindow", "Ocean Color", nullptr));
+        oceanColorButton->setText(QString());
+        noiseLabel->setText(QCoreApplication::translate("Ui_MainWindow", "Noise", nullptr));
+        mountainColorLabel->setText(QCoreApplication::translate("Ui_MainWindow", "Mountain Color", nullptr));
         mountainColorButton->setText(QString());
-        planetRotationCheckbox->setText(QCoreApplication::translate("MainWindow", "Planet rotation", nullptr));
-        oneFaceCheckbox->setText(QCoreApplication::translate("MainWindow", "One face only", nullptr));
-        smoothColorsCheckbox->setText(QCoreApplication::translate("MainWindow", "Smooth colors", nullptr));
-        menuFile->setTitle(QCoreApplication::translate("MainWindow", "&File", nullptr));
-        menuToolbars->setTitle(QCoreApplication::translate("MainWindow", "&Toolbars", nullptr));
+        mountainCapColorLabel->setText(QCoreApplication::translate("Ui_MainWindow", "Mountain Cap Color", nullptr));
+        mountainCapColorButton->setText(QString());
+        continentNoiseLabel->setText(QCoreApplication::translate("Ui_MainWindow", "Noise Layer 1 (Continents)", nullptr));
+        continentsEnabled->setText(QCoreApplication::translate("Ui_MainWindow", "Enabled", nullptr));
+        strengthLabel1->setText(QCoreApplication::translate("Ui_MainWindow", "Strength", nullptr));
+        strengthTextbox1->setText(QString());
+        numLayersLabel1->setText(QCoreApplication::translate("Ui_MainWindow", "Num Layers", nullptr));
+        baseRoughnessLabel1->setText(QCoreApplication::translate("Ui_MainWindow", "Base Roughness", nullptr));
+        roughnessLabel1->setText(QCoreApplication::translate("Ui_MainWindow", "Roughness", nullptr));
+        persistenceLabel1->setText(QCoreApplication::translate("Ui_MainWindow", "Persistence", nullptr));
+        minValueLabel1->setText(QCoreApplication::translate("Ui_MainWindow", "Min Value", nullptr));
+        centerLabel1->setText(QCoreApplication::translate("Ui_MainWindow", "Center", nullptr));
+        xLabel1->setText(QCoreApplication::translate("Ui_MainWindow", "X", nullptr));
+        yLabel1->setText(QCoreApplication::translate("Ui_MainWindow", "Y", nullptr));
+        zLabel1->setText(QCoreApplication::translate("Ui_MainWindow", "Z", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("Ui_MainWindow", "Continents", nullptr));
+        mountainNoiseLabel->setText(QCoreApplication::translate("Ui_MainWindow", "Noise Layer 2 (Mountains)", nullptr));
+        mountainsEnabled->setText(QCoreApplication::translate("Ui_MainWindow", "Enabled", nullptr));
+        continentMask->setText(QCoreApplication::translate("Ui_MainWindow", "Use Continents as Mask", nullptr));
+        strengthLabel1_2->setText(QCoreApplication::translate("Ui_MainWindow", "Strength", nullptr));
+        strengthTextbox1_2->setText(QString());
+        numLayersLabel1_2->setText(QCoreApplication::translate("Ui_MainWindow", "Num Layers", nullptr));
+        baseRoughnessLabel1_2->setText(QCoreApplication::translate("Ui_MainWindow", "Base Roughness", nullptr));
+        roughnessLabel1_2->setText(QCoreApplication::translate("Ui_MainWindow", "Roughness", nullptr));
+        persistenceLabel1_2->setText(QCoreApplication::translate("Ui_MainWindow", "Persistence", nullptr));
+        minValueLabel1_2->setText(QCoreApplication::translate("Ui_MainWindow", "Min Value", nullptr));
+        centerLabel1_2->setText(QCoreApplication::translate("Ui_MainWindow", "Center", nullptr));
+        xLabel1_2->setText(QCoreApplication::translate("Ui_MainWindow", "X", nullptr));
+        yLabel1_2->setText(QCoreApplication::translate("Ui_MainWindow", "Y", nullptr));
+        zLabel1_2->setText(QCoreApplication::translate("Ui_MainWindow", "Z", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("Ui_MainWindow", "Mountains", nullptr));
+        oceanNoiseLabel->setText(QCoreApplication::translate("Ui_MainWindow", "Noise Layer 3 (Oceans)", nullptr));
+        oceansEnabled->setText(QCoreApplication::translate("Ui_MainWindow", "Enabled", nullptr));
+        strengthLabel1_3->setText(QCoreApplication::translate("Ui_MainWindow", "Strength", nullptr));
+        strengthTextbox1_3->setText(QString());
+        numLayersLabel1_3->setText(QCoreApplication::translate("Ui_MainWindow", "Num Layers", nullptr));
+        baseRoughnessLabel1_3->setText(QCoreApplication::translate("Ui_MainWindow", "Base Roughness", nullptr));
+        roughnessLabel1_3->setText(QCoreApplication::translate("Ui_MainWindow", "Roughness", nullptr));
+        persistenceLabel1_3->setText(QCoreApplication::translate("Ui_MainWindow", "Persistence", nullptr));
+        minValueLabel1_3->setText(QCoreApplication::translate("Ui_MainWindow", "Min Value", nullptr));
+        centerLabel1_3->setText(QCoreApplication::translate("Ui_MainWindow", "Center", nullptr));
+        xLabel1_3->setText(QCoreApplication::translate("Ui_MainWindow", "X", nullptr));
+        yLabel1_3->setText(QCoreApplication::translate("Ui_MainWindow", "Y", nullptr));
+        zLabel1_3->setText(QCoreApplication::translate("Ui_MainWindow", "Z", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("Ui_MainWindow", "Oceans", nullptr));
+        shoreColorLabel_2->setText(QCoreApplication::translate("Ui_MainWindow", "Shore Color", nullptr));
+        shoreColorButton->setText(QString());
+        resolutionLabel->setText(QCoreApplication::translate("Ui_MainWindow", "Resolution", nullptr));
+        planetRotationCheckbox->setText(QCoreApplication::translate("Ui_MainWindow", "Planet rotation", nullptr));
+        oneFaceCheckbox->setText(QCoreApplication::translate("Ui_MainWindow", "One face only", nullptr));
+        smoothColorsCheckbox->setText(QCoreApplication::translate("Ui_MainWindow", "Smooth colors", nullptr));
+        menuFile->setTitle(QCoreApplication::translate("Ui_MainWindow", "&File", nullptr));
+        menuToolbars->setTitle(QCoreApplication::translate("Ui_MainWindow", "&Toolbars", nullptr));
     } // retranslateUi
 
 };
@@ -1368,3 +1448,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
+#endif // UI_MAINWINDOW_H

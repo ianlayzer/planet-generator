@@ -147,12 +147,18 @@ void MainWindow::dataBind() {
     BIND(ColorBinding::bindButtonAndTextboxes(ui->oceanColorButton,
                                               ui->oceanColorRedEdit,ui->oceanColorGreenEdit,
                                               ui->oceanColorBlueEdit, settings.oceanColor));
+    BIND(ColorBinding::bindButtonAndTextboxes(ui->shoreColorButton,
+                                               ui->shoreColorRedEdit, ui->shoreColorGreenEdit,
+                                               ui->shoreColorBlueEdit, settings.shoreColor));
     BIND(ColorBinding::bindButtonAndTextboxes(ui->landColorButton,
                                               ui->landColorRedEdit,ui->landColorGreenEdit,
                                               ui->landColorBlueEdit, settings.landColor));
     BIND(ColorBinding::bindButtonAndTextboxes(ui->mountainColorButton,
                                               ui->mountainColorRedEdit,ui->mountainColorGreenEdit,
                                               ui->mountainColorBlueEdit, settings.mountainColor));
+    BIND(ColorBinding::bindButtonAndTextboxes(ui->mountainCapColorButton,
+                                              ui->mountainCapColorRedEdit, ui->mountainCapColorGreenEdit,
+                                              ui->mountainCapColorBlueEdit, settings.mountainCapColor));
 
 #undef BIND
 

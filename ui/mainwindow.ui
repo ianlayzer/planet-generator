@@ -42,7 +42,7 @@
    <property name="minimumSize">
     <size>
      <width>380</width>
-     <height>824</height>
+     <height>900</height>
     </size>
    </property>
    <property name="windowTitle">
@@ -77,6 +77,33 @@
         <property name="verticalSpacing">
          <number>5</number>
         </property>
+        <item row="5" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_19">
+          <item>
+           <widget class="QLabel" name="landColorLabel">
+            <property name="text">
+             <string>Land Color</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="landColorButton">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="landColorRedEdit"/>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="landColorGreenEdit"/>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="landColorBlueEdit"/>
+          </item>
+         </layout>
+        </item>
         <item row="2" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_9">
           <item>
@@ -104,41 +131,75 @@
           </item>
          </layout>
         </item>
-        <item row="5" column="0" colspan="3">
-         <widget class="Line" name="line">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+        <item row="11" column="0">
+         <widget class="QLabel" name="noiseLabel">
+          <property name="text">
+           <string>Noise</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_19">
+        <item row="6" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_ocean_2">
           <item>
-           <widget class="QLabel" name="landColorLabel">
+           <widget class="QLabel" name="mountainColorLabel">
             <property name="text">
-             <string>Land Color</string>
+             <string>Mountain Color</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="landColorButton">
+           <widget class="QPushButton" name="mountainColorButton">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="landColorRedEdit"/>
+           <widget class="QLineEdit" name="mountainColorRedEdit"/>
           </item>
           <item>
-           <widget class="QLineEdit" name="landColorGreenEdit"/>
+           <widget class="QLineEdit" name="mountainColorGreenEdit"/>
           </item>
           <item>
-           <widget class="QLineEdit" name="landColorBlueEdit"/>
+           <widget class="QLineEdit" name="mountainColorBlueEdit"/>
           </item>
          </layout>
         </item>
-        <item row="9" column="0">
+        <item row="8" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_27">
+          <item>
+           <widget class="QLabel" name="mountainCapColorLabel">
+            <property name="text">
+             <string>Mountain Cap Color</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="mountainCapColorButton">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="mountainCapColorRedEdit"/>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="mountainCapColorGreenEdit"/>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="mountainCapColorBlueEdit"/>
+          </item>
+         </layout>
+        </item>
+        <item row="10" column="0" colspan="3">
+         <widget class="Line" name="line">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="14" column="0">
          <widget class="QTabWidget" name="tabWidget">
           <property name="minimumSize">
            <size>
@@ -1586,12 +1647,32 @@
           </widget>
          </widget>
         </item>
-        <item row="6" column="0">
-         <widget class="QLabel" name="noiseLabel">
-          <property name="text">
-           <string>Noise</string>
-          </property>
-         </widget>
+        <item row="3" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_28">
+          <item>
+           <widget class="QLabel" name="shoreColorLabel_2">
+            <property name="text">
+             <string>Shore Color</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="shoreColorButton">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="shoreColorRedEdit"/>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="shoreColorGreenEdit"/>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="shoreColorBlueEdit"/>
+          </item>
+         </layout>
         </item>
         <item row="1" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -1630,33 +1711,6 @@
              </size>
             </property>
            </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="4" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_ocean_2">
-          <item>
-           <widget class="QLabel" name="mountainColorLabel">
-            <property name="text">
-             <string>Mountain Color</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="mountainColorButton">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mountainColorRedEdit"/>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mountainColorGreenEdit"/>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mountainColorBlueEdit"/>
           </item>
          </layout>
         </item>
@@ -1703,7 +1757,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

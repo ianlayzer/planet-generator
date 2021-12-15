@@ -41,8 +41,10 @@ void CS123Shader::setColor(const QColor &color) {
 
 void CS123Shader::applyColorSettings(const ColorSettings &colorSettings) {
     setUniform("ocean_color", makeColorVec(colorSettings.oceanColor));
+    setUniform("shore_color", makeColorVec(colorSettings.shoreColor));
     setUniform("land_color", makeColorVec(colorSettings.landColor));
     setUniform("mountain_color", makeColorVec(colorSettings.mountainColor));
+    setUniform("mountain_cap_color", makeColorVec(colorSettings.mountainCapColor));
     setUniform("smoothColors", colorSettings.smoothColors);
 }
 

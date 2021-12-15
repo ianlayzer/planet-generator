@@ -127,10 +127,10 @@ void PlanetScene::renderPlanetPass(Canvas3D *context) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     clearLights(m_planetShader.get());
     setLights(m_planetShader.get(), context->getCamera()->getViewMatrix());
+    m_planetShader->setUniform("shininess", 15.f);
     m_planetShader->setUniform("useLighting", settings.useLighting);
     m_planetShader->setUniform("useArrowOffsets", false);
     m_planetShader->applyColorSettings(settings.getPlanetColorSettings());
-    m_planetShader->setUniform("shininess", 15);
 
 //    m_planetShader->applyColorSettings(settings.getPlanetColorSettings());
     setMatrixUniforms(m_planetShader.get(), context);
@@ -211,7 +211,7 @@ void PlanetScene::setLights(CS123::GL::CS123Shader *shader, const glm::mat4 view
 void PlanetScene::settingsChanged() {
     // TODO: [SHAPES] Fill this in, for now default to an example shape
     m_planet = std::make_unique<Planet>(settings.getPlanetSettings());
-    initializeSceneMaterial();
+//    initializeSceneMaterial();
 }
 
 void PlanetScene::rotateModel(float angleInDegrees) {

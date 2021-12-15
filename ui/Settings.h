@@ -139,8 +139,10 @@ struct Settings {
     float noiseCenterZOcean;
     bool oceansEnabled;
     QColor oceanColor;
+    QColor shoreColor;
     QColor landColor;
     QColor mountainColor;
+    QColor mountainCapColor;
     bool enableRotation;
     bool onlyShowOneFace;
     bool smoothColors;

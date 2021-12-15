@@ -833,6 +833,7 @@ qrc_resources.cpp: resources.qrc \
 		shaders/fullscreenquad/fullscreenquad.frag \
 		shaders/wireframe/wireframe.frag \
 		shaders/normals/normals.frag \
+		shaders/planet/planet.frag \
 		shaders/shader.frag \
 		shaders/fullscreenquad/fullscreenquad.vert \
 		shaders/normals/normalsArrow.frag \
@@ -840,6 +841,7 @@ qrc_resources.cpp: resources.qrc \
 		shaders/normals/normals.gsh \
 		shaders/normals/normals.vert \
 		shaders/normals/normalsArrow.gsh \
+		shaders/planet/planet.vert \
 		shaders/shader.vert \
 		shaders/normals/normalsArrow.vert
 	/Users/mikeyabela/Qt/5.15.2/clang_64/bin/rcc -name resources resources.qrc -o qrc_resources.cpp
@@ -2555,12 +2557,12 @@ CS123Shader.o: gl/shaders/CS123Shader.cpp gl/shaders/CS123Shader.h \
 		glm/detail/func_integer.inl \
 		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
 		../../../Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
+		planet/PlanetSettings.h \
 		lib/CS123SceneData.h \
 		ui/Settings.h \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		lib/RGBA.h \
-		planet/PlanetSettings.h \
 		gl/GLDebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o CS123Shader.o gl/shaders/CS123Shader.cpp
 
