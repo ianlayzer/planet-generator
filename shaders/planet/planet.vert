@@ -38,9 +38,9 @@ uniform bool useArrowOffsets; // True if rendering the arrowhead of a normal for
 const float DEEP_OCEAN_END = 0.85;
 const float OCEAN_END = 1.001;
 const float BEACH_END = 1.005;
-const float LAND_END = 1.05;
-const float LAND_HIGH_END = 1.09;
-const float MOUNTAIN_END = 1.18;
+const float LAND_END = 1.1;
+const float LAND_HIGH_END = 1.15;
+const float MOUNTAIN_END = 1.3;
 
 float getLocationInBand(float bandStart, float bandEnd, float position) {
     float bandWidth = bandEnd - bandStart;
