@@ -90,7 +90,7 @@ void MainWindow::dataBind() {
 
     // Shapes dock
     BIND(IntBinding::bindSliderAndTextbox(
-        ui->resolutionSlider, ui->resolutionTextbox, settings.resolution, 1.f, 300.f))
+        ui->resolutionSlider, ui->resolutionTextbox, settings.resolution, 1.f, 500.f))
     BIND(FloatBinding::bindSliderAndTextbox(
         ui->strengthSlider1, ui->strengthTextbox1, settings.noiseStrengthCont, 0.0f, 1.0f))
     BIND(FloatBinding::bindSliderAndTextbox(

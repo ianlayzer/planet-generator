@@ -103,10 +103,9 @@ glm::vec3 TerrainFace::getFaceNormal(glm::vec3 pointA, glm::vec3 pointB, glm::ve
 
 float TerrainFace::evaluateNoise(glm::vec3 point) {
     float oceanLayerVal = m_oceanNoise->evaluate(point);
-    float oceanLayerMaskVal = std::max(0.f, oceanLayerVal - 0.5f);
     float oceanNoise = m_oceanNoise->isEnabled() ? - oceanLayerVal : 0.f;
     float continentLayerVal = m_continentNoise->evaluate(point);
-    float continentNoise = m_continentNoise->isEnabled() ? continentLayerVal : 0.f;
+    float continentNoise = m_continentNoise->isEnabled() ? continentLayerVal * (1.f - oceanLayerVal) : 0.f;
     float mountainNoise = m_mountainNoise->isEnabled() ? m_mountainNoise->evaluate(point) : 0.f;
     float mask = m_useContinentsAsMask ? continentLayerVal : 1.f;
     float elevation = oceanNoise + continentNoise + mountainNoise * mask;
