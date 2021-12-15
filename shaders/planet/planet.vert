@@ -24,9 +24,8 @@ uniform vec3 lightColors[MAX_LIGHTS];
 
 // Material data
 uniform vec3 ocean_color;
-uniform vec3 ambient_color;
-uniform vec3 diffuse_color;
-uniform vec3 specular_color;
+uniform vec3 land_color;
+uniform vec3 mountain_color;
 uniform float shininess;
 uniform vec2 repeatUV;
 
@@ -48,16 +47,26 @@ void main() {
         position_cameraSpace += arrowOffset * vec4(offsetAxis, 0);
     }
 
-    vec3 dcol = diffuse_color;
-    if (elevation < 1.001f) {
-//        ambient_color = vec3(0.f, 0.f, 1.f);
-        dcol = vec3(0.f, 0.f, 1.f);
-//        specular_color = vec3(0.f, 0.f, 1.f);
+    vec3 diffuse_col = land_color;
+    if (elevation < 0.85) {
+        diffuse_col = 0.5 * ocean_color; // deep ocean
+    } else if (elevation < 1.001) {
+        diffuse_col = ocean_color; // ocean
+    } else if (elevation < 1.005) {
+        diffuse_col = vec3(0.86f, 0.73f, 0.52f); // beach
+    } else if (elevation < 1.05) {
+        diffuse_col = land_color; // land
+    } else if (elevation < 1.18) {
+        diffuse_col = mountain_color; // mountains
+    } else {
+        diffuse_col = vec3(1.f, 1.f, 1.f); // mountain caps
     }
+    vec3 ambient_col = 0.25 * diffuse_col;
+    vec3 specular_col = vec3(0.2, 0.2, 0.2);
 
     gl_Position = p * position_cameraSpace;
 
-    color = ambient_color.xyz; // Add ambient component
+    color = ambient_col.xyz; // Add ambient component
 
     for (int i = 0; i < MAX_LIGHTS; i++) {
         vec4 vertexToLight = vec4(0);
@@ -71,13 +80,13 @@ void main() {
 
         // Add diffuse component
         float diffuseIntensity = max(0.0, dot(vertexToLight, normal_cameraSpace));
-        color += max(vec3(0), lightColors[i] * dcol * diffuseIntensity);
+        color += max(vec3(0), lightColors[i] * diffuse_col * diffuseIntensity);
 
         // Add specular component
         vec4 lightReflection = normalize(-reflect(vertexToLight, normal_cameraSpace));
         vec4 eyeDirection = normalize(vec4(0,0,0,1) - position_cameraSpace);
         float specIntensity = pow(max(0.0, dot(eyeDirection, lightReflection)), shininess);
-        color += max (vec3(0), lightColors[i] * specular_color * specIntensity);
+        color += max (vec3(0), lightColors[i] * specular_col * specIntensity);
     }
     color = clamp(color, 0.0, 1.0);
 }

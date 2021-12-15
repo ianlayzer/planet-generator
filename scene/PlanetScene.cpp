@@ -24,12 +24,12 @@ PlanetScene::PlanetScene(int width, int height) :
 {
     initializeSceneMaterial();
     initializeSceneLight();
-    loadPhongShader();
+//    loadPhongShader();
     loadPlanetShader();
-    loadWireframeShader();
-    loadNormalsShader();
-    loadNormalsArrowShader();
-    m_phongShader->setColor(settings.landColor);
+//    loadWireframeShader();
+//    loadNormalsShader();
+//    loadNormalsArrowShader();
+//    m_phongShader->setColor(settings.landColor);
     //TODO: [SHAPES] Allocate any additional memory you need...
 
 }
@@ -57,9 +57,6 @@ void PlanetScene::initializeSceneLight() {
     memset(&m_light, 0, sizeof(m_light));
     m_light.type = LightType::LIGHT_DIRECTIONAL;
     m_light.dir = m_lightDirection;
-//    m_light.color.r = 1;
-//    m_light.color.g = 1;
-//    m_light.color.b = 0.3;
     m_light.color.r = m_light.color.g = m_light.color.b = 1;
     m_light.id = 0;
 }
@@ -100,23 +97,23 @@ void PlanetScene::render(Canvas3D *context) {
     // Clear the screen in preparation for the next frame. (Use a gray background instead of a
     // black one for drawing wireframe or normals so they will show up against the background.)
     setClearColor();
-    renderPhongPass(context);
+    renderPlanetPass(context);
 
-    if (settings.drawWireframe) {
-        renderWireframePass(context);
-    }
+//    if (settings.drawWireframe) {
+//        renderWireframePass(context);
+//    }
 
-    if (settings.drawNormals) {
-        renderNormalsPass(context);
-    }
+//    if (settings.drawNormals) {
+//        renderNormalsPass(context);
+//    }
 }
 
 void PlanetScene::renderPhongPass(Canvas3D *context) {
     m_phongShader->bind();
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    clearLights();
-    setLights(context->getCamera()->getViewMatrix());
+    clearLights(m_phongShader.get());
+    setLights(m_phongShader.get(), context->getCamera()->getViewMatrix());
     setPhongSceneUniforms();
     setMatrixUniforms(m_phongShader.get(), context);
     renderGeometryAsFilledPolygons();
@@ -128,18 +125,13 @@ void PlanetScene::renderPlanetPass(Canvas3D *context) {
     m_planetShader->bind();
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    clearLights();
-    setLights(context->getCamera()->getViewMatrix());
-    setPhongSceneUniforms();
+    clearLights(m_planetShader.get());
+    setLights(m_planetShader.get(), context->getCamera()->getViewMatrix());
     m_planetShader->setColor(settings.landColor);
-//    setPhongSceneUniforms();
-//    m_planetShader->setUniform("ocean_color", glm::vec3(0.f, 0.f, 1.f));
-//    m_planetShader->setUniform("land_color", glm::vec3(0.f, 1.f, 0.f));
-//    m_planetShader->setUniform("mountain_color", glm::vec3(1.f, 0.f, 0.f));
-//    m_planetShader->setUniform("ambient_color", glm::vec3(0.f, 0.2f, 0.f));
-//    m_planetShader->setUniform("specular_color", glm::vec3(0.2f, 0.2f, 0.2f));
-
-//    m_planetShader->setUniform("shininess", 15);
+    m_planetShader->setUniform("useLighting", settings.useLighting);
+    m_planetShader->setUniform("useArrowOffsets", false);
+    m_planetShader->applyColorSettings(settings.getPlanetColorSettings());
+    m_planetShader->setUniform("shininess", 15);
 
 //    m_planetShader->applyColorSettings(settings.getPlanetColorSettings());
     setMatrixUniforms(m_planetShader.get(), context);
@@ -198,22 +190,23 @@ void PlanetScene::renderGeometry() {
     }
 }
 
-void PlanetScene::clearLights() {
+void PlanetScene::clearLights(CS123::GL::CS123Shader *shader) {
     for (int i = 0; i < MAX_NUM_LIGHTS; i++) {
         std::ostringstream os;
         os << i;
         std::string indexString = "[" + os.str() + "]"; // e.g. [0], [1], etc.
-        m_phongShader->setUniform("lightColors" + indexString, glm::vec3(0.0f, 0.0f, 0.0f));
+//        m_phongShader->setUniform("lightColors" + indexString, glm::vec3(0.0f, 0.0f, 0.0f));
+        m_planetShader->setUniform("lightColors" + indexString, glm::vec3(0.0f, 0.0f, 0.0f));
     }
 }
 
-void PlanetScene::setLights(const glm::mat4 viewMatrix) {
+void PlanetScene::setLights(CS123::GL::CS123Shader *shader, const glm::mat4 viewMatrix) {
     // YOU DON'T NEED TO TOUCH THIS METHOD, unless you want to do fancy lighting...
 
     m_light.dir = glm::inverse(viewMatrix) * m_lightDirection;
 
-    clearLights();
-    m_phongShader->setLight(m_light);
+    clearLights(shader);
+    shader->setLight(m_light);
 }
 
 void PlanetScene::settingsChanged() {
@@ -224,6 +217,6 @@ void PlanetScene::settingsChanged() {
 
 void PlanetScene::rotateModel(float angleInDegrees) {
     m_model = glm::rotate(m_model, glm::radians(angleInDegrees), glm::normalize(glm::vec3(0.5f, 1.f, 0.f)));
-    m_phongShader->setUniform("m", m_model);
+    m_planetShader->setUniform("m", m_model);
 }
 

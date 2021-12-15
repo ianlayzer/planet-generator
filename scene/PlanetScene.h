@@ -50,7 +50,7 @@ public:
 protected:
     // Set the light uniforms for the lights in the scene. (The view matrix is used so that the
     // light can follows the camera.)
-    virtual void setLights(const glm::mat4 viewMatrix);
+    virtual void setLights(CS123::GL::CS123Shader *shader, const glm::mat4 viewMatrix);
 
     // Render geometry for Shapes and Sceneview.
     virtual void renderGeometry();
@@ -77,7 +77,7 @@ private:
 
     glm::mat4 m_model;
 
-    void clearLights();
+    void clearLights(CS123::GL::CS123Shader *shader);
     void loadPhongShader();
     void loadPlanetShader();
     void loadWireframeShader();

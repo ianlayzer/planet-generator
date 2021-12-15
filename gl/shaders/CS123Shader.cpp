@@ -40,7 +40,6 @@ void CS123Shader::setColor(const QColor &color) {
 }
 
 void CS123Shader::applyColorSettings(const ColorSettings &colorSettings) {
-    glm::vec3 colorVec = makeColorVec(colorSettings.landColor);
     setUniform("ocean_color", makeColorVec(colorSettings.oceanColor));
     setUniform("land_color", makeColorVec(colorSettings.landColor));
     setUniform("mountain_color", makeColorVec(colorSettings.mountainColor));
