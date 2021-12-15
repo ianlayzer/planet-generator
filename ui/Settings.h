@@ -143,6 +143,7 @@ struct Settings {
     QColor mountainColor;
     bool enableRotation;
     bool onlyShowOneFace;
+    bool smoothColors;
 
     bool useLighting;           // Enable default lighting
     bool drawWireframe;         // Draw wireframe only

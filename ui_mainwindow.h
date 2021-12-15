@@ -1,13 +1,11 @@
+#pragma once
 /********************************************************************************
-** Form generated from reading UI file 'mainwindow.ui'
+** Form generated from reading UI file ''
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 5.15.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
-
-#ifndef UI_MAINWINDOW_H
-#define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -217,10 +215,8 @@ public:
     QLineEdit *mountainColorGreenEdit;
     QLineEdit *mountainColorBlueEdit;
     QCheckBox *planetRotationCheckbox;
-    QCheckBox *useLightingCheckbox;
-    QCheckBox *drawWireframeCheckbox;
-    QCheckBox *drawNormalsCheckbox;
     QCheckBox *oneFaceCheckbox;
+    QCheckBox *smoothColorsCheckbox;
     QWidget *shapesDockEmptySpace;
     QMenuBar *menuBar;
     QMenu *menuFile;
@@ -230,7 +226,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(600, 867);
+        MainWindow->resize(600, 890);
         MainWindow->setDockNestingEnabled(true);
         MainWindow->setDockOptions(QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks|QMainWindow::ForceTabbedDocks|QMainWindow::VerticalTabs);
         actionNew = new QAction(MainWindow);
@@ -266,7 +262,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         shapesDock = new QDockWidget(MainWindow);
         shapesDock->setObjectName(QString::fromUtf8("shapesDock"));
-        shapesDock->setMinimumSize(QSize(380, 866));
+        shapesDock->setMinimumSize(QSize(380, 824));
         shapesDockContents = new QWidget();
         shapesDockContents->setObjectName(QString::fromUtf8("shapesDockContents"));
         verticalLayout_7 = new QVBoxLayout(shapesDockContents);
@@ -1218,25 +1214,15 @@ public:
 
         verticalLayout_7->addWidget(planetRotationCheckbox);
 
-        useLightingCheckbox = new QCheckBox(shapesDockContents);
-        useLightingCheckbox->setObjectName(QString::fromUtf8("useLightingCheckbox"));
-
-        verticalLayout_7->addWidget(useLightingCheckbox);
-
-        drawWireframeCheckbox = new QCheckBox(shapesDockContents);
-        drawWireframeCheckbox->setObjectName(QString::fromUtf8("drawWireframeCheckbox"));
-
-        verticalLayout_7->addWidget(drawWireframeCheckbox);
-
-        drawNormalsCheckbox = new QCheckBox(shapesDockContents);
-        drawNormalsCheckbox->setObjectName(QString::fromUtf8("drawNormalsCheckbox"));
-
-        verticalLayout_7->addWidget(drawNormalsCheckbox);
-
         oneFaceCheckbox = new QCheckBox(shapesDockContents);
         oneFaceCheckbox->setObjectName(QString::fromUtf8("oneFaceCheckbox"));
 
         verticalLayout_7->addWidget(oneFaceCheckbox);
+
+        smoothColorsCheckbox = new QCheckBox(shapesDockContents);
+        smoothColorsCheckbox->setObjectName(QString::fromUtf8("smoothColorsCheckbox"));
+
+        verticalLayout_7->addWidget(smoothColorsCheckbox);
 
         shapesDockEmptySpace = new QWidget(shapesDockContents);
         shapesDockEmptySpace->setObjectName(QString::fromUtf8("shapesDockEmptySpace"));
@@ -1252,7 +1238,7 @@ public:
         MainWindow->addDockWidget(Qt::LeftDockWidgetArea, shapesDock);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 600, 22));
+        menuBar->setGeometry(QRect(0, 0, 600, 24));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuToolbars = new QMenu(menuBar);
@@ -1273,7 +1259,7 @@ public:
         QObject::connect(actionClear, SIGNAL(triggered()), MainWindow, SLOT(clearImage()));
         QObject::connect(actionRevert, SIGNAL(triggered()), MainWindow, SLOT(revertImage()));
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1368,10 +1354,8 @@ public:
         mountainColorLabel->setText(QCoreApplication::translate("MainWindow", "Mountain Color", nullptr));
         mountainColorButton->setText(QString());
         planetRotationCheckbox->setText(QCoreApplication::translate("MainWindow", "Planet rotation", nullptr));
-        useLightingCheckbox->setText(QCoreApplication::translate("MainWindow", "Use lighting", nullptr));
-        drawWireframeCheckbox->setText(QCoreApplication::translate("MainWindow", "Draw wireframe", nullptr));
-        drawNormalsCheckbox->setText(QCoreApplication::translate("MainWindow", "Draw normals", nullptr));
         oneFaceCheckbox->setText(QCoreApplication::translate("MainWindow", "One face only", nullptr));
+        smoothColorsCheckbox->setText(QCoreApplication::translate("MainWindow", "Smooth colors", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "&File", nullptr));
         menuToolbars->setTitle(QCoreApplication::translate("MainWindow", "&Toolbars", nullptr));
     } // retranslateUi
@@ -1384,4 +1368,3 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_MAINWINDOW_H

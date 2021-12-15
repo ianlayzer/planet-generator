@@ -30,11 +30,12 @@ struct NoiseSettings {
 };
 
 struct ColorSettings {
-    ColorSettings(QColor oceanColor, QColor landColor, QColor mountainColor):
-        oceanColor(oceanColor), landColor(landColor), mountainColor(mountainColor) {}
+    ColorSettings(QColor oceanColor, QColor landColor, QColor mountainColor, bool smoothColors):
+        oceanColor(oceanColor), landColor(landColor), mountainColor(mountainColor), smoothColors(smoothColors) {}
     QColor oceanColor;
     QColor landColor;
     QColor mountainColor;
+    bool smoothColors;
 };
 
 struct PlanetSettings {

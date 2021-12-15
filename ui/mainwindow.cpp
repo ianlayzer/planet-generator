@@ -137,14 +137,12 @@ void MainWindow::dataBind() {
     BIND(FloatBinding::bindDial(ui->noiseCenterYDial1_3, settings.noiseCenterYOcean, -5.f, 5.f, true))
     BIND(FloatBinding::bindDial(ui->noiseCenterZDial1_3, settings.noiseCenterZOcean, -5.f, 5.f, true))
     BIND(BoolBinding::bindCheckbox(ui->planetRotationCheckbox, settings.enableRotation));
-    BIND(BoolBinding::bindCheckbox(ui->useLightingCheckbox, settings.useLighting))
-    BIND(BoolBinding::bindCheckbox(ui->drawWireframeCheckbox, settings.drawWireframe))
-    BIND(BoolBinding::bindCheckbox(ui->drawNormalsCheckbox, settings.drawNormals))
     BIND(BoolBinding::bindCheckbox(ui->continentsEnabled, settings.continentsEnabled))
     BIND(BoolBinding::bindCheckbox(ui->mountainsEnabled, settings.mountainsEnabled))
     BIND(BoolBinding::bindCheckbox(ui->oceansEnabled, settings.oceansEnabled))
     BIND(BoolBinding::bindCheckbox(ui->continentMask, settings.useContinentsAsMask))
     BIND(BoolBinding::bindCheckbox(ui->oneFaceCheckbox, settings.onlyShowOneFace))
+    BIND(BoolBinding::bindCheckbox(ui->smoothColorsCheckbox, settings.smoothColors));
 
     BIND(ColorBinding::bindButtonAndTextboxes(ui->oceanColorButton,
                                               ui->oceanColorRedEdit,ui->oceanColorGreenEdit,

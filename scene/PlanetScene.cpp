@@ -127,7 +127,6 @@ void PlanetScene::renderPlanetPass(Canvas3D *context) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     clearLights(m_planetShader.get());
     setLights(m_planetShader.get(), context->getCamera()->getViewMatrix());
-    m_planetShader->setColor(settings.landColor);
     m_planetShader->setUniform("useLighting", settings.useLighting);
     m_planetShader->setUniform("useArrowOffsets", false);
     m_planetShader->applyColorSettings(settings.getPlanetColorSettings());

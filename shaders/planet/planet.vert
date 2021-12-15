@@ -26,6 +26,7 @@ uniform vec3 lightColors[MAX_LIGHTS];
 uniform vec3 ocean_color;
 uniform vec3 land_color;
 uniform vec3 mountain_color;
+uniform bool smoothColors;
 uniform float shininess;
 uniform vec2 repeatUV;
 
@@ -64,27 +65,35 @@ void main() {
         position_cameraSpace += arrowOffset * vec4(offsetAxis, 0);
     }
 
-    bool gradient = true;
-
     vec3 diffuse_col;
-//    if (elevation < DEEP_OCEAN_END) {
-//        diffuse_col = deep_ocean_color; // deep ocean
-//    } else
-    if (elevation < OCEAN_END) {
-        diffuse_col = mix(deep_ocean_color, ocean_color, getLocationInBand(DEEP_OCEAN_END, OCEAN_END, elevation));
-//        diffuse_col = ocean_color; // ocean
-    } else if (elevation < BEACH_END) {
-        diffuse_col = mix(beach_color, land_color, getLocationInBand(OCEAN_END, BEACH_END, elevation));
-//        diffuse_col = beach_color; // beach
-    } else if (elevation < LAND_END) {
-        diffuse_col = mix(land_color, mountain_color, getLocationInBand(BEACH_END, LAND_END, elevation));
-//        diffuse_col = land_color; // land
-    } else if (elevation < MOUNTAIN_END) {
-        diffuse_col = mix(mountain_color, mountain_top_color, getLocationInBand(LAND_END, MOUNTAIN_END, elevation));
-//        diffuse_col = mountain_color; // mountains
+    if (smoothColors) {
+        if (elevation < OCEAN_END) {
+            diffuse_col = mix(deep_ocean_color, ocean_color, getLocationInBand(DEEP_OCEAN_END, OCEAN_END, elevation));
+        } else if (elevation < BEACH_END) {
+            diffuse_col = mix(beach_color, land_color, getLocationInBand(OCEAN_END, BEACH_END, elevation));
+        } else if (elevation < LAND_END) {
+            diffuse_col = mix(land_color, mountain_color, getLocationInBand(BEACH_END, LAND_END, elevation));
+        } else if (elevation < MOUNTAIN_END) {
+            diffuse_col = mix(mountain_color, mountain_top_color, getLocationInBand(LAND_END, MOUNTAIN_END, elevation));
+        } else {
+            diffuse_col = mountain_top_color; // mountain caps
+        }
     } else {
-        diffuse_col = mountain_top_color; // mountain caps
+        if (elevation < DEEP_OCEAN_END) {
+            diffuse_col = deep_ocean_color; // deep ocean
+        } else if (elevation < OCEAN_END) {
+            diffuse_col = ocean_color; // ocean
+        } else if (elevation < BEACH_END) {
+            diffuse_col = beach_color; // beach
+        } else if (elevation < LAND_END) {
+            diffuse_col = land_color; // land
+        } else if (elevation < MOUNTAIN_END) {
+            diffuse_col = mountain_color; // mountains
+        } else {
+            diffuse_col = mountain_top_color; // mountain caps
+        }
     }
+
     vec3 ambient_col = 0.25 * diffuse_col;
     vec3 specular_col = vec3(0.2, 0.2, 0.2);
 
