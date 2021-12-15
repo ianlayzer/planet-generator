@@ -23,6 +23,7 @@ uniform vec3 lightDirections[MAX_LIGHTS];   // For directional lights
 uniform vec3 lightColors[MAX_LIGHTS];
 
 // Material data
+uniform vec3 ocean_color;
 uniform vec3 ambient_color;
 uniform vec3 diffuse_color;
 uniform vec3 specular_color;
@@ -48,9 +49,7 @@ void main() {
     }
 
     vec3 dcol = diffuse_color;
-    if (elevation < 0.85) {
-        dcol = vec3(0.f, 0.f, 0.5f);
-    } else if (elevation < 1.001) {
+    if (elevation < 1.001f) {
 //        ambient_color = vec3(0.f, 0.f, 1.f);
         dcol = vec3(0.f, 0.f, 1.f);
 //        specular_color = vec3(0.f, 0.f, 1.f);

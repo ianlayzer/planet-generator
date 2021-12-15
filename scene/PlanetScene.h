@@ -60,6 +60,7 @@ private:
     // need to be freed because they are VALUE types (not pointers) and the memory for them is
     // freed when the class itself is freed.
     std::unique_ptr<CS123::GL::CS123Shader> m_phongShader;
+    std::unique_ptr<CS123::GL::CS123Shader> m_planetShader;
     std::unique_ptr<CS123::GL::Shader> m_wireframeShader;
     std::unique_ptr<CS123::GL::Shader> m_normalsShader;
     std::unique_ptr<CS123::GL::Shader> m_normalsArrowShader;
@@ -78,10 +79,12 @@ private:
 
     void clearLights();
     void loadPhongShader();
+    void loadPlanetShader();
     void loadWireframeShader();
     void loadNormalsShader();
     void loadNormalsArrowShader();
     void renderPhongPass(Canvas3D *context);
+    void renderPlanetPass(Canvas3D *context);
     void renderGeometryAsFilledPolygons();
     void renderWireframePass(Canvas3D *context);
     void renderGeometryAsWireframe();

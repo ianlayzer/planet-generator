@@ -3,6 +3,7 @@
 
 #include "Shader.h"
 #include <QColor>
+#include "planet/PlanetSettings.h"
 
 class CS123SceneMaterial;
 class CS123SceneLightData;
@@ -16,7 +17,10 @@ public:
 
     void applyMaterial(const CS123SceneMaterial &material);
     void setColor(const QColor &color);
+    void applyColorSettings(const ColorSettings &colorSettings);
     void setLight(const CS123SceneLightData &light);
+private:
+    glm::vec3 makeColorVec(QColor color);
 };
 
 }}

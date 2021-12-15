@@ -33,12 +33,18 @@ void CS123Shader::applyMaterial(const CS123SceneMaterial &material) {
 
 void CS123Shader::setColor(const QColor &color) {
     glm::vec3 colorVec = glm::vec3(color.redF(), color.greenF(), color.blueF());
-//    setUniform("ambient_color", glm::vec3(0.2f, 0.1f, 0.f));
+    setUniform("ambient_color", glm::vec3(0.2f, 0.1f, 0.f));
     setUniform("diffuse_color", colorVec);
-//    setUniform("specular_color", glm::vec3(0.1f, 0.1f, 0.1f));
-//    setUniform("shininess", 40);
+    setUniform("specular_color", glm::vec3(0.1f, 0.1f, 0.1f));
+    setUniform("shininess", 15);
 }
 
+void CS123Shader::applyColorSettings(const ColorSettings &colorSettings) {
+    glm::vec3 colorVec = makeColorVec(colorSettings.landColor);
+    setUniform("ocean_color", makeColorVec(colorSettings.oceanColor));
+    setUniform("land_color", makeColorVec(colorSettings.landColor));
+    setUniform("mountain_color", makeColorVec(colorSettings.mountainColor));
+}
 
 void CS123Shader::setLight(const CS123SceneLightData &light) {
     bool ignoreLight = false;
@@ -70,6 +76,10 @@ void CS123Shader::setLight(const CS123SceneLightData &light) {
     setUniformArrayByIndex("lightTypes", lightType, light.id);
     setUniformArrayByIndex("lightColors", glm::vec3(color.r, color.g, color.b), light.id);
 //    setUniformArrayByIndex("lightAttenuations", light.function, light.id);
+}
+
+glm::vec3 CS123Shader::makeColorVec(QColor color) {
+    return glm::vec3(color.redF(), color.greenF(), color.blueF());
 }
 
 }}

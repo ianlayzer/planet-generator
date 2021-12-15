@@ -85,6 +85,8 @@ struct Settings {
     // Saves the current settings to disk.
     void saveSettings();
 
+    NoiseSettings getPlanetNoiseSettings();
+    ColorSettings getPlanetColorSettings();
     PlanetSettings getPlanetSettings();
 
     // Brush

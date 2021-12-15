@@ -219,7 +219,7 @@ int Settings::getCameraMode() {
         return CAMERAMODE_CAMTRANS;
 }
 
-PlanetSettings Settings::getPlanetSettings() {
+NoiseSettings Settings::getPlanetNoiseSettings() {
     NoiseLayerSettings continentSettings = NoiseLayerSettings(
         noiseRoughnessCont,
         noiseBaseRoughnessCont,
@@ -256,8 +256,16 @@ PlanetSettings Settings::getPlanetSettings() {
         noiseCenterZOcean,
         oceansEnabled
     );
-    NoiseSettings noiseSettings = NoiseSettings(continentSettings, mountainSettings, oceanSettings, useContinentsAsMask);
-    ColorSettings colorSettings = ColorSettings(landColor, landColor, landColor);
+    return NoiseSettings(continentSettings, mountainSettings, oceanSettings, useContinentsAsMask);
+}
+
+ColorSettings Settings::getPlanetColorSettings() {
+    return ColorSettings(landColor, landColor, landColor);
+}
+
+PlanetSettings Settings::getPlanetSettings() {
+    NoiseSettings noiseSettings = getPlanetNoiseSettings();
+    ColorSettings colorSettings = getPlanetColorSettings();
     return PlanetSettings(resolution, noiseSettings, colorSettings, onlyShowOneFace);
 }
 

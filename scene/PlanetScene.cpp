@@ -25,6 +25,7 @@ PlanetScene::PlanetScene(int width, int height) :
     initializeSceneMaterial();
     initializeSceneLight();
     loadPhongShader();
+    loadPlanetShader();
     loadWireframeShader();
     loadNormalsShader();
     loadNormalsArrowShader();
@@ -40,7 +41,7 @@ PlanetScene::~PlanetScene()
 
 void PlanetScene::initializeSceneMaterial() {
     // Use a shiny orange material
-//    m_material.clear();
+    m_material.clear();
     m_material.cAmbient.r = settings.landColor.redF() / 5.f;
     m_material.cAmbient.g = settings.landColor.greenF() / 5.f;
     m_material.cAmbient.b = settings.landColor.blueF() / 5.f;
@@ -56,6 +57,9 @@ void PlanetScene::initializeSceneLight() {
     memset(&m_light, 0, sizeof(m_light));
     m_light.type = LightType::LIGHT_DIRECTIONAL;
     m_light.dir = m_lightDirection;
+//    m_light.color.r = 1;
+//    m_light.color.g = 1;
+//    m_light.color.b = 0.3;
     m_light.color.r = m_light.color.g = m_light.color.b = 1;
     m_light.id = 0;
 }
@@ -64,6 +68,12 @@ void PlanetScene::loadPhongShader() {
     std::string vertexSource = ResourceLoader::loadResourceFileToString(":/shaders/default.vert");
     std::string fragmentSource = ResourceLoader::loadResourceFileToString(":/shaders/default.frag");
     m_phongShader = std::make_unique<CS123Shader>(vertexSource, fragmentSource);
+}
+
+void PlanetScene::loadPlanetShader() {
+    std::string vertexSource = ResourceLoader::loadResourceFileToString(":/shaders/planet.vert");
+    std::string fragmentSource = ResourceLoader::loadResourceFileToString(":/shaders/planet.frag");
+    m_planetShader = std::make_unique<CS123Shader>(vertexSource, fragmentSource);
 }
 
 void PlanetScene::loadWireframeShader() {
@@ -114,11 +124,34 @@ void PlanetScene::renderPhongPass(Canvas3D *context) {
     m_phongShader->unbind();
 }
 
+void PlanetScene::renderPlanetPass(Canvas3D *context) {
+    m_planetShader->bind();
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    clearLights();
+    setLights(context->getCamera()->getViewMatrix());
+    setPhongSceneUniforms();
+    m_planetShader->setColor(settings.landColor);
+//    setPhongSceneUniforms();
+//    m_planetShader->setUniform("ocean_color", glm::vec3(0.f, 0.f, 1.f));
+//    m_planetShader->setUniform("land_color", glm::vec3(0.f, 1.f, 0.f));
+//    m_planetShader->setUniform("mountain_color", glm::vec3(1.f, 0.f, 0.f));
+//    m_planetShader->setUniform("ambient_color", glm::vec3(0.f, 0.2f, 0.f));
+//    m_planetShader->setUniform("specular_color", glm::vec3(0.2f, 0.2f, 0.2f));
+
+//    m_planetShader->setUniform("shininess", 15);
+
+//    m_planetShader->applyColorSettings(settings.getPlanetColorSettings());
+    setMatrixUniforms(m_planetShader.get(), context);
+    renderGeometryAsFilledPolygons();
+
+    m_planetShader->unbind();
+}
+
 void PlanetScene::setPhongSceneUniforms() {
     m_phongShader->setUniform("useLighting", settings.useLighting);
     m_phongShader->setUniform("useArrowOffsets", false);
     m_phongShader->applyMaterial(m_material);
-//    m_phongShader->setColor(settings.planetColor);
 }
 
 void PlanetScene::setMatrixUniforms(Shader *shader, Canvas3D *context) {
