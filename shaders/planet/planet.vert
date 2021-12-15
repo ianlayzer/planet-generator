@@ -43,6 +43,7 @@ float getLocationInBand(float bandStart, float bandEnd, float position) {
     float bandWidth = bandEnd - bandStart;
     float locationInBand = position - bandStart;
     float fraction = locationInBand / bandWidth;
+    fraction = max(0, fraction - 0.2f); // adjust to weight towards current band color
     return fraction;
 }
 
