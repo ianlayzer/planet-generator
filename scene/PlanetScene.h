@@ -61,6 +61,7 @@ private:
     // freed when the class itself is freed.
     std::unique_ptr<CS123::GL::CS123Shader> m_phongShader;
     std::unique_ptr<CS123::GL::CS123Shader> m_planetShader;
+    std::unique_ptr<CS123::GL::CS123Shader> m_skyboxShader;
     std::unique_ptr<CS123::GL::Shader> m_wireframeShader;
     std::unique_ptr<CS123::GL::Shader> m_normalsShader;
     std::unique_ptr<CS123::GL::Shader> m_normalsArrowShader;
@@ -77,14 +78,25 @@ private:
 
     glm::mat4 m_model;
 
+    std::vector<float> m_skyboxVertices;
+    unsigned int m_skyboxVAO;
+    unsigned int m_skyboxVBO;
+    unsigned int m_skyboxTexture;
+    std::unique_ptr<OpenGLShape> m_skyboxCube;
+
+
     void clearLights(CS123::GL::CS123Shader *shader);
     void loadPhongShader();
     void loadPlanetShader();
+    void loadSkybox();
+    void loadSkyboxShader();
+    void loadSkyboxTexture();
     void loadWireframeShader();
     void loadNormalsShader();
     void loadNormalsArrowShader();
     void renderPhongPass(Canvas3D *context);
     void renderPlanetPass(Canvas3D *context);
+    void renderSkyboxPass(Canvas3D *context);
     void renderGeometryAsFilledPolygons();
     void renderWireframePass(Canvas3D *context);
     void renderGeometryAsWireframe();
@@ -97,6 +109,7 @@ private:
     void renderNormals();
     void renderWireframe();
     void setSceneUniforms(Canvas3D *context);
+    unsigned int loadCubemap(std::vector<string> faces);
 };
 
 #endif // PLANETSCENE_H

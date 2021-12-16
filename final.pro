@@ -65,6 +65,7 @@ HEADERS += \
     planet/Planet.h \
     planet/PlanetSettings.h \
     planet/TerrainFace.h \
+    scene/Cube.h \
     scene/PlanetScene.h \
     scene/Scene.h \
     scene/OpenGLScene.h \

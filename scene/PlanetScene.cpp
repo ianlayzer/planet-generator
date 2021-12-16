@@ -13,17 +13,19 @@ using namespace CS123::GL;
 #include "gl/shaders/CS123Shader.h"
 #include "gl/shaders/Shader.h"
 #include "glm/ext.hpp"
-
+#include "Cube.h"
 #include "ResourceLoader.h"
 
 PlanetScene::PlanetScene(int width, int height) :
     m_planet(nullptr),
     m_width(width),
     m_height(height),
-    m_model(glm::mat4(1.0f))
+    m_model(glm::mat4(1.0f)),
+    m_skyboxCube(std::make_unique<OpenGLShape>())
 {
     initializeSceneMaterial();
     initializeSceneLight();
+    loadSkybox();
 //    loadPhongShader();
     loadPlanetShader();
 //    loadWireframeShader();
@@ -73,6 +75,74 @@ void PlanetScene::loadPlanetShader() {
     m_planetShader = std::make_unique<CS123Shader>(vertexSource, fragmentSource);
 }
 
+void PlanetScene::loadSkybox() {
+    m_skyboxVertices = std::vector<float> {
+        // positions
+        -1.0f,  1.0f, -1.0f,
+        -1.0f, -1.0f, -1.0f,
+         1.0f, -1.0f, -1.0f,
+         1.0f, -1.0f, -1.0f,
+         1.0f,  1.0f, -1.0f,
+        -1.0f,  1.0f, -1.0f,
+
+        -1.0f, -1.0f,  1.0f,
+        -1.0f, -1.0f, -1.0f,
+        -1.0f,  1.0f, -1.0f,
+        -1.0f,  1.0f, -1.0f,
+        -1.0f,  1.0f,  1.0f,
+        -1.0f, -1.0f,  1.0f,
+
+         1.0f, -1.0f, -1.0f,
+         1.0f, -1.0f,  1.0f,
+         1.0f,  1.0f,  1.0f,
+         1.0f,  1.0f,  1.0f,
+         1.0f,  1.0f, -1.0f,
+         1.0f, -1.0f, -1.0f,
+
+        -1.0f, -1.0f,  1.0f,
+        -1.0f,  1.0f,  1.0f,
+         1.0f,  1.0f,  1.0f,
+         1.0f,  1.0f,  1.0f,
+         1.0f, -1.0f,  1.0f,
+        -1.0f, -1.0f,  1.0f,
+
+        -1.0f,  1.0f, -1.0f,
+         1.0f,  1.0f, -1.0f,
+         1.0f,  1.0f,  1.0f,
+         1.0f,  1.0f,  1.0f,
+        -1.0f,  1.0f,  1.0f,
+        -1.0f,  1.0f, -1.0f,
+
+        -1.0f, -1.0f, -1.0f,
+        -1.0f, -1.0f,  1.0f,
+         1.0f, -1.0f, -1.0f,
+         1.0f, -1.0f, -1.0f,
+        -1.0f, -1.0f,  1.0f,
+         1.0f, -1.0f,  1.0f
+    };
+    loadSkyboxShader();
+    loadSkyboxTexture();
+    glGenVertexArrays(1, &m_skyboxVAO);
+    glGenBuffers(1, &m_skyboxVBO);
+    glBindVertexArray(m_skyboxVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, m_skyboxVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(m_skyboxVertices), &m_skyboxVertices, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+}
+
+void PlanetScene::loadSkyboxShader() {
+    std::string vertexSource = ResourceLoader::loadResourceFileToString(":/shaders/skybox.vert");
+    std::string fragmentSource = ResourceLoader::loadResourceFileToString(":/shaders/skybox.frag");
+    m_skyboxShader = std::make_unique<CS123Shader>(vertexSource, fragmentSource);
+}
+
+void PlanetScene::loadSkyboxTexture() {
+    std::vector<string> faces {":/images/stars.jpg", ":/images/stars.jpg", ":/images/stars.jpg",
+                                 ":/images/stars.jpg", ":/images/stars.jpg", ":/images/stars.jpg"};
+    m_skyboxTexture = loadCubemap(faces);
+}
+
 void PlanetScene::loadWireframeShader() {
     std::string vertexSource = ResourceLoader::loadResourceFileToString(":/shaders/wireframe.vert");
     std::string fragmentSource = ResourceLoader::loadResourceFileToString(":/shaders/wireframe.frag");
@@ -98,6 +168,7 @@ void PlanetScene::render(Canvas3D *context) {
     // black one for drawing wireframe or normals so they will show up against the background.)
     setClearColor();
     renderPlanetPass(context);
+    renderSkyboxPass(context);
 
 //    if (settings.drawWireframe) {
 //        renderWireframePass(context);
@@ -138,6 +209,24 @@ void PlanetScene::renderPlanetPass(Canvas3D *context) {
 
     m_planetShader->unbind();
 }
+
+void PlanetScene::renderSkyboxPass(Canvas3D *context) {
+    glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
+    m_skyboxShader->bind();
+
+    glm::mat4 view = glm::mat4(glm::mat3(context->getCamera()->getViewMatrix())); // remove translation from the view matrix
+    m_skyboxShader->setUniform("view", view);
+    m_skyboxShader->setUniform("projection", context->getCamera()->getProjectionMatrix());
+    // skybox cube
+    glBindVertexArray(m_skyboxVAO);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, m_skyboxTexture);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+    glDepthFunc(GL_LESS);
+    m_skyboxShader->unbind();
+}
+
 
 void PlanetScene::setPhongSceneUniforms() {
     m_phongShader->setUniform("useLighting", settings.useLighting);
@@ -217,5 +306,24 @@ void PlanetScene::settingsChanged() {
 void PlanetScene::rotateModel(float angleInDegrees) {
     m_model = glm::rotate(m_model, glm::radians(angleInDegrees), glm::normalize(glm::vec3(0.5f, 1.f, 0.f)));
     m_planetShader->setUniform("m", m_model);
+}
+
+unsigned int PlanetScene::loadCubemap(std::vector<string> faces) {
+    unsigned int textureID;
+    glGenTextures(1, &textureID);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+    for (int i = 0; i < faces.size(); i++) {
+
+        QImage texture = QImage(QString::fromStdString(faces[i])).mirrored();
+        glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_BGRA, texture.width(), texture.height(),
+                     0, GL_RGB, GL_UNSIGNED_BYTE, texture.bits());
+    }
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
+    return textureID;
 }
 

@@ -35,3 +35,7 @@ void OpenGLShape::initializeOpenGLShapeProperties() {
     VBO vbo = VBO(m_vertexData.data(), m_vertexData.size(), markers);
     m_VAO = std::make_unique<VAO>(vbo, numVertices);
 }
+
+void OpenGLShape::setVertexData(std::vector<GLfloat> data) {
+    m_vertexData = data;
+}

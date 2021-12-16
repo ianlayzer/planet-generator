@@ -38,6 +38,7 @@ public:
     OpenGLShape();
     virtual ~OpenGLShape();
     void draw();
+    void setVertexData(std::vector<GLfloat> data);
 
 protected:
     /**
