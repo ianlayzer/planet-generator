@@ -11,8 +11,8 @@ for their artwork or game. With this system, they can quickly create planets wit
 styles, color schemes, levels of resolution, and more.
 
 ## How to use it
-Make sure that your resolution setting is not too high as this may createlag in the rendering 
-of your planet. We recommend that you set the resolution to ~100 while you play around with the settings. You can also use the bottom toggle button that reads "One face only" to render only one side of your planet, toggle off 'Planet rotation', and/or toggle off "Smooth colors" to prevent interpolation between color values at different elevation levels, each of which should improve performance. Once you're happy with your settings, set the resolution as high as you like to see your planet in all its glory.
+Make sure that your resolution setting is not too high as this may create lag in the rendering 
+of your planet. We recommend that you set the resolution to ~100 while you play around with the settings. You can also use the bottom toggle button that reads 'One face only' to render only one side of your planet, toggle off 'Planet rotation', and/or toggle off 'Smooth colors' to prevent interpolation between color values at different elevation levels, each of which should improve performance. Once you're happy with your settings, set the resolution as high as you like to see your planet in all its glory.
 
 The Noise tab widget lets you adjust the noise layers for Continents, Mountains, and Oceans, respectively. The options available to you for each are largely the same, and allow you to create up to 8 layers of Simplex Noise to comprise that level of terrain. 
   - Strength acts as a scalar multiplier to the overall elevation value for each point.
@@ -28,8 +28,3 @@ Each terrain level may be toggled on and off with the 'Enabled' checkbox and the
 Note that Oceans, even though they have the same parameters as the other levels, act a bit differently. Toggling the settings for Oceans does procedurally generate depth for the ocean, but it does not change the elevation on the planet sphere. Ocean depth is used only for shading.
 
 Once you have your terrain as you like it, you can add color! Ocean color is used as shallow ocean values and is automatically darkened to determine deep ocean color. Shore color is for the lowest terrain elevation above 0 (beaches). Land color is used for low-elevation land and is automatically darkened for slightly higher level terrain. Mountain color and mountain cap color are for the highest elevation levels. The thresholds for each elevation level are fixed in the planet vertex shader. With smooth colors enabled, the color for a vertex is determined by linearly interpolating between the two color thresholds that it is between.
-
-
-
-
-
