@@ -7,7 +7,7 @@
 This is a C++ / OpenGL application developed in QT Creator for procedurally generating
 planets using simplex noise. The intention for this application is that it may be used
 by 3D artists/game developers who may require a number of attractive and varied planets
-for their artwork or game. With these system, they can quickly create planets with different
+for their artwork or game. With this system, they can quickly create planets with different
 styles, color schemes, levels of resolution, and more.
 
 ## How to use it
